@@ -3,11 +3,26 @@
 ## Project Module
 **Hardware, Networks & Behaviorist AI**
 
+## Team Name
+
+> team
+
+## Team Members
+
+| Name | Student ID | GitHub Profile | Role |
+| :--- | :--- | :--- | :--- |
+| Babayev Emir | 1820262225 | [@Jerssy-h](https://github.com/Jerssy-h) | CEO |
+| Emelyanov Ilya | 1820262250 | [@nsdmlk](https://github.com/nsdmlk) | CIO |
+| Dobrydin Dmitrii | 1820262226 | [@1oogabooga](https://github.com/1oogabooga) | Role |
+| Maidachenko Ivan | 1820262282 | [@ivanelloj](https://github.com/ivanelloj) | Visual design lead |
+| Shamshiev Adil | 1820262243 | [@protoadil](https://github.com/protoadil) | Role |
+| Nurpeissov Alimzhan | 1820262236  | [@Alimbeeeeeek](https://github.com/Alimbeeeeeek) | Role |
+
 ## Purpose
 Create beginner-friendly learning materials that explain how modern intelligent systems work, from the physical layer to behavior.
 
 ## Intended Learners
-First-year CS students with basic Python knowledge. No prior background in hardware, networking, or reinforcement learning is assumed.
+First-year CS students with basic knowledge. No prior background in hardware, networking, or reinforcement learning is assumed.
 
 ## Content Outline
 1. **Hardware:** CPU, GPU, CUDA, assembler.
