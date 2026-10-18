@@ -13,10 +13,10 @@
 | :--- | :--- | :--- | :--- |
 | Babayev Emir | 1820262225 | [@Jerssy-h](https://github.com/Jerssy-h) | CEO |
 | Emelyanov Ilya | 1820262250 | [@nsdmlk](https://github.com/nsdmlk) | CIO |
-| Dobrydin Dmitrii | 1820262226 | [@1oogabooga](https://github.com/1oogabooga) | Role |
+| Dobrydin Dmitrii | 1820262226 | [@1oogabooga](https://github.com/1oogabooga) | Content lead |
 | Maidachenko Ivan | 1820262282 | [@ivanelloj](https://github.com/ivanelloj) | Visual design lead |
-| Shamshiev Adil | 1820262243 | [@protoadil](https://github.com/protoadil) | Role |
-| Nurpeissov Alimzhan | 1820262236  | [@Alimbeeeeeek](https://github.com/Alimbeeeeeek) | Role |
+| Shamshiev Adil | 1820262243 | [@protoadil](https://github.com/protoadil) | Video lead |
+| Nurpeissov Alimzhan | 1820262236  | [@Alimbeeeeeek](https://github.com/Alimbeeeeeek) | Quality lead |
 
 ## Purpose
 Create beginner-friendly learning materials that explain how modern intelligent systems work, from the physical layer to behavior.
