@@ -2,7 +2,6 @@
 
 **File:** `/content/Hardware/INTRODUCITON.md`
 **Role:** First chapter of the Hardware part. Foundation for the Study Guide, slides, video, and test bank.
-**Target length:** ~3,500–4,000 words, 8 diagrams.
 **Audience:** complete beginners. No prior hardware knowledge assumed.
 
 ---
