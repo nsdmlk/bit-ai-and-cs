@@ -22,7 +22,8 @@ This is the "decode" part of the fetch–decode–execute cycle. The control uni
 
 ## 3. Diagram
 
-[DIAGRAM: control unit in the center, with arrows going out to registers, ALU, and memory, labeled "control signals". IR feeds into the control unit. Caption: "The control unit directs the other parts".]
+<img width="1536" height="1024" alt="diagram6" src="https://github.com/user-attachments/assets/e0d96864-e1f8-4c82-9e2f-9c265f641d8b" />
+
 
 ## 4. Example
 
