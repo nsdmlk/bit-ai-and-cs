@@ -37,9 +37,10 @@ First-year CS students with basic knowledge. No prior background in hardware, ne
 - Live Mini Lecture (RL)
 
 ## Progress
-- [ ] Hardware outline
-- [ ] Networks outline
-- [ ] RL content (drafting)
+- [ ] Hardware outline .md
+- [ ] Networks outline .md
+- [X] Behaviourist outline .md
 - [ ] Slides
 - [ ] Video
+- [ ] Study Guide
 - [ ] Exercises
