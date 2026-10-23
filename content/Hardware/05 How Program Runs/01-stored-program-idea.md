@@ -28,3 +28,26 @@ That is why a program is called a **sequence of instructions sitting in memory**
 ## 4. Example
 
 A tiny program that adds two numbers:
+
+address 0x100: LOAD R1, [0x300] ← instruction
+address 0x104: LOAD R2, [0x304] ← instruction
+address 0x108: ADD R3, R1, R2 ← instruction
+address 0x10C: STORE [0x308], R3 ← instruction
+...
+address 0x300: 5 ← data
+address 0x304: 7 ← data
+address 0x308: 0 ← data (result)
+
+The instructions at `0x100–0x10C` and the data at `0x300–0x308` live in the **same memory**. The CPU reads the instructions in order; the data is read and written by those instructions.
+
+## 5. Check yourself
+
+1. What does the stored-program idea say?
+2. Why is it useful that code and data live in the same memory?
+3. Does the CPU know which memory cells hold code and which hold data? Why or why not?
+4. What does the PC point to in the example above?
+
+## 6. References
+
+- Course materials (insert lecture/slide numbers).
+- Patterson & Hennessy, *Computer Organization and Design* — chapter on instructions.
