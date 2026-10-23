@@ -27,7 +27,8 @@ Values come from registers, the ALU computes, the result goes back to a register
 
 ## 3. Diagram
 
-[DIAGRAM: two registers (R1, R2) feeding into the ALU, with the ALU output going to a third register (R3). Arrows labeled "operands" and "result". Caption: "Registers feed the ALU; the result goes back to a register".]
+<img width="1774" height="887" alt="微信图片_20261023115452_2395_8" src="https://github.com/user-attachments/assets/bc6bb915-825b-4dbd-b549-5cb7193a01d8" />
+
 
 ## 4. Example
 
