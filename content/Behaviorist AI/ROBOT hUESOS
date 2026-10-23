@@ -1,0 +1,56 @@
+## Practical Applications: AI Agents and Robotics
+
+Our project explores how Artificial Intelligence can be integrated into robotics through reinforcement learning and computer vision. These approaches demonstrate two different ways AI can improve a robot's ability to make decisions and interact with its environment.
+
+### 1. AI Agents and Reinforcement Learning
+
+AI agents can be used as part of a reinforcement learning strategy to help robots learn effective behaviors through interaction with an environment.
+
+Instead of programming every movement manually, an agent observes the current state, selects an action, and evaluates the result using a reward signal. Over repeated interactions, the agent can improve its decision-making strategy to maximize cumulative rewards.
+
+The learning process can be represented as follows:
+
+1. **Observe:** The agent receives information about the robot's current state.
+2. **Decide:** The agent selects an action according to its current policy.
+3. **Act:** The robot executes the selected action through its control system.
+4. **Evaluate:** The environment provides feedback in the form of a reward.
+5. **Learn:** The agent updates its strategy to improve future decisions.
+
+This approach can be applied to robotic navigation, movement optimization, object manipulation, and other tasks where a robot must learn how to achieve a goal.
+
+Training can take place in a simulation before the resulting policy is deployed on a physical robot. This reduces the risks and costs associated with learning directly on real hardware.
+
+### 2. Computer Vision in FIRST Tech Challenge (FTC) Robotics
+
+During high school, one of our team members implemented an AI-based computer vision system as part of our robotics project. The system was designed to recognize game elements on the FTC competition field, helping the robot identify relevant objects during operation.
+
+#### AI Model Training
+
+To develop the recognition system, we used a dataset of approximately **10,000 photographs of game elements**. These images provided training examples from which the AI model could learn visual features and distinguish the relevant objects.
+
+The general workflow involved:
+
+- Collecting a dataset of game-element images.
+- Training an AI model to recognize the target objects.
+- Integrating the trained vision system into the robot's perception pipeline.
+- Using a **Limelight 3 camera** to capture images of the competition field.
+- Processing visual information to identify game elements and support the robot's autonomous behavior.
+
+#### Integration with Limelight 3
+
+The Limelight 3 served as the robot's vision hardware, capturing images of the field for the vision system.
+
+The trained AI model provided the object-recognition capability, while the robot's control software could use the resulting detections to support autonomous decisions.
+
+This integration illustrates how AI software and physical hardware can work together: the camera captures visual data, the model interprets the data, and the robot's control system uses the available information to determine its next action.
+
+#### Why This Matters
+
+This project demonstrates a practical application of machine learning beyond theoretical examples. Instead of relying exclusively on manually defined rules, the robot used a trained model to recognize game elements from visual input.
+
+It also highlights an important distinction between two AI approaches:
+
+- **Computer vision:** Enables a robot to recognize and locate objects in its environment.
+- **Reinforcement learning:** Enables an agent to learn a strategy for selecting actions based on states, actions, and rewards.
+
+These approaches can complement each other. Computer vision can provide information about the environment, while a decision-making agent can use that information to select actions. However, object detection alone does not constitute reinforcement learning; the two methods solve different parts of the robotics problem.
