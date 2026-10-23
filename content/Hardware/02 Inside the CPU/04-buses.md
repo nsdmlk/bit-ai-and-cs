@@ -27,7 +27,8 @@ There is also a **control bus**, which carries signals like "read" or "write" �
 
 ## 3. Diagram
 
-[DIAGRAM: CPU and Memory connected by two buses — address bus labeled "CPU → memory: which address?", data bus labeled "memory → CPU: the value". Caption: "Address bus carries the location; data bus carries the content".]
+<img width="1942" height="809" alt="diagram7" src="https://github.com/user-attachments/assets/4087e417-bec6-473b-87ff-203acd91dd84" />
+
 
 ## 4. Example
 
