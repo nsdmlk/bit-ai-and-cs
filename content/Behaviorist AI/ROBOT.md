@@ -80,15 +80,15 @@ The process involved the following steps:
 
 The target calculation follows the general principle:
 
-\[
+$$
 P_{\text{target}} = P_{\text{robot}} + \Delta P
-\]
+$$
 
 Where:
 
-- \(P_{\text{target}}\) is the estimated target position.
-- \(P_{\text{robot}}\) is the robot's current estimated pose.
-- \(\Delta P\) is the calculated offset toward the collection target.
+- \($P_{\text{target}}$) is the estimated target position.
+- \($P_{\text{robot}}$\) is the robot's current estimated pose.
+- \($\Delta P$\) is the calculated offset toward the collection target.
 
 The code uses configurable forward and lateral offsets to account for the physical distance between the camera and the claw.
 
