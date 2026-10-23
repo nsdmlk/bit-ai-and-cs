@@ -24,7 +24,8 @@ This is why we study hardware in this project: not to become chip designers, but
 
 ## 3. Diagram
 
-<img width="1536" height="1024" alt="diagram3" src="content/Hardware/assets/diagram.png" />
+<img width="1536" height="1024" alt="diagram" src="https://github.com/user-attachments/assets/7f673958-766d-44c6-a7c3-7c9c188b3425" />
+
 
 ## 4. Example
 
