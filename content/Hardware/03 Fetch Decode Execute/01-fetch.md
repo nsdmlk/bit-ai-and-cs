@@ -24,7 +24,8 @@ In kitchen terms: the cook looks at the next line of the recipe and reads it. Th
 
 ## 3. Diagram
 
-[DIAGRAM: PC → address bus → memory → data bus → IR, with an arrow showing PC + 4. Caption: "Fetch: read the next instruction into IR".]
+<img width="1200" height="1200" alt="image" src="https://github.com/user-attachments/assets/45fc7835-45cd-4a2f-9839-09a03d25e32f" />
+
 
 ## 4. Example
 
