@@ -23,7 +23,8 @@ That is why pipelining matters: most programs run millions of instructions, so f
 
 ## 3. Diagram
 
-[DIAGRAM: two side-by-side timelines — "without pipeline: 1 instruction every 3 cycles" and "with pipeline: 1 instruction every cycle" — with arrows marking when each instruction finishes. Caption: "Same latency, higher throughput".]
+<img width="1774" height="887" alt="微信图片_20261024202545_2527_8" src="https://github.com/user-attachments/assets/4395a0bf-a307-4371-a4e6-c142fb75a8d3" />
+
 
 ## 4. Example
 
