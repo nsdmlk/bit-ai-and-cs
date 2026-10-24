@@ -31,7 +31,8 @@ Both multiply together to give the total number of cycles.
 
 ## 3. Diagram
 
-[DIAGRAM: two boxes — "Instruction count" (steps) and "CPI" (cycles per step) — multiplied together into "Total cycles". Caption: "Total cycles = instruction count × CPI".]
+<img width="2172" height="724" alt="微信图片_20261024201240_2508_8" src="https://github.com/user-attachments/assets/6922df06-a4de-420f-a3ee-e56ea38cd7d0" />
+
 
 ## 4. Example
 
