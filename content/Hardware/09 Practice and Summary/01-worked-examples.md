@@ -20,7 +20,8 @@ The examples below show this checklist in action.
 
 ## 3. Diagram
 
-[DIAGRAM: a decision flowchart — "What is asked?" → branches "trace / calculate / explain" → each branch points to the right pattern or formula. Caption: "How to approach a mixed problem".]
+<img width="1774" height="887" alt="微信图片_20261024203559_2539_8" src="https://github.com/user-attachments/assets/41af22d3-7cfd-44ad-86ec-3547be72d3fb" />
+
 
 ## 4. Example
 
