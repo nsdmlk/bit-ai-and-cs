@@ -52,7 +52,7 @@ Answer the questions below without looking at the files first. Then check your a
 17. Name the one thread that ties all nine topics together.
 18. Which topic do you need to review most? Why?
 
-Answers are in the test bank (separate file). Short explanations will appear in the Study Guide.
+Answers will be added in the Study Guide.
 
 ## 5. Check yourself
 
