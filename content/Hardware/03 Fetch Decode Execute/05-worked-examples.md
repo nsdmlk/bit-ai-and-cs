@@ -20,7 +20,8 @@ The pattern never changes. Only the instruction and the values change.
 
 ## 3. Diagram
 
-[DIAGRAM: a trace table template — rows for Fetch, Decode, Execute; columns for PC, IR, registers, result. Caption: "Trace template for any instruction".]
+<img width="1637" height="960" alt="微信图片_20261024110621_2439_8" src="https://github.com/user-attachments/assets/fd2873bf-9b02-4916-bcf6-dca1a30408aa" />
+
 
 ## 4. Example
 
