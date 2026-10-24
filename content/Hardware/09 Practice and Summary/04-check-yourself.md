@@ -12,7 +12,7 @@ Answer the questions below without looking at the files first. Then check your a
 
 ## 3. Diagram
 
-[DIAGRAM: a self-assessment grid — nine topics as rows, "confident / needs review" as columns — for the learner to fill in. Caption: "Track what you know and what to review".]
+<img width="1536" height="1024" alt="微信图片_20261024203602_2541_8" src="https://github.com/user-attachments/assets/1f087d2c-3ee6-4dc2-885c-3743d5200bad" />
 
 ## 4. Example
 
