@@ -22,7 +22,8 @@ Different compilers can produce different instruction lists for the same code. O
 
 ## 3. Diagram
 
-[DIAGRAM: left box "your code (a = b + c)", arrow "compiler", right box "instructions (load, load, add, store)". Caption: "The compiler translates code into instructions".]
+<img width="2103" height="748" alt="微信图片_20261024195642_2494_8" src="https://github.com/user-attachments/assets/ef7f52aa-8185-4b38-98a2-f80e60f54577" />
+
 
 ## 4. Example
 
