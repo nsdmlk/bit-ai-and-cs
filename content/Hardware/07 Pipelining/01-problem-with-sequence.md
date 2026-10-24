@@ -28,7 +28,8 @@ If we could overlap these phases — read the next line while cooking the curren
 
 ## 3. Diagram
 
-[DIAGRAM: a timeline showing three instructions one after another, each with fetch, decode, execute in sequence, with shaded "idle" areas for the ALU during fetch/decode and for memory during execute. Caption: "In a sequential cycle, most of the CPU is idle at any moment".]
+<img width="2056" height="765" alt="微信图片_20261024202547_2528_8" src="https://github.com/user-attachments/assets/d6569d30-d2e8-49ba-96da-7bd750beba51" />
+
 
 ## 4. Example
 
