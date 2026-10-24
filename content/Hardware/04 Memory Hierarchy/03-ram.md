@@ -25,7 +25,8 @@ The key difference:
 
 ## 3. Diagram
 
-[DIAGRAM: disk → RAM → cache → registers, with arrows labeled "loaded when program starts", "copied as needed", "used by CPU". Caption: "RAM sits between disk and cache".]
+<img width="2172" height="724" alt="微信图片_20261024132954_2473_8" src="https://github.com/user-attachments/assets/69bfb574-83dd-45f9-ad83-62ec217c8c5c" />
+
 
 ## 4. Example
 
