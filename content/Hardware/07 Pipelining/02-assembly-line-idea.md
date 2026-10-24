@@ -24,7 +24,8 @@ Pipelining does not make a single instruction faster. It makes the **whole strea
 
 ## 3. Diagram
 
-[DIAGRAM: a pipeline timing chart with rows for instructions 1–5 and columns for cycles. Each instruction shifts one phase to the right, forming a staircase pattern: I1 does F,D,E; I2 starts F one cycle later; etc. Caption: "Pipelining as an assembly line — phases overlap across instructions".]
+<img width="1774" height="887" alt="微信图片_20261024202548_2529_8" src="https://github.com/user-attachments/assets/19f1c804-afda-4267-8ca5-28c83529d2c3" />
+
 
 ## 4. Example
 
