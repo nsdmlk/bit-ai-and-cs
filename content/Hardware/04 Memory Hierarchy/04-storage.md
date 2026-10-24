@@ -22,7 +22,8 @@ When a program needs data from storage, it is **loaded into RAM first**, then us
 
 ## 3. Diagram
 
-[DIAGRAM: a bar showing size and speed of Registers, Cache, RAM, Storage — size increases downward, speed decreases downward. Caption: "Storage: large, slow, permanent".]
+<img width="1774" height="887" alt="微信图片_20261024132959_2476_8" src="https://github.com/user-attachments/assets/1cbacce4-5bba-42a7-bb4f-be97aa827ca2" />
+
 
 ## 4. Example
 
