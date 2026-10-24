@@ -28,7 +28,8 @@ This is why a computer can feel fast even though RAM is much slower than the CPU
 
 ## 3. Diagram
 
-[DIAGRAM: a pyramid with four layers — Registers (top, smallest/fastest), Cache, RAM, SSD/disk (bottom, largest/slowest). Arrows showing "closer to CPU = faster". Caption: "The memory hierarchy".]
+<img width="1536" height="1024" alt="微信图片_20261024132957_2475_8" src="https://github.com/user-attachments/assets/5ec48369-8704-4e22-a80a-7213aa149420" />
+
 
 ## 4. Example
 
