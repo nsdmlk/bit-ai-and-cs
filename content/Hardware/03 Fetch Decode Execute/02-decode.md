@@ -24,7 +24,8 @@ Decode does not change any values. It only prepares the CPU to execute.
 
 ## 3. Diagram
 
-[DIAGRAM: IR → control unit → control signals going out to registers and ALU. Caption: "Decode: the control unit interprets the instruction".]
+<img width="1920" height="819" alt="微信图片_20261024110615_2437_8" src="https://github.com/user-attachments/assets/45d74b67-71bb-4206-bc39-1493b2957774" />
+
 
 ## 4. Example
 
