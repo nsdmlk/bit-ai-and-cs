@@ -30,7 +30,7 @@ Adding more lanes (bandwidth) does not make any single car faster (latency). Tha
 
 ## 3. Diagram
 
-[DIAGRAM: two side-by-side illustrations — (a) one car on a road labeled "latency = time for one message"; (b) many cars side by side labeled "bandwidth = data per second". Caption: "Latency vs bandwidth".]
+<img width="1942" height="809" alt="微信图片_20261024203107_2532_8" src="https://github.com/user-attachments/assets/0f3f582b-1ee3-4511-91c3-d886a2561792" />
 
 ## 4. Example
 
