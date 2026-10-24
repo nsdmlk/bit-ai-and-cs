@@ -26,7 +26,8 @@ This is why training a large AI model on a CPU would take months, but on a GPU o
 
 ## 3. Diagram
 
-[DIAGRAM: three side-by-side chips — CPU (few large cores), GPU (many small cores), AI accelerator (many specialized units) — with labels "general work", "parallel math", "AI operations". Caption: "Different hardware for different kinds of work".]
+<img width="1774" height="887" alt="微信图片_20261024203104_2530_8" src="https://github.com/user-attachments/assets/fc3de4af-5ec7-4352-9d3b-53c6c4998bce" />
+
 
 ## 4. Example
 
