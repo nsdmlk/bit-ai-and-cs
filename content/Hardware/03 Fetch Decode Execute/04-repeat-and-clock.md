@@ -18,7 +18,8 @@ In kitchen terms: the clock is the rhythm of the kitchen — the pace at which t
 
 ## 3. Diagram
 
-[DIAGRAM: timeline showing fetch → decode → execute → fetch → decode → execute → …, with clock ticks above the timeline. Caption: "The cycle repeats, driven by the clock".]
+<img width="2048" height="768" alt="微信图片_20261024110611_2435_8" src="https://github.com/user-attachments/assets/129a9a8e-8c45-412a-8387-3acb83e6c7b7" />
+
 
 ## 4. Example
 
