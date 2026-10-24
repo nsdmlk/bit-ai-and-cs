@@ -29,7 +29,8 @@ In kitchen terms: the cook actually chops, stirs, or plates. The work happens he
 
 ## 3. Diagram
 
-[DIAGRAM: two paths — (a) registers → ALU → register for arithmetic; (b) register → address bus → memory → data bus → register for load. Caption: "Execute: arithmetic vs memory instructions".]
+<img width="1975" height="796" alt="微信图片_20261024110613_2436_8" src="https://github.com/user-attachments/assets/819a2c21-1936-49ff-b163-9608d3f81741" />
+
 
 ## 4. Example
 
