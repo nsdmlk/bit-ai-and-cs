@@ -23,7 +23,8 @@ That is why a program is called a **sequence of instructions sitting in memory**
 
 ## 3. Diagram
 
-[DIAGRAM: one memory block divided into two regions — "code" and "data" — with the PC pointing into the code region. Caption: "Code and data live in the same memory".]
+<img width="1536" height="1024" alt="微信图片_20261024195643_2495_8" src="https://github.com/user-attachments/assets/89c80f36-e88e-4066-840d-9144da268b90" />
+
 
 ## 4. Example
 
