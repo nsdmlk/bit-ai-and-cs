@@ -25,7 +25,7 @@ A concrete, step-by-step example that uses the idea from Section 2. Show the val
 3. …
 4. …
 
-Answers are in the test bank (separate file).
+Short answers will be added in the Study Guide.
 
 ## 6. References
 
