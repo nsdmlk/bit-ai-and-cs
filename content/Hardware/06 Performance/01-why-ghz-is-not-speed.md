@@ -24,7 +24,8 @@ This is why two CPUs with the same GHz can perform very differently, and why a 3
 
 ## 3. Diagram
 
-[DIAGRAM: three levers — instruction count, CPI, clock period — all feeding into a single box labeled "execution time". Caption: "Speed depends on three things, not one".]
+<img width="1536" height="1024" alt="微信图片_20261024201238_2507_8" src="https://github.com/user-attachments/assets/20380185-c301-497f-a061-c63a41b44552" />
+
 
 ## 4. Example
 
