@@ -27,7 +27,8 @@ A shorter clock period helps, but if instruction count or CPI goes up, the gain 
 
 ## 3. Diagram
 
-[DIAGRAM: a timeline with three cycles marked at 2 GHz (0.5 ns each) next to three cycles at 4 GHz (0.25 ns each). Caption: "Higher frequency = shorter period".]
+<img width="1774" height="887" alt="微信图片_20261024201237_2506_8" src="https://github.com/user-attachments/assets/c2ff463d-7e78-4c3b-982c-228e7e7eb727" />
+
 
 ## 4. Example
 
