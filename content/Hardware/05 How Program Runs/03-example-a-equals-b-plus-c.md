@@ -24,7 +24,7 @@ We will walk through what happens at each instruction.
 
 ## 3. Diagram
 
-[DIAGRAM: memory map with b=4 at 0x300, c=6 at 0x304, a=0 at 0x308; registers R1, R2, R3 shown before and after each instruction. Caption: "Tracing a = b + c through four instructions".]
+<img width="1774" height="887" alt="微信图片_20261024195641_2493_8" src="https://github.com/user-attachments/assets/b3012ada-c58f-4990-b0bc-979faff360bb" />
 
 ## 4. Example
 
