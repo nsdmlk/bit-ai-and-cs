@@ -32,7 +32,8 @@ The thread that ties it all together: **small parts, each with one job, working 
 
 ## 3. Diagram
 
-[DIAGRAM: a mind map with "Hardware" in the center and nine branches — the nine topics — with one-line descriptions. Caption: "The whole Hardware part on one page".]
+<img width="1536" height="1024" alt="微信图片_20261024203600_2540_8" src="https://github.com/user-attachments/assets/1e573408-1f98-410a-891a-5ea59c121b91" />
+
 
 ## 4. Example
 
