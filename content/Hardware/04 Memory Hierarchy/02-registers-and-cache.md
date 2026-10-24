@@ -24,7 +24,8 @@ The idea: when the CPU needs a value, it first checks registers, then L1, then L
 
 ## 3. Diagram
 
-[DIAGRAM: CPU with registers inside, then L1, L2, L3 cache around it, then RAM. Arrows showing the CPU checking each layer in order. Caption: "Registers and cache: the fast layers".]
+<img width="1774" height="887" alt="微信图片_20261024132956_2474_8" src="https://github.com/user-attachments/assets/40a333f9-0825-446a-87fd-68f2a932eca9" />
+
 
 ## 4. Example
 
