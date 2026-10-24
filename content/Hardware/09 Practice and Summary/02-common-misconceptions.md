@@ -31,7 +31,8 @@ No. Latency is how long one message takes; bandwidth is how much data can flow p
 
 ## 3. Diagram
 
-[DIAGRAM: a two-column table — "Misconception" on the left, "Correction" on the right — with the seven items above. Caption: "Common misconceptions and their corrections".]
+<img width="1774" height="887" alt="微信图片_20261024203558_2538_8" src="https://github.com/user-attachments/assets/61e4a4c1-df85-4b4c-8581-66d130cc41df" />
+
 
 ## 4. Example
 
