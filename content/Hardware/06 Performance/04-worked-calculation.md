@@ -28,7 +28,8 @@ The result is in seconds (or milliseconds, if you keep the units consistent).
 
 ## 3. Diagram
 
-[DIAGRAM: a formula box — "execution time = instruction count × CPI × clock period" — with three labeled inputs feeding into it and one output "time". Caption: "The execution time formula".]
+<img width="1774" height="887" alt="微信图片_20261024201241_2509_8" src="https://github.com/user-attachments/assets/b0aed19c-1236-4fb8-9fe0-804a830e3660" />
+
 
 ## 4. Example
 
