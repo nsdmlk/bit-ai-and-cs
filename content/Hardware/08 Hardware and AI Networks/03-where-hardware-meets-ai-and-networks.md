@@ -27,7 +27,8 @@ Here is where hardware meets the other two parts.
 
 ## 3. Diagram
 
-[DIAGRAM: three overlapping circles — Hardware, AI, Networks — with the overlaps labeled: "GPUs/accelerators", "memory bottlenecks", "NICs", "latency/bandwidth", "buses". Caption: "Where the three parts meet".]
+<img width="1536" height="1024" alt="微信图片_20261024203106_2531_8" src="https://github.com/user-attachments/assets/bdce8eee-be7e-497c-9005-8fad1d35baa0" />
+
 
 ## 4. Example
 
