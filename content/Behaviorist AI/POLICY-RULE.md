@@ -56,7 +56,7 @@ The textbook cliff-walking task uses a grid with start, goal and cliff cells. A 
 
 When both learners continue ε-greedy exploration, an occasional exploratory move near the cliff is costly. Q-learning learns values for a greedy route near the edge, while SARSA accounts for its continuing exploratory behavior and can favor a longer route farther away.
 
-This compares targets and behavior under a particular reward scheme and exploration rule. It is not a universal safety ranking. Changing exploration, rewards or the task can change the outcome. [Sutton and Barto, *Reinforcement Learning*, §6.5, Example 6.6](https://incompleteideas.net/book/the-book-2nd.html); [David Silver, cliff-walking example, slide 39](https://davidstarsilver.wordpress.com/wp-content/uploads/2025/04/lecture-5-model-free-control-.pdf).
+This compares targets and behavior under a particular reward scheme and exploration rule. It is not a universal safety ranking. Changing exploration, rewards or the task can change the outcome. [Sutton and Barto, *Reinforcement Learning*, second edition, §6.5, Example 6.6 (publisher's record)](https://mitpress.mit.edu/9780262039246/reinforcement-learning/); [David Silver, cliff-walking example, slide 39](https://davidstarsilver.wordpress.com/wp-content/uploads/2025/04/lecture-5-model-free-control-.pdf).
 
 ## 5. Common misconceptions
 
