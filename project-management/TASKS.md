@@ -1,25 +1,31 @@
-# Current Task List
+# Stage 1 Task List
 
-Updated 26 October 2026. Completed source work below was prepared with AI assistance. Suggested owners and future dates require team agreement.
+Updated 26 October 2026. Statuses describe actual project state; no task is marked
+complete merely because a plan or placeholder exists.
 
-| ID | Task | Status | Evidence / next action |
-|---|---|---|---|
-| R1 | Replace inaccurate README/checklist, fix profile and document folder map | Source revised | README; QUALITYCHECKLIST.md |
-| R2 | Add whole-module outcomes, prerequisites, sequence and status | Source revised | CONTENT-OUTLINE.md and three OUTLINE.md files |
-| R3 | Correct CPU/memory/performance/pipeline claims and add explained answers | Source revised; human review pending | Hardware chapters and ANSWER-KEY.md |
-| R4 | Correct layers, transport, addressing and TLS; add complete HTTPS trace and answers | Source revised; human review pending | Networks chapters and ANSWER-KEY.md |
-| R5 | Develop Q-learning; qualify DQN and robotics; add explained answers | Source revised; human review pending | AI chapters and ANSWER-KEY.md |
-| R6 | Replace remote figures with local original diagrams and record provenance | Source revised; render check required | docs/ASSET-PROVENANCE.md |
-| R7 | Remove public personal logs and identifiers from current snapshot; preserve evidence privately | Source revised | Private original-log manifest; retained Git history |
-| R8 | Prepare exact source snapshot, report, content PDF and evidence ZIP | Packaging work | Final results recorded in private report, not presumed here |
-| H1 | A different member checks Hardware anchor and solves a fresh activity | Pending; suggested 27–28 October | Fill actual QA record after review |
-| H2 | A different member checks Networks anchor and solves a fresh activity | Pending; suggested 27–28 October | Fill actual QA record after review |
-| H3 | A different member checks AI anchor and solves a fresh activity | Pending; suggested 27–28 October | Fill actual QA record after review |
-| H4 | Confirm official module scope and full Shared Rules Section 6 | Pending; suggested by 29 October | Compare supplied course documents and fill remaining gaps |
-| H5 | Confirm FTC owner, camera/model details and any available original exhibit | Pending | Do not invent code, training or results |
-| H6 | Confirm each member's evidence and missing personal/AI records | Pending | Complete private evidence from authentic records |
-| H7 | Approve resubmission and upload to the course system | Pending | A real team decision and course submission |
-| P1 | Study Guide and PPT production | Planned for Stage 2 | docs/RESOURCE-MAP.md |
-| P2 | Video tutorials and RL mini-lecture | Planned for Stage 3 | docs/RESOURCE-MAP.md |
+| ID | Task | Owner | Status | Evidence or next action |
+|---|---|---|---|---|
+| A1 | Maintain repository structure, README, and contribution rules | Ilya / Emir | Complete in source | `README.md`, `CONTRIBUTING.md`, folder map |
+| A2 | Define connected Hardware, Networks, and Behaviourist AI scope | Emir with module leads | Complete in source | `CONTENT-OUTLINE.md`, module outlines |
+| A3 | Develop and revise Hardware explanations, traces, activities, and answers | Emir with Ivan | Complete in source; review pending | `content/Hardware/` and Hardware answer key |
+| A4 | Develop and revise Networks explanations, HTTPS trace, activities, and answers | Dmitrii with Adil | Complete in source; review pending | `content/Networks/` and Networks answer key |
+| A5 | Develop and revise Behaviourist AI explanations, Q-learning activity, and answers | Ilya with team | Complete in source; review pending | `content/Behaviorist AI/` and AI answer key |
+| A6 | Replace remote teaching figures with local diagrams and record provenance | Emir / Ivan / module contributors | Complete in source | Local SVG assets and `docs/ASSET-PROVENANCE.md` |
+| A7 | Maintain the project plan, project log, QA record, and change summary | Emir / Ilya | Complete in source | `project-management/` and `docs/PROJECT-CHANGES.md` |
+| A8 | Record and preserve significant AI assistance and verification | Emir with all contributors | Partially complete | Private personal/project logs contain current known records; unknown historical prompts are not invented |
+| A9 | Prepare the 4-minute classroom progress-report sequence | Emir / Adil | Prepared | `slides/presentation-plan.md`, `slides/narrative_plan.md`, `videos/video-plan.md` |
+| A10 | Capture repository, Markdown, change-history, and diagram evidence | Ilya / Emir | Prepared | Evidence list in `slides/presentation-plan.md`; capture offline screenshots before recording |
+| A11 | Complete the independent human check of the revised teaching anchors | Alimzhan | Pending actual review | Check one Hardware, one Networks, and one Behaviourist AI activity; record the real outcome in `project-management/qa-log.md` |
+| A12 | Record and edit the classroom progress report | Adil with Emir | Pending recording | Produce `TeamName_Stage1_StatusReport.mp4`, target 3:40–3:50, maximum 4:00 |
+| A13 | Watch the complete MP4 and check audio, readability, timing, and evidence | Alimzhan | Pending actual check | Record duration, findings, and corrections in the QA/project log |
+| A14 | Prepare and test the offline USB folder | Ilya / Emir | Pending actual test | Put the final MP4 and required media in `TeamName_Stage1_StatusReport`; test on the classroom computer |
+| A15 | Submit exactly the version used in class | Emir / team | Pending deadline | Submit one file directly or one ZIP for multiple files before 30 October 2026, 23:59 Beijing time |
+| A16 | Continue Stage 2 integration | Full team | Planned for 7 November | Integrate the three modules into the Study Guide and improve media after Stage 1 feedback |
 
-Packaging validation and AI technical review do not replace H1–H6. Completion of a plan does not establish that a historical meeting, review or experiment occurred.
+## Historical review already recorded
+
+On 25 October 2026 in the evening at B1, the full team reviewed the earlier project
+after the evaluation. Emir and Alimzhan identified that the team had concentrated on
+topic content while the project framework, continuation structure, and evidence were
+not clear. The other members revised their module structures in parallel. This is a
+real architecture review; it is not silently presented as the final content review.

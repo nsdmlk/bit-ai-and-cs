@@ -1,22 +1,55 @@
-# Video Tutorial Plan — Stage 1 / First Production Set
+# Video Plan — Stage 1 Classroom Progress Report
 
 ## Purpose
 
-The videos convert the same reviewed Markdown examples into short demonstrations. They
-must teach, not merely read the repository aloud. Each episode introduces terms,
-demonstrates one process, pauses for a learner task, and reveals an explained answer.
+The required Stage 1 video is a prerecorded **four-minute maximum progress report**
+that will be played on the classroom screen. It must show the team's direction,
+completed work, GitHub/Markdown evidence, one representative example, the main
+problem, and Stage 2 next steps. It is not a complete lecture on all three modules.
 
-## Planned first set
+The longer tutorial storyboards below are supporting production materials. They provide
+the source visuals and explanations for the short report and may become separate
+teaching videos in Stage 2.
+
+## Required classroom report
+
+| Requirement | Report decision |
+|---|---|
+| Format | One offline MP4 with narration and readable visuals |
+| Duration | Target 3:40–3:50; absolute maximum 4:00 |
+| Opening | Sensor → hardware → network → agent → action question |
+| Evidence | Repository tree, meaningful change, Markdown excerpt, local diagram, project plan/QA evidence |
+| Representative example | Hardware ADD/LOAD trace, with brief HTTPS and Q-learning connection |
+| Problem | Earlier work had substantive topics but unclear project framework and continuation architecture |
+| Next steps | Independent review, Study Guide integration, and improved media for Stage 2 due 7 November |
+| Offline package | `TeamName_Stage1_StatusReport` folder on USB and submitted files |
+
+### Report timing
+
+| Time | Content |
+|---|---|
+| 0:00–0:40 | Hook, team direction, audience, and learning goals |
+| 0:40–1:45 | Current repository structure and Markdown/GitHub evidence |
+| 1:45–2:55 | ADD/LOAD worked example and cross-module connection |
+| 2:55–3:25 | Problem identified after the earlier evaluation and revision made |
+| 3:25–4:00 | Stage 2 next steps and strongest closing visual |
+
+The report will be rehearsed and watched from beginning to end before submission. No
+live GitHub login, download, cloud storage, or messaging app should be required in
+class.
+
+## Supporting tutorial set for later production
 
 | Episode | Working title | Length | Anchor | Deliverable for the first version |
 |---:|---|---:|---|---|
-| 1 | How a CPU Runs One Instruction | 4–5 min | `ADD R1, R2` and `LOAD` trace | Script, storyboard, screen/slide plan, first recording when available |
-| 2 | How an HTTPS Request Travels | 4–5 min | DNS → TCP → TLS → HTTP | Script, storyboard, local request-flow visual, first recording when available |
-| 3 | How an Agent Learns from Reward | 5–6 min | Q-learning update and terminal transition | Script, storyboard, equation reveal, first recording when available |
-| 4 | One Robot, Three Modules | 3–4 min | Sensor → hardware → network → state → action → reward | Script, storyboard, integration activity, first recording when available |
+| 1 | How a CPU Runs One Instruction | 4–5 min | `ADD R1, R2` and `LOAD` trace | Supporting script/storyboard for the report and later tutorial |
+| 2 | How an HTTPS Request Travels | 4–5 min | DNS → TCP → TLS → HTTP | Supporting script/storyboard for the report and later tutorial |
+| 3 | How an Agent Learns from Reward | 5–6 min | Q-learning update and terminal transition | Supporting script/storyboard for the report and later tutorial |
+| 4 | One Robot, Three Modules | 3–4 min | Sensor → hardware → network → state → action → reward | Supporting integration storyboard for the report and later tutorial |
 
-The Markdown scripts and storyboards are ready for production. They do not claim that
-MP4 files have been recorded, compressed, or independently reviewed.
+The Markdown scripts and storyboards are ready as production sources. They are not
+the four-minute report itself. The report MP4 must be recorded, compressed, and
+independently checked before the Stage 1 package is submitted.
 
 ## Standard episode structure
 
@@ -48,7 +81,7 @@ MP4 files have been recorded, compressed, or independently reviewed.
 - Use the same colours and labels as the PPT deck.
 - Export a review copy and a final compressed MP4 only after the full video has been
   watched.
-- Name files `01-cpu-instruction-trace-v1.mp4`, `02-https-request-v1.mp4`, and so on.
+- Name the classroom report `TeamName_Stage1_StatusReport.mp4`; tutorial episode names such as `01-cpu-instruction-trace-v1.mp4` are reserved for later production.
 - Keep scripts, source diagrams, review notes, and final MP4s together in the private
   submission package.
 

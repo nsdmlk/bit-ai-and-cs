@@ -1,22 +1,37 @@
-# Stage 1 Slide Deck Outline
+# Stage 1 Slide Deck and Classroom Report Outline
 
 ## Deck purpose
 
-The deck is a visual companion to the Markdown learning content. It does not replace
-the explanations, answer keys, or references. It gives beginners a short route through
-the three parts of the module and prepares them for the activities in the Study Guide.
+The deck is both a visual companion to the Markdown learning content and a source of
+evidence for the four-minute classroom progress report. The report does not show every
+slide. It selects the clearest evidence of project direction, current progress, one
+representative example, the main problem, and Stage 2 next steps.
 
 ## Audience and delivery
 
 - **Audience:** first-year students with basic computer familiarity and school-level
   arithmetic.
-- **Recommended length:** 12–15 minutes for the first presentation.
+- **Full teaching deck:** 13 slides for later teaching use.
+- **Classroom report:** selected slides/screenshots in a prerecorded report of no more than 4 minutes.
 - **Format:** 16:9 editable PowerPoint with presenter notes.
 - **Teaching rule:** one main claim per slide; explain the example before revealing the
   answer.
 - **Shared example:** a robot receives an observation, computes an action, and receives
   a reward. The Hardware and Networks slides provide the system context; the AI slides
   explain the learning loop.
+
+## Four-minute report selection
+
+| Report moment | Slides/source to show | Purpose |
+|---|---|---|
+| Hook | 1 and 11 | Give classmates a reason to listen and show the shared system. |
+| Direction and progress | 2 plus repository/outline screenshots | Identify the audience, three modules, and current structure. |
+| Representative example | 4, with a short view of 8 and 10 | Demonstrate the ADD trace and connect the same teaching method to Networks and AI. |
+| Problem and revision | Project plan, QA, and task-list screenshots | Show the difference between the earlier content-heavy structure and the revised architecture. |
+| Closing and Stage 2 | 13 | Leave the audience with the integrated learning path and next steps. |
+
+The full deck remains useful as a teaching resource, but the classroom report must cut
+to the evidence and must not attempt to lecture through all 13 slides.
 
 ## Slide-by-slide plan
 
