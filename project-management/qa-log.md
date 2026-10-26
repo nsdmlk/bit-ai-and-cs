@@ -15,6 +15,26 @@
 
 The private report records automated checks and rendered-output inspection separately. Source corrections above are review outcomes from AI assistance. They do not satisfy the assignment's requirement for another team member to review the developed material.
 
+## Historical team review — 25 October 2026
+
+**When and where:** evening, B1.  
+**Participants:** the full team.  
+**Review leads:** Emir Babayev and Alimzhan Nurpeissov.
+
+**What was checked:** the first submission's project architecture, content organisation,
+and continuation structure against the teacher's Stage 1 requirements.
+
+**Concrete finding:** the team had concentrated heavily on writing the topic content but
+had not built and presented the required project framework and continuation structure.
+
+**Correction:** the team redesigned the repository architecture, whole-project outline,
+module maps, answer keys, QA records, asset provenance, resource map, and resubmission
+plan. Other members revised the structures for their own modules in parallel.
+
+**Status:** this is a genuine historical architecture review. It is not a substitute
+for checking the revised Hardware, Networks, and Behaviourist AI learning anchors. A
+separate final content review remains pending below.
+
 ## Team peer review — pending
 
 No reviewer name, date, approval or outcome has been entered because no completed review of this revision has been supplied. Use the [peer-review form](peer-review-template.md) and append the real outcome below after review. A review may confirm correctness; it need not invent a defect.
