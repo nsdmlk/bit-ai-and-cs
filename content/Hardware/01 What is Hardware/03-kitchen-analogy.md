@@ -1,5 +1,9 @@
 # The kitchen analogy
 
+**Status:** Revised on 26 October 2026 with AI-assisted technical checks; awaiting team peer review.
+
+[Reading order](../OUTLINE.md) · [Teaching-machine conventions](../OUTLINE.md#teaching-machine-conventions) · [Explained answers](../ANSWER-KEY.md#h01-03)
+
 **Learning objective:** after this section, a beginner should be able to match each part of a computer to a part of a kitchen, and use the analogy to explain how the parts work together.
 
 ## 1. Why this matters
@@ -24,7 +28,9 @@ The analogy is not perfect — a kitchen does not have a clock ticking billions 
 
 ## 3. Diagram
 
-<img width="2490" height="1664" alt="diagram4" src="https://github.com/user-attachments/assets/099c75dd-af53-4a9b-b9d3-6f1133ba5c55" />
+![Kitchen analogy: roles, not literal equivalence](../assets/h01-03-kitchen-analogy.svg)
+
+*Original teaching diagram created for the 26 October revision. Read the stated model assumptions alongside it.*
 
 ## 4. Example
 
@@ -36,9 +42,11 @@ Trace `a = b + c` through the kitchen:
 - The cook **combines** them (the ALU adds them).
 - The result goes back to the counter as `a`.
 
-No part is magic. Each one just did its job. That is exactly how the CPU works.
+No part is magic. Each one just did its job. This models the main data movement; real processors use registers and caches between arithmetic and main memory.
 
 ## 5. Check yourself
+
+Try these first, then use the [explained answers](../ANSWER-KEY.md#h01-03).
 
 1. Which kitchen part matches the CPU? Which matches RAM?
 2. Why is storage like a pantry, and not like the counter?
@@ -46,7 +54,9 @@ No part is magic. Each one just did its job. That is exactly how the CPU works.
 4. In your own words: why does the analogy help you understand hardware?
 5. Where does the analogy break down? Name one thing a kitchen cannot show.
 
-## 6. References
+## 6. Sources
 
-- Course materials (insert lecture/slide numbers).
-- Patterson & Hennessy, *Computer Organization and Design* — introductory chapter.
+- [MIT OpenCourseWare, 6.004 (Spring 2017), 13.1 Building the Beta](https://ocw.mit.edu/courses/6-004-computation-structures-spring-2017/pages/c13/c13s1/)
+- [Cornell CS 3410 (Spring 2025), Input/Output: devices, storage and interconnects](https://www.cs.cornell.edu/courses/cs3410/2025sp/notes/io.html)
+
+These sources support the technical concepts; our pseudocode, examples and analogies are teaching simplifications. Course-specific coverage is still to be checked by the team.

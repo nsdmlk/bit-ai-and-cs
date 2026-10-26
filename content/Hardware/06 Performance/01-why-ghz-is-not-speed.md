@@ -1,10 +1,14 @@
 # Why "more GHz" is not the same as "faster"
 
+**Status:** Revised on 26 October 2026 with AI-assisted technical checks; awaiting team peer review.
+
+[Reading order](../OUTLINE.md) · [Teaching-machine conventions](../OUTLINE.md#teaching-machine-conventions) · [Explained answers](../ANSWER-KEY.md#h06-01)
+
 **Learning objective:** after this section, a beginner should be able to explain why a higher clock speed does not automatically mean a faster CPU.
 
 ## 1. Why this matters
 
-"4 GHz is faster than 3 GHz" sounds obvious. It is also wrong. This is one of the most common beginner misconceptions, and it leads to bad decisions — both when buying a computer and when optimizing a program.
+"A 4 GHz CPU must finish any program sooner than a 3 GHz CPU" sounds plausible, but clock rate alone cannot establish that. This is one of the most common beginner misconceptions, and it leads to bad decisions — both when buying a computer and when optimizing a program.
 
 ## 2. Explanation
 
@@ -12,7 +16,7 @@ The **clock speed** (in GHz) tells you how many cycles the CPU completes per sec
 
 But a cycle is not a fixed amount of work. Different CPUs do different amounts of work per cycle, and different programs need different numbers of cycles per instruction.
 
-The real quantity is **execution time** — how long the program actually takes. It depends on three things:
+Here we model **CPU execution time** — time spent executing the program on the CPU. Elapsed user-observed time may also include I/O and scheduling waits. It depends on three things:
 
 - **Instruction count** — how many instructions the program needs.
 - **CPI** — average cycles per instruction.
@@ -24,7 +28,9 @@ This is why two CPUs with the same GHz can perform very differently, and why a 3
 
 ## 3. Diagram
 
-<img width="1536" height="1024" alt="微信图片_20261024201238_2507_8" src="https://github.com/user-attachments/assets/20380185-c301-497f-a061-c63a41b44552" />
+![Clock rate alone does not rank programs](../assets/h06-01-why-ghz-is-not-speed.svg)
+
+*Original teaching diagram created for the 26 October revision. Read the stated model assumptions alongside it.*
 
 
 ## 4. Example
@@ -38,13 +44,18 @@ CPU 2 has the higher clock, but the same execution time. The faster clock was ca
 
 ## 5. Check yourself
 
+Try these first, then use the [explained answers](../ANSWER-KEY.md#h06-01).
+
 1. What does GHz actually measure?
 2. Why is a cycle not a fixed amount of work?
 3. Name the three factors that decide execution time.
 4. Can a 3 GHz CPU be faster than a 4 GHz CPU? Why?
 5. What would you look at instead of GHz to compare two CPUs?
 
-## 6. References
+## 6. Sources
 
-- Course materials (insert lecture/slide numbers).
-- Patterson & Hennessy, *Computer Organization and Design* — chapter on performance.
+- [Intel VTune Profiler, CPU Metrics Reference: cycles per instructions retired](https://www.intel.com/content/www/us/en/docs/vtune-profiler/user-guide/2024-2/cpu-metrics-reference.html)
+- [Cornell CS 3410 (Spring 2026), Pipelining & Performance](https://www.cs.cornell.edu/courses/cs3410/2026sp/notes/pipelining.html)
+- [Cornell CS 5220 (2020), Code Optimization: timing and CPU versus wall time](https://www.cs.cornell.edu/courses/cs5220/2020fa/lec/2020-09-15-opt.html)
+
+These sources support the technical concepts; our pseudocode, examples and analogies are teaching simplifications. Course-specific coverage is still to be checked by the team.

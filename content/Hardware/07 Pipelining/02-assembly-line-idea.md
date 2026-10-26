@@ -1,5 +1,9 @@
 # The assembly-line idea
 
+**Status:** Revised on 26 October 2026 with AI-assisted technical checks; awaiting team peer review.
+
+[Reading order](../OUTLINE.md) · [Teaching-machine conventions](../OUTLINE.md#teaching-machine-conventions) · [Explained answers](../ANSWER-KEY.md#h07-02)
+
 **Learning objective:** after this section, a beginner should be able to explain what pipelining is, using the assembly-line analogy, and why it makes the CPU faster.
 
 ## 1. Why this matters
@@ -18,13 +22,15 @@ Instead of doing fetch → decode → execute for one instruction, then starting
 
 This is exactly how an **assembly line** works. A car factory does not build one car at a time, start to finish. Each station does one step, and many cars move through the line at once. Each car still goes through every station, but a new car rolls off the line much more often.
 
-The key point: **each instruction still takes the same number of cycles**, but the CPU finishes one instruction per cycle (in the ideal case) instead of one every three cycles. That is the speedup.
+In our ideal three-stage model, **each instruction still spans three cycles**, but once the pipeline is full it completes one instruction per cycle instead of one every three. We assume the same cycle duration, balanced stages, independent instructions and no stalls or resource conflicts. That is the speedup.
 
-Pipelining does not make a single instruction faster. It makes the **whole stream** of instructions faster.
+The goal is higher **throughput** for the instruction stream, not lower latency for an individual instruction. Real pipeline-register overhead or a changed clock can change individual instruction latency.
 
 ## 3. Diagram
 
-<img width="1774" height="887" alt="微信图片_20261024202548_2529_8" src="https://github.com/user-attachments/assets/19f1c804-afda-4267-8ca5-28c83529d2c3" />
+![Ideal overlap: three instructions need five cycles](../assets/h07-02-assembly-line-idea.svg)
+
+*Original teaching diagram created for the 26 October revision. Read the stated model assumptions alongside it.*
 
 
 ## 4. Example
@@ -41,13 +47,17 @@ Total: **5 cycles** for 3 instructions, instead of 9. Each instruction still too
 
 ## 5. Check yourself
 
+Try these first, then use the [explained answers](../ANSWER-KEY.md#h07-02).
+
 1. What does pipelining overlap?
 2. Does pipelining make a single instruction faster? Why or why not?
 3. In the example, how many cycles do 3 instructions take with a pipeline? Without?
 4. What is the assembly-line analogy for pipelining?
 5. Why does the CPU finish instructions more often with a pipeline?
 
-## 6. References
+## 6. Sources
 
-- Course materials (insert lecture/slide numbers).
-- Patterson & Hennessy, *Computer Organization and Design* — chapter on pipelining.
+- [Cornell CS 3410 (Spring 2026), Pipelining & Performance](https://www.cs.cornell.edu/courses/cs3410/2026sp/notes/pipelining.html)
+- [MIT OpenCourseWare, 6.004 (Spring 2017), 15.1 Pipelining the Beta](https://ocw.mit.edu/courses/6-004-computation-structures-spring-2017/pages/c15/c15s1/)
+
+These sources support the technical concepts; our pseudocode, examples and analogies are teaching simplifications. Course-specific coverage is still to be checked by the team.

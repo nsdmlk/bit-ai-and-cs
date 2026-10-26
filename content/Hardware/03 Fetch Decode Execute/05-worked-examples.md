@@ -1,5 +1,9 @@
 # Worked examples: tracing instructions
 
+**Status:** Revised on 26 October 2026 with AI-assisted technical checks; awaiting team peer review.
+
+[Reading order](../OUTLINE.md) · [Teaching-machine conventions](../OUTLINE.md#teaching-machine-conventions) · [Explained answers](../ANSWER-KEY.md#h03-05)
+
 **Learning objective:** after this section, a beginner should be able to trace a simple instruction through fetch, decode, and execute, and state the final register values and the new PC.
 
 ## 1. Why this matters
@@ -16,11 +20,13 @@ To trace an instruction, follow the same pattern every time:
 4. **Execute:** ALU computes (or memory is accessed); result written back.
 5. **End:** state the new register values and the new PC.
 
-The pattern never changes. Only the instruction and the values change.
+This pattern applies to our four-byte, straight-line teaching instructions. Branches, interrupts and real processor implementation details are outside these particular traces.
 
 ## 3. Diagram
 
-<img width="1637" height="960" alt="微信图片_20261024110621_2439_8" src="https://github.com/user-attachments/assets/fd2873bf-9b02-4916-bcf6-dca1a30408aa" />
+![LOAD trace: keep two addresses separate](../assets/h03-05-worked-examples.svg)
+
+*Original teaching diagram created for the 26 October revision. Read the stated model assumptions alongside it.*
 
 
 ## 4. Example
@@ -83,12 +89,16 @@ Suppose `SUB R3, R4` sits at address `0x200`. PC = `0x200`. R3 = 10, R4 = 4.
 
 ## 5. Check yourself
 
+Try these first, then use the [explained answers](../ANSWER-KEY.md#h03-05).
+
 1. Trace `ADD R5, R6` with R5 = 7, R6 = 2, instruction at `0x300`. What are the final values and the new PC?
-2. Trace `LOAD R2, [0x400]` where memory at `0x400` holds 99. What is R2, and what is the new PC?
+2. Trace `LOAD R2, [0x400]`, located at instruction address `0x300`, with PC initially `0x300`. Memory at `0x400` holds 99. Assume a four-byte instruction. What is R2, and what is the new PC?
 3. In all three examples, what stays the same? What changes?
 4. Why does the PC always increase by 4 in these examples?
 
-## 6. References
+## 6. Sources
 
-- Course materials (insert lecture/slide numbers).
-- Patterson & Hennessy, *Computer Organization and Design* — chapter on the processor.
+- [MIT OpenCourseWare, 6.004 (Spring 2017), 13.1 Building the Beta](https://ocw.mit.edu/courses/6-004-computation-structures-spring-2017/pages/c13/c13s1/)
+- [MIT OpenCourseWare, 6.004 (Spring 2017), 15.1 Pipelining the Beta](https://ocw.mit.edu/courses/6-004-computation-structures-spring-2017/pages/c15/c15s1/)
+
+These sources support the technical concepts; our pseudocode, examples and analogies are teaching simplifications. Course-specific coverage is still to be checked by the team.

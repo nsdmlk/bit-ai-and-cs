@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1000" height="550" viewBox="0 0 1000 550" role="img" aria-labelledby="title desc">
+<title id="title">From source to behavior</title><desc id="desc">Hardware: Executes the instructions and stores their working values.. Networks: Carry data between devices when the system needs communication.. Learning algorithm: Uses experience to update a policy or value estimate.. Combined system: The algorithm runs on hardware; networking is an optional system need.</desc>
+<rect width="100%" height="100%" fill="white"/>
+<defs><marker id="arrow" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto"><path d="M0 0 L8 4 L0 8Z" fill="#50718d"/></marker></defs>
+<text x="36" y="44" font-family="Arial, sans-serif" font-size="28" font-weight="bold" fill="#17324d">From source to behavior</text>
+<rect x="36" y="70" width="928" height="84" rx="10" fill="#edf4fa" stroke="#acc0ce"/>
+<text x="58" y="101" font-family="Arial, sans-serif" font-size="23" font-weight="bold" fill="#17324d">Hardware</text>
+<text x="58" y="131" font-family="Arial, sans-serif" font-size="20" fill="#28465e">Executes the instructions and stores their working values.</text>
+<rect x="36" y="175" width="928" height="84" rx="10" fill="#eff7f2" stroke="#acc0ce"/>
+<text x="58" y="206" font-family="Arial, sans-serif" font-size="23" font-weight="bold" fill="#17324d">Networks</text>
+<text x="58" y="236" font-family="Arial, sans-serif" font-size="20" fill="#28465e">Carry data between devices when the system needs communication.</text>
+<rect x="36" y="280" width="928" height="84" rx="10" fill="#edf4fa" stroke="#acc0ce"/>
+<text x="58" y="311" font-family="Arial, sans-serif" font-size="23" font-weight="bold" fill="#17324d">Learning algorithm</text>
+<text x="58" y="341" font-family="Arial, sans-serif" font-size="20" fill="#28465e">Uses experience to update a policy or value estimate.</text>
+<rect x="36" y="385" width="928" height="84" rx="10" fill="#eff7f2" stroke="#acc0ce"/>
+<text x="58" y="416" font-family="Arial, sans-serif" font-size="23" font-weight="bold" fill="#17324d">Combined system</text>
+<text x="58" y="446" font-family="Arial, sans-serif" font-size="20" fill="#28465e">The algorithm runs on hardware; networking is an optional system need.</text>
+<text x="36" y="530" font-family="Arial, sans-serif" font-size="16" fill="#526577">Original teaching illustration; assumptions are explained in the chapter.</text>
+</svg>

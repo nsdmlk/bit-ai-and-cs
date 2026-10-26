@@ -1,5 +1,9 @@
 # Fetch: get the next instruction
 
+**Status:** Revised on 26 October 2026 with AI-assisted technical checks; awaiting team peer review.
+
+[Reading order](../OUTLINE.md) · [Teaching-machine conventions](../OUTLINE.md#teaching-machine-conventions) · [Explained answers](../ANSWER-KEY.md#h03-01)
+
 **Learning objective:** after this section, a beginner should be able to describe the steps of the fetch phase and explain what the PC and the two buses do during it.
 
 ## 1. Why this matters
@@ -10,7 +14,7 @@ Before the CPU can do anything with an instruction, it has to get it. Fetch is t
 
 Fetch answers one question: **what is the next instruction, and where is it?**
 
-The steps are always the same:
+In our simplified sequential teaching cycle:
 
 1. **PC holds the address** of the next instruction.
 2. The CPU puts that address on the **address bus**.
@@ -18,13 +22,15 @@ The steps are always the same:
 4. The instruction is loaded into **IR**.
 5. **PC is incremented** — it now points to the following instruction.
 
-Notice the order: the PC moves forward *before* the instruction is executed. That is why the PC always points to the *next* instruction, not the current one.
+Notice the order: the PC moves forward *before* the instruction is executed. During decode/execute in this model, PC therefore holds the following sequential address. Other implementations and branches need different details.
 
 In kitchen terms: the cook looks at the next line of the recipe and reads it. The bookmark (PC) moves to the next line, and the current line (IR) is now in hand.
 
 ## 3. Diagram
 
-<img width="1200" height="1200" alt="image" src="https://github.com/user-attachments/assets/45fc7835-45cd-4a2f-9839-09a03d25e32f" />
+![Fetch: instruction address versus data address](../assets/h03-01-fetch.svg)
+
+*Original teaching diagram created for the 26 October revision. Read the stated model assumptions alongside it.*
 
 
 ## 4. Example
@@ -40,13 +46,17 @@ Now the CPU has the instruction in IR and is ready to decode it. The PC is alrea
 
 ## 5. Check yourself
 
+Try these first, then use the [explained answers](../ANSWER-KEY.md#h03-01).
+
 1. What question does fetch answer?
 2. List the five steps of fetch in order.
-3. Why does the PC point to the *next* instruction, not the current one?
+3. Why does PC already point to the following instruction during execute in this teaching model?
 4. Which bus carries the address, and which carries the instruction?
 5. In the kitchen analogy, what does fetch match?
 
-## 6. References
+## 6. Sources
 
-- Course materials (insert lecture/slide numbers).
-- Patterson & Hennessy, *Computer Organization and Design* — chapter on the processor.
+- [MIT OpenCourseWare, 6.004 (Spring 2017), 13.1 Building the Beta](https://ocw.mit.edu/courses/6-004-computation-structures-spring-2017/pages/c13/c13s1/)
+- [MIT OpenCourseWare, 6.004 (Spring 2017), 15.1 Pipelining the Beta](https://ocw.mit.edu/courses/6-004-computation-structures-spring-2017/pages/c15/c15s1/)
+
+These sources support the technical concepts; our pseudocode, examples and analogies are teaching simplifications. Course-specific coverage is still to be checked by the team.

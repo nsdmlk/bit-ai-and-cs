@@ -1,10 +1,14 @@
-# Storage: the permanent layer
+# Storage: the persistent layer
+
+**Status:** Revised on 26 October 2026 with AI-assisted technical checks; awaiting team peer review.
+
+[Reading order](../OUTLINE.md) · [Teaching-machine conventions](../OUTLINE.md#teaching-machine-conventions) · [Explained answers](../ANSWER-KEY.md#h04-04)
 
 **Learning objective:** after this section, a beginner should be able to explain what storage is, why it is slower than RAM, and why it is still essential.
 
 ## 1. Why this matters
 
-RAM is fast but temporary. If everything lived only in RAM, all your files would disappear when you turn off the computer. Storage is the layer that keeps everything permanently — and understanding its speed matters for programs that read and write large files.
+RAM is fast but temporary. If everything lived only in RAM, all your files would disappear when you turn off the computer. Storage is the layer that retains saved data without power — and understanding its speed matters for programs that read and write large files.
 
 ## 2. Explanation
 
@@ -12,17 +16,19 @@ RAM is fast but temporary. If everything lived only in RAM, all your files would
 
 - **Very large** — terabytes.
 - **Slow** — much slower than RAM (especially hard disks; SSDs are faster but still slower than RAM).
-- **Permanent** — data stays when the power goes off.
+- **Persistent** — saved data remains when power is off, but can still be deleted, corrupted or lost through device failure.
 
 Storage holds everything that must survive a reboot: the operating system, your programs, your files, your photos, your videos.
 
-The trade-off is the same as before: storage is huge because it is slow and cheap. RAM is fast because it is small and expensive.
+Designers combine different technologies and access methods. DRAM provides working capacity; flash or magnetic disks provide persistent capacity at higher access latency. Speed, capacity and cost are engineering trade-offs, not consequences of size alone.
 
 When a program needs data from storage, it is **loaded into RAM first**, then used by the CPU through cache and registers. That is why opening a large file can take a moment: the data has to travel from disk to RAM.
 
 ## 3. Diagram
 
-<img width="1774" height="887" alt="微信图片_20261024132959_2476_8" src="https://github.com/user-attachments/assets/1cbacce4-5bba-42a7-bb4f-be97aa827ca2" />
+![Saved data versus working data](../assets/h04-04-storage.svg)
+
+*Original teaching diagram created for the 26 October revision. Read the stated model assumptions alongside it.*
 
 
 ## 4. Example
@@ -34,9 +40,11 @@ You open a 1 GB video file.
 - The CPU decodes frames using **cache** and **registers**.
 - The picture goes to the screen.
 
-The first moment may feel slow — that is the disk → RAM transfer. After that, playback is smooth because the data is already in RAM.
+The first moment may feel slow — that is the disk → RAM transfer. During playback the player keeps buffering more chunks; sustained storage speed, decoding capability and available memory must all keep up. Buffering can hide brief delays, but it cannot fix a source that is consistently too slow.
 
 ## 5. Check yourself
+
+Try these first, then use the [explained answers](../ANSWER-KEY.md#h04-04).
 
 1. What does storage hold?
 2. Why is storage slower than RAM?
@@ -44,7 +52,9 @@ The first moment may feel slow — that is the disk → RAM transfer. After that
 4. What happens when a program needs data from storage?
 5. Order these by speed, fastest first: storage, RAM, cache, registers.
 
-## 6. References
+## 6. Sources
 
-- Course materials (insert lecture/slide numbers).
-- Patterson & Hennessy, *Computer Organization and Design* — chapter on memory hierarchy.
+- [MIT OpenCourseWare, 6.004 (Spring 2017), 14.1 Caches and the Memory Hierarchy](https://ocw.mit.edu/courses/6-004-computation-structures-spring-2017/pages/c14/c14s1/)
+- [Cornell CS 3410 (Fall 2024), Caches: memory technology, locality and cache levels](https://www.cs.cornell.edu/courses/cs3410/2024fa/notes/caches.html)
+
+These sources support the technical concepts; our pseudocode, examples and analogies are teaching simplifications. Course-specific coverage is still to be checked by the team.

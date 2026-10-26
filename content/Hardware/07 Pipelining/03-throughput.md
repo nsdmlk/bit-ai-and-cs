@@ -1,5 +1,9 @@
 # Throughput: why the pipeline is faster overall
 
+**Status:** Revised on 26 October 2026 with AI-assisted technical checks; awaiting team peer review.
+
+[Reading order](../OUTLINE.md) · [Teaching-machine conventions](../OUTLINE.md#teaching-machine-conventions) · [Explained answers](../ANSWER-KEY.md#h07-03)
+
 **Learning objective:** after this section, a beginner should be able to explain what throughput is, how pipelining increases it, and why latency and throughput are different.
 
 ## 1. Why this matters
@@ -13,7 +17,7 @@ Two different measures:
 - **Latency** — how long one instruction takes from start to finish.
 - **Throughput** — how many instructions finish per unit of time.
 
-Pipelining **does not reduce latency**. Each instruction still goes through fetch, decode, and execute, and still takes the same number of cycles.
+In our ideal three-stage example, an instruction still spans three cycles and the cycle duration is unchanged, so latency stays the same. In real designs, pipeline-register overhead and clock changes can alter latency. Pipelining primarily targets throughput.
 
 But pipelining **increases throughput**. Because phases overlap, the CPU can finish one instruction every cycle (in the ideal case), instead of one every three cycles.
 
@@ -23,12 +27,14 @@ That is why pipelining matters: most programs run millions of instructions, so f
 
 ## 3. Diagram
 
-<img width="1774" height="887" alt="微信图片_20261024202545_2527_8" src="https://github.com/user-attachments/assets/4395a0bf-a307-4371-a4e6-c142fb75a8d3" />
+![Throughput includes filling and draining](../assets/h07-03-throughput.svg)
+
+*Original teaching diagram created for the 26 October revision. Read the stated model assumptions alongside it.*
 
 
 ## 4. Example
 
-A program with 1,000 instructions, 3 phases each.
+Assume 1,000 independent instructions, three one-cycle stages, the same clock period in both designs, and no stalls or resource conflicts. In general, the ideal three-stage pipeline takes `n + 2` cycles for `n` instructions, versus `3n` without overlap.
 
 - **Without pipeline:** 1,000 × 3 = 3,000 cycles.
 - **With a 3-stage pipeline (ideal):** roughly 1,000 + 2 = 1,002 cycles.
@@ -39,13 +45,17 @@ Each instruction still takes 3 cycles (latency unchanged), but the total time is
 
 ## 5. Check yourself
 
+Try these first, then use the [explained answers](../ANSWER-KEY.md#h07-03).
+
 1. What is latency? What is throughput?
-2. Does pipelining reduce latency? Why or why not?
+2. In our ideal model, what happens to latency? Why might a real pipeline differ?
 3. How does pipelining increase throughput?
 4. In the example, how many cycles does the pipelined version take? The non-pipelined version?
 5. What is the highway analogy for throughput?
 
-## 6. References
+## 6. Sources
 
-- Course materials (insert lecture/slide numbers).
-- Patterson & Hennessy, *Computer Organization and Design* — chapter on pipelining.
+- [Cornell CS 3410 (Spring 2026), Pipelining & Performance](https://www.cs.cornell.edu/courses/cs3410/2026sp/notes/pipelining.html)
+- [MIT OpenCourseWare, 6.004 (Spring 2017), 15.1 Pipelining the Beta](https://ocw.mit.edu/courses/6-004-computation-structures-spring-2017/pages/c15/c15s1/)
+
+These sources support the technical concepts; our pseudocode, examples and analogies are teaching simplifications. Course-specific coverage is still to be checked by the team.

@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1000" height="550" viewBox="0 0 1000 550" role="img" aria-labelledby="title desc">
+<title id="title">Four hardware groups; networking is I/O</title><desc id="desc">CPU: Executes instructions using control logic and a datapath.. RAM: Holds active instructions and data; ordinary DRAM is volatile.. Persistent storage: Retains saved files without power; not the same as RAM.. I/O, including a NIC: Keyboard, display and network interface exchange information.</desc>
+<rect width="100%" height="100%" fill="white"/>
+<defs><marker id="arrow" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto"><path d="M0 0 L8 4 L0 8Z" fill="#50718d"/></marker></defs>
+<text x="36" y="44" font-family="Arial, sans-serif" font-size="28" font-weight="bold" fill="#17324d">Four hardware groups; networking is I/O</text>
+<rect x="36" y="70" width="928" height="84" rx="10" fill="#edf4fa" stroke="#acc0ce"/>
+<text x="58" y="101" font-family="Arial, sans-serif" font-size="23" font-weight="bold" fill="#17324d">CPU</text>
+<text x="58" y="131" font-family="Arial, sans-serif" font-size="20" fill="#28465e">Executes instructions using control logic and a datapath.</text>
+<rect x="36" y="175" width="928" height="84" rx="10" fill="#eff7f2" stroke="#acc0ce"/>
+<text x="58" y="206" font-family="Arial, sans-serif" font-size="23" font-weight="bold" fill="#17324d">RAM</text>
+<text x="58" y="236" font-family="Arial, sans-serif" font-size="20" fill="#28465e">Holds active instructions and data; ordinary DRAM is volatile.</text>
+<rect x="36" y="280" width="928" height="84" rx="10" fill="#edf4fa" stroke="#acc0ce"/>
+<text x="58" y="311" font-family="Arial, sans-serif" font-size="23" font-weight="bold" fill="#17324d">Persistent storage</text>
+<text x="58" y="341" font-family="Arial, sans-serif" font-size="20" fill="#28465e">Retains saved files without power; not the same as RAM.</text>
+<rect x="36" y="385" width="928" height="84" rx="10" fill="#eff7f2" stroke="#acc0ce"/>
+<text x="58" y="416" font-family="Arial, sans-serif" font-size="23" font-weight="bold" fill="#17324d">I/O, including a NIC</text>
+<text x="58" y="446" font-family="Arial, sans-serif" font-size="20" fill="#28465e">Keyboard, display and network interface exchange information.</text>
+<text x="36" y="530" font-family="Arial, sans-serif" font-size="16" fill="#526577">Original teaching illustration; assumptions are explained in the chapter.</text>
+</svg>

@@ -1,5 +1,9 @@
 # Common misconceptions
 
+**Status:** Revised on 26 October 2026 with AI-assisted technical checks; awaiting team peer review.
+
+[Reading order](../OUTLINE.md) · [Teaching-machine conventions](../OUTLINE.md#teaching-machine-conventions) · [Explained answers](../ANSWER-KEY.md#h09-02)
+
 **Learning objective:** after this section, a beginner should be able to recognize and correct the most common beginner mistakes about hardware.
 
 ## 1. Why this matters
@@ -12,7 +16,7 @@ Most beginner errors are not calculation errors — they are wrong mental models
 No. The CPU understands registers and memory addresses. The compiler links variables to them. When you write `a = b + c`, the CPU only sees loads, adds, and stores.
 
 **"Higher GHz is always faster."**
-No. Execution time = instruction count × CPI × clock period. A faster clock can be cancelled out by worse CPI. Compare benchmarks, not GHz.
+No. CPU execution time = dynamic instruction count × average CPI × clock period (constant-clock model; I/O and scheduling waits are separate). A faster clock can be cancelled out by worse CPI. Compare benchmarks, not GHz.
 
 **"More RAM makes the CPU faster."**
 No. More RAM means more data fits in memory, so the computer can keep more programs open. It does not make individual instructions faster. If a program is CPU-bound, extra RAM will not speed it up.
@@ -21,7 +25,7 @@ No. More RAM means more data fits in memory, so the computer can keep more progr
 No. Cache is a different layer: small, very fast, and managed automatically by the hardware. It holds recently used data to avoid going to RAM.
 
 **"Pipelining makes each instruction faster."**
-No. Pipelining keeps latency the same but increases throughput — more instructions finish per unit of time.
+Pipelining primarily increases throughput: more instructions finish per unit time. Our ideal model leaves latency unchanged; real overhead and clock changes can alter it.
 
 **"A GPU is always better than a CPU."**
 No. A GPU is better for parallel math (like AI). A CPU is better for complex, branchy, general-purpose work. They are built for different jobs.
@@ -31,7 +35,9 @@ No. Latency is how long one message takes; bandwidth is how much data can flow p
 
 ## 3. Diagram
 
-<img width="1774" height="887" alt="微信图片_20261024203558_2538_8" src="https://github.com/user-attachments/assets/61e4a4c1-df85-4b4c-8581-66d130cc41df" />
+![Correct three common shortcuts](../assets/h09-02-common-misconceptions.svg)
+
+*Original teaching diagram created for the 26 October revision. Read the stated model assumptions alongside it.*
 
 
 ## 4. Example
@@ -47,14 +53,19 @@ Correct answer: "Maybe faster, but not necessarily by 33%. Check instruction cou
 
 ## 5. Check yourself
 
+Try these first, then use the [explained answers](../ANSWER-KEY.md#h09-02).
+
 1. Why does the CPU not understand variables?
 2. Why is higher GHz not always faster?
 3. Does more RAM make the CPU faster? Why or why not?
-4. Does pipelining reduce latency? What does it increase?
+4. What does pipelining primarily improve? What happens to latency in our ideal model and potentially in real hardware?
 5. What is the difference between latency and bandwidth?
 6. Which misconception have you held yourself? How would you correct it now?
 
-## 6. References
+## 6. Sources
 
-- Course materials (insert lecture/slide numbers).
-- Patterson & Hennessy, *Computer Organization and Design* — chapters on the processor and performance.
+- [MIT OpenCourseWare, 6.004 (Spring 2017), 13.1 Building the Beta](https://ocw.mit.edu/courses/6-004-computation-structures-spring-2017/pages/c13/c13s1/)
+- [Intel VTune Profiler, CPU Metrics Reference: cycles per instructions retired](https://www.intel.com/content/www/us/en/docs/vtune-profiler/user-guide/2024-2/cpu-metrics-reference.html)
+- [Cornell CS 3410 (Spring 2026), Pipelining & Performance](https://www.cs.cornell.edu/courses/cs3410/2026sp/notes/pipelining.html)
+
+These sources support the technical concepts; our pseudocode, examples and analogies are teaching simplifications. Course-specific coverage is still to be checked by the team.

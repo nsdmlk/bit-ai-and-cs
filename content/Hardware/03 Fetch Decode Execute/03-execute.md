@@ -1,5 +1,9 @@
 # Execute: actually do it
 
+**Status:** Revised on 26 October 2026 with AI-assisted technical checks; awaiting team peer review.
+
+[Reading order](../OUTLINE.md) · [Teaching-machine conventions](../OUTLINE.md#teaching-machine-conventions) · [Explained answers](../ANSWER-KEY.md#h03-03)
+
 **Learning objective:** after this section, a beginner should be able to explain what happens during the execute phase, for both arithmetic and memory instructions.
 
 ## 1. Why this matters
@@ -23,13 +27,15 @@ For a **memory instruction** (like `LOAD` or `STORE`):
 2. Memory reads or writes the value on the **data bus**.
 3. The value is written into a register (for `LOAD`) or taken from a register (for `STORE`).
 
-Notice: for memory instructions, the **ALU is not involved**. That is why RISC architectures separate load/store from arithmetic — it keeps the execute phase simple.
+A real load/store may first calculate an **effective address**, often using an ALU or an address-generation unit (AGU). Our absolute-address pseudocode supplies the complete address directly, so the trace omits that calculation. In a load-store instruction set, arithmetic uses register operands and separate load/store instructions access data memory; this does not mean that loads can never use an ALU.
 
 In kitchen terms: the cook actually chops, stirs, or plates. The work happens here.
 
 ## 3. Diagram
 
-<img width="1975" height="796" alt="微信图片_20261024110613_2436_8" src="https://github.com/user-attachments/assets/819a2c21-1936-49ff-b163-9608d3f81741" />
+![Execute: different instructions use different paths](../assets/h03-03-execute.svg)
+
+*Original teaching diagram created for the 26 October revision. Read the stated model assumptions alongside it.*
 
 
 ## 4. Example
@@ -45,19 +51,23 @@ In kitchen terms: the cook actually chops, stirs, or plates. The work happens he
 - Address `0x200` goes on the address bus.
 - Memory returns the value on the data bus.
 - The value is written into R1.
-- The ALU is not used.
+- This absolute-address teaching trace omits address arithmetic. A base-plus-offset load would also need an address calculation.
 
 Same phase, different paths — depending on the instruction.
 
 ## 5. Check yourself
 
+Try these first, then use the [explained answers](../ANSWER-KEY.md#h03-03).
+
 1. What question does execute answer?
 2. What happens during execute for an `ADD` instruction?
 3. What happens during execute for a `LOAD` instruction?
-4. Why is the ALU not involved in `LOAD`?
+4. What moves during `LOAD`, and how might a real processor calculate its memory address?
 5. In the kitchen analogy, what does execute match?
 
-## 6. References
+## 6. Sources
 
-- Course materials (insert lecture/slide numbers).
-- Patterson & Hennessy, *Computer Organization and Design* — chapter on the processor.
+- [MIT OpenCourseWare, 6.004 (Spring 2017), 13.1 Building the Beta](https://ocw.mit.edu/courses/6-004-computation-structures-spring-2017/pages/c13/c13s1/)
+- [MIT OpenCourseWare, 6.004 (Spring 2017), 15.1 Pipelining the Beta](https://ocw.mit.edu/courses/6-004-computation-structures-spring-2017/pages/c15/c15s1/)
+
+These sources support the technical concepts; our pseudocode, examples and analogies are teaching simplifications. Course-specific coverage is still to be checked by the team.
