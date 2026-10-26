@@ -1,33 +1,21 @@
-# <Subtopic name>
+# Authoring template — not part of the learner reading order
 
-**Learning objective:** after this section, a beginner should be able to …
+Use this template for new Hardware lessons. Replace the prompts below with content before publishing a lesson. Do not label it peer reviewed until another member actually reviews it.
 
-## 1. Why this matters
+## Required lesson structure
 
-One short paragraph: why a beginner should care about this topic, and how it connects to the previous file.
+1. Title and a learning objective using an observable action.
+2. Honest status and a link to the Hardware outline and teaching conventions.
+3. Why the idea matters, followed by a clear explanation with new terms defined.
+4. A meaningful diagram or table when it helps; use local assets, a useful caption and a text explanation.
+5. A concrete worked example showing inputs, assumptions, intermediate steps and result.
+6. Independent questions or an activity, with explained answers inline or linked to ANSWER-KEY.md. Label reflection answers as illustrative, not uniquely correct.
+7. Identifiable primary sources supporting key claims and attribution for borrowed assets.
 
-## 2. Explanation
+Use fenced code blocks for pseudocode. State whether instruction lengths, clock periods and pipeline timings are model assumptions. Keep sources and answer links usable in the submitted source copy.
 
-The main explanation, in plain language. Use short paragraphs. Define each new term the first time it appears. Prefer examples over formal definitions.
+## Author resources
 
-## 3. Diagram
-
-[DIAGRAM: describe what the diagram should show, its labels, and its caption.]
-
-## 4. Example
-
-A concrete, step-by-step example that uses the idea from Section 2. Show the values or steps, not just the result.
-
-## 5. Check yourself
-
-1. …
-2. …
-3. …
-4. …
-
-Short answers will be added in the Study Guide.
-
-## 6. References
-
-- Course materials (insert lecture/slide numbers).
-- Patterson & Hennessy, *Computer Organization and Design* — (insert chapter/pages).
+- [Hardware outline and model](OUTLINE.md)
+- [Current explained answers](ANSWER-KEY.md)
+- [MIT OpenCourseWare, Building the Beta](https://ocw.mit.edu/courses/6-004-computation-structures-spring-2017/pages/c13/c13s1/) — example of explicitly defining a teaching CPU.

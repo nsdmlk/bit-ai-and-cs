@@ -1,6 +1,10 @@
 # SSH (Secure Shell) — A Micro-Textbook for Beginners
 
-This is the first draft of our SSH content, intended for `/content/Networks/SSH.md`. It explains how users securely connect to remote computers and run commands over a network.
+This chapter explains how users securely connect to remote computers and run commands over a network.
+
+**Status:** Revised with AI-assisted technical checks; awaiting team peer review.
+
+[Module outline and reading order](OUTLINE.md) · [Explained answers](ANSWER-KEY.md)
 
 ---
 
@@ -64,6 +68,10 @@ A **host key** identifies the server. On a first connection, an SSH client may d
 
 OpenSSH remembers accepted host keys in its `known_hosts` file. If a key changes later, it warns you. A change might follow a legitimate server replacement, but it can also indicate impersonation, so investigate before accepting it. [OpenSSH host-key verification](https://man.openbsd.org/ssh#VERIFYING_HOST_KEYS)
 
+**Worked scenario:** An administrator gives a student the expected host-key fingerprint through a trusted channel. The client displays a different fingerprint. The student pauses the connection and checks the discrepancy with the administrator before trusting the key. This avoids treating an unexpected identity as verified; a legitimate key replacement is one possible explanation. This is an illustrative scenario, not a recorded test.
+
+**Other uses in brief:** SFTP transfers files over an SSH connection. Port forwarding can carry selected connections through SSH; it does not automatically protect every application on the computer. [OpenSSH SFTP](https://man.openbsd.org/sftp), [OpenSSH forwarding](https://man.openbsd.org/ssh)
+
 ---
 
 ## 5. Common Misconceptions
@@ -78,6 +86,8 @@ OpenSSH remembers accepted host keys in its `known_hosts` file. If a key changes
 1. **Trace an SSH connection:** What happens between contacting the server and opening a remote shell?
 2. **Compare public and private keys:** Which key is registered on the server, and which must remain protected?
 3. **Explain host-key verification:** Why should you check a server's fingerprint before trusting it?
+
+[Explained answers: SSH Q1–Q3](ANSWER-KEY.md#ssh)
 
 ---
 

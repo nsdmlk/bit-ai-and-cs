@@ -1,0 +1,49 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1100" height="610" viewBox="0 0 1100 610" role="img" aria-labelledby="title desc">
+  <title id="title">A fresh HTTPS connection over TCP</title>
+  <desc id="desc">First DNS supplies a server address. Then TCP and TLS are established through the gateway. HTTP requests and responses travel inside TLS. The gateway forwards packets and is not a TLS endpoint.</desc>
+  <defs>
+    <marker id="arrow" markerWidth="10" markerHeight="8" refX="9" refY="4" orient="auto-start-reverse"><path d="M0,0 L10,4 L0,8 z" fill="#315c87"/></marker>
+    <style>text{font-family:Arial,Helvetica,sans-serif;fill:#17324d} .head{font-size:25px;font-weight:700} .label{font-size:19px;font-weight:700} .body{font-size:17px} .small{font-size:15px} .line{stroke:#315c87;stroke-width:3;fill:none;marker-end:url(#arrow)} .box{fill:#edf4fa;stroke:#829db5;stroke-width:2}</style>
+  </defs>
+  <rect width="1100" height="610" fill="#ffffff"/>
+  <text x="40" y="42" class="head">A fresh HTTPS connection over TCP</text>
+  <text x="40" y="71" class="body">Illustrative HTTP/1.1 flow · no cached answer or existing connection</text>
+  <rect x="40" y="105" width="235" height="100" rx="12" class="box"/>
+  <text x="58" y="137" class="label">Laptop / browser</text>
+  <text x="58" y="165" class="body">192.168.1.50/24</text>
+  <text x="58" y="189" class="small">Client endpoint</text>
+  <rect x="430" y="105" width="240" height="100" rx="12" class="box"/>
+  <text x="448" y="137" class="label">DNS resolver</text>
+  <text x="448" y="165" class="body">192.168.1.1</text>
+  <text x="448" y="189" class="small">Obtains and caches DNS data</text>
+  <path d="M275,133 H430" class="line"/>
+  <text x="293" y="121" class="small">1. DNS query</text>
+  <path d="M430,180 H275" class="line"/>
+  <text x="290" y="173" class="small">Server address</text>
+  <rect x="775" y="105" width="285" height="100" rx="12" fill="#f5f7f9" stroke="#b9c9d5"/>
+  <text x="793" y="137" class="label">If caches do not suffice</text>
+  <text x="793" y="164" class="body">Root → TLD → authoritative</text>
+  <text x="793" y="189" class="small">Resolver obtains an answer</text>
+  <path d="M670,155 H775" class="line"/>
+  <rect x="40" y="255" width="235" height="90" rx="12" class="box"/>
+  <text x="58" y="290" class="label">Laptop</text>
+  <text x="58" y="319" class="body">Temporary TCP source port</text>
+  <rect x="430" y="255" width="240" height="90" rx="12" class="box"/>
+  <text x="448" y="290" class="label">Gateway / router</text>
+  <text x="448" y="319" class="body">192.168.1.1</text>
+  <rect x="825" y="255" width="235" height="90" rx="12" class="box"/>
+  <text x="843" y="290" class="label">Web server</text>
+  <text x="843" y="319" class="body">203.0.113.10 : 443</text>
+  <path d="M275,300 H430" class="line"/>
+  <path d="M670,300 H825" class="line"/>
+  <text x="282" y="279" class="small">Local link</text>
+  <text x="685" y="279" class="small">Further IP hops</text>
+  <text x="40" y="379" class="body">2. Route packets through the gateway; it forwards traffic, not the browser's TLS identity check.</text>
+  <rect x="40" y="405" width="1020" height="135" rx="12" fill="#eef7f3" stroke="#7da793" stroke-width="2"/>
+  <text x="60" y="436" class="label">Between the browser and server</text>
+  <text x="60" y="465" class="body">3. TCP handshake  →  4. TLS handshake + server certificate check</text>
+  <text x="60" y="494" class="body">5. HTTP GET / inside TLS  →  6. HTTP response inside TLS  →  render the page</text>
+  <text x="60" y="523" class="small">TCP handles the byte stream; IP packets and link frames carry the communication.</text>
+  <text x="40" y="573" class="small">Example addresses only. The home box combines DNS and gateway roles here. This is not a packet capture.</text>
+  <text x="40" y="595" class="small">HTTP/3 uses QUIC over UDP instead; its setup is outside this diagram.</text>
+</svg>

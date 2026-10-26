@@ -1,5 +1,9 @@
 # Why memory has layers
 
+**Status:** Revised on 26 October 2026 with AI-assisted technical checks; awaiting team peer review.
+
+[Reading order](../OUTLINE.md) · [Teaching-machine conventions](../OUTLINE.md#teaching-machine-conventions) · [Explained answers](../ANSWER-KEY.md#h04-01)
+
 **Learning objective:** after this section, a beginner should be able to explain why memory is organized in layers and why the CPU cannot use just one kind of memory.
 
 ## 1. Why this matters
@@ -17,18 +21,20 @@ You cannot have a huge memory that is also as fast as the CPU. So computers use 
 
 | Layer | Size | Speed | What it holds |
 |---|---|---|---|
-| Registers | Tiny (16–32 slots) | Fastest | Values the CPU is using right now |
+| Registers | Tiny (architecture-dependent count) | Fastest | Values the CPU is using right now |
 | Cache (L1/L2/L3) | Small (KB–MB) | Very fast | Recently used data and instructions |
 | RAM | Large (GB) | Fast | The program and its active data |
 | SSD/disk | Very large (TB) | Slow | Everything that must be saved |
 
-The idea is simple: **the closer to the CPU, the faster and smaller the storage.** The CPU keeps what it needs most in the fast layers, so it does not have to wait for the slow ones.
+In a typical hierarchy, the fast layers are small and on or near the processor. This reflects technology, cost and wiring trade-offs, not a rule that physical distance alone determines speed. Instructions explicitly name registers; cache hardware retains blocks of memory. **Temporal locality** means reusing an address soon, while **spatial locality** means accessing nearby addresses. These patterns make caching useful.
 
 This is why a computer can feel fast even though RAM is much slower than the CPU: the fast layers (registers and cache) hide most of the waiting.
 
 ## 3. Diagram
 
-<img width="1536" height="1024" alt="微信图片_20261024132957_2475_8" src="https://github.com/user-attachments/assets/5ec48369-8704-4e22-a80a-7213aa149420" />
+![Memory layers trade capacity, cost and delay](../assets/h04-01-why-layers.svg)
+
+*Original teaching diagram created for the 26 October revision. Read the stated model assumptions alongside it.*
 
 
 ## 4. Example
@@ -44,12 +50,16 @@ Most of the work happens in registers and cache, not RAM. That is the hierarchy 
 
 ## 5. Check yourself
 
+Try these first, then use the [explained answers](../ANSWER-KEY.md#h04-01).
+
 1. Why can't a computer have one memory that is both huge and fast?
 2. List the four layers from fastest to slowest.
 3. Which layer is closest to the CPU? Which is farthest?
 4. Why does the hierarchy make a computer feel faster than RAM alone would?
 
-## 6. References
+## 6. Sources
 
-- Course materials (insert lecture/slide numbers).
-- Patterson & Hennessy, *Computer Organization and Design* — chapter on memory hierarchy.
+- [MIT OpenCourseWare, 6.004 (Spring 2017), 14.1 Caches and the Memory Hierarchy](https://ocw.mit.edu/courses/6-004-computation-structures-spring-2017/pages/c14/c14s1/)
+- [Cornell CS 3410 (Fall 2024), Caches: memory technology, locality and cache levels](https://www.cs.cornell.edu/courses/cs3410/2024fa/notes/caches.html)
+
+These sources support the technical concepts; our pseudocode, examples and analogies are teaching simplifications. Course-specific coverage is still to be checked by the team.

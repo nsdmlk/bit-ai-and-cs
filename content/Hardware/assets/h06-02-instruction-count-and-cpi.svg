@@ -1,0 +1,22 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1000" height="550" viewBox="0 0 1000 550" role="img" aria-labelledby="title desc">
+<title id="title">From instructions to cycles to seconds</title><desc id="desc">Example instruction count: 2,000,000 completed instructions.. Example average CPI: 2 cycles per completed instruction.. Total cycles: 2,000,000 × 2 = 4,000,000 cycles.. At 2 GHz: 4,000,000 / 2,000,000,000 = 0.002 s = 2 ms.</desc>
+<rect width="100%" height="100%" fill="white"/>
+<defs><marker id="arrow" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto"><path d="M0 0 L8 4 L0 8Z" fill="#50718d"/></marker></defs>
+<text x="36" y="44" font-family="Arial, sans-serif" font-size="28" font-weight="bold" fill="#17324d">From instructions to cycles to seconds</text>
+<rect x="36" y="70" width="928" height="84" rx="10" fill="#edf4fa" stroke="#acc0ce"/>
+<text x="58" y="101" font-family="Arial, sans-serif" font-size="23" font-weight="bold" fill="#17324d">Example instruction count</text>
+<text x="58" y="131" font-family="Arial, sans-serif" font-size="20" fill="#28465e">2,000,000 completed instructions.</text>
+<path d="M500 155 V173" stroke="#50718d" stroke-width="2" marker-end="url(#arrow)"/>
+<rect x="36" y="175" width="928" height="84" rx="10" fill="#eff7f2" stroke="#acc0ce"/>
+<text x="58" y="206" font-family="Arial, sans-serif" font-size="23" font-weight="bold" fill="#17324d">Example average CPI</text>
+<text x="58" y="236" font-family="Arial, sans-serif" font-size="20" fill="#28465e">2 cycles per completed instruction.</text>
+<path d="M500 260 V278" stroke="#50718d" stroke-width="2" marker-end="url(#arrow)"/>
+<rect x="36" y="280" width="928" height="84" rx="10" fill="#edf4fa" stroke="#acc0ce"/>
+<text x="58" y="311" font-family="Arial, sans-serif" font-size="23" font-weight="bold" fill="#17324d">Total cycles</text>
+<text x="58" y="341" font-family="Arial, sans-serif" font-size="20" fill="#28465e">2,000,000 × 2 = 4,000,000 cycles.</text>
+<path d="M500 365 V383" stroke="#50718d" stroke-width="2" marker-end="url(#arrow)"/>
+<rect x="36" y="385" width="928" height="84" rx="10" fill="#eff7f2" stroke="#acc0ce"/>
+<text x="58" y="416" font-family="Arial, sans-serif" font-size="23" font-weight="bold" fill="#17324d">At 2 GHz</text>
+<text x="58" y="446" font-family="Arial, sans-serif" font-size="20" fill="#28465e">4,000,000 / 2,000,000,000 = 0.002 s = 2 ms.</text>
+<text x="36" y="530" font-family="Arial, sans-serif" font-size="16" fill="#526577">Original teaching illustration; assumptions are explained in the chapter.</text>
+</svg>

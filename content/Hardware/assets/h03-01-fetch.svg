@@ -1,0 +1,22 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1000" height="550" viewBox="0 0 1000 550" role="img" aria-labelledby="title desc">
+<title id="title">Fetch: instruction address versus data address</title><desc id="desc">PC supplies 0x100: Read instruction memory at the current fetch address.. Memory supplies the instruction: For example: LOAD R1, [0x200].. IR holds that instruction: The instruction itself is not the value at data address 0x200.. PC advances to 0x104: The next sequential instruction is four bytes later in this model.</desc>
+<rect width="100%" height="100%" fill="white"/>
+<defs><marker id="arrow" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto"><path d="M0 0 L8 4 L0 8Z" fill="#50718d"/></marker></defs>
+<text x="36" y="44" font-family="Arial, sans-serif" font-size="28" font-weight="bold" fill="#17324d">Fetch: instruction address versus data address</text>
+<rect x="36" y="70" width="928" height="84" rx="10" fill="#edf4fa" stroke="#acc0ce"/>
+<text x="58" y="101" font-family="Arial, sans-serif" font-size="23" font-weight="bold" fill="#17324d">PC supplies 0x100</text>
+<text x="58" y="131" font-family="Arial, sans-serif" font-size="20" fill="#28465e">Read instruction memory at the current fetch address.</text>
+<path d="M500 155 V173" stroke="#50718d" stroke-width="2" marker-end="url(#arrow)"/>
+<rect x="36" y="175" width="928" height="84" rx="10" fill="#eff7f2" stroke="#acc0ce"/>
+<text x="58" y="206" font-family="Arial, sans-serif" font-size="23" font-weight="bold" fill="#17324d">Memory supplies the instruction</text>
+<text x="58" y="236" font-family="Arial, sans-serif" font-size="20" fill="#28465e">For example: LOAD R1, [0x200].</text>
+<path d="M500 260 V278" stroke="#50718d" stroke-width="2" marker-end="url(#arrow)"/>
+<rect x="36" y="280" width="928" height="84" rx="10" fill="#edf4fa" stroke="#acc0ce"/>
+<text x="58" y="311" font-family="Arial, sans-serif" font-size="23" font-weight="bold" fill="#17324d">IR holds that instruction</text>
+<text x="58" y="341" font-family="Arial, sans-serif" font-size="20" fill="#28465e">The instruction itself is not the value at data address 0x200.</text>
+<path d="M500 365 V383" stroke="#50718d" stroke-width="2" marker-end="url(#arrow)"/>
+<rect x="36" y="385" width="928" height="84" rx="10" fill="#eff7f2" stroke="#acc0ce"/>
+<text x="58" y="416" font-family="Arial, sans-serif" font-size="23" font-weight="bold" fill="#17324d">PC advances to 0x104</text>
+<text x="58" y="446" font-family="Arial, sans-serif" font-size="20" fill="#28465e">The next sequential instruction is four bytes later in this model.</text>
+<text x="36" y="530" font-family="Arial, sans-serif" font-size="16" fill="#526577">Original teaching illustration; assumptions are explained in the chapter.</text>
+</svg>

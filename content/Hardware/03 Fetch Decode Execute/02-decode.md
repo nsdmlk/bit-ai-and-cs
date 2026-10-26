@@ -1,5 +1,9 @@
 # Decode: figure out what the instruction means
 
+**Status:** Revised on 26 October 2026 with AI-assisted technical checks; awaiting team peer review.
+
+[Reading order](../OUTLINE.md) · [Teaching-machine conventions](../OUTLINE.md#teaching-machine-conventions) · [Explained answers](../ANSWER-KEY.md#h03-02)
+
 **Learning objective:** after this section, a beginner should be able to explain what the decode phase does and what the control unit works out during it.
 
 ## 1. Why this matters
@@ -20,11 +24,13 @@ Once it knows these three things, the control unit sends **control signals** to 
 
 In kitchen terms: the cook reads "chop the onion" and figures out which knife and which board to use. The instruction is understood; the tools are chosen.
 
-Decode does not change any values. It only prepares the CPU to execute.
+In this model, decode does not yet change the program's destination register or data memory. It determines control signals and can read operands into internal working state.
 
 ## 3. Diagram
 
-<img width="1920" height="819" alt="微信图片_20261024110615_2437_8" src="https://github.com/user-attachments/assets/45d74b67-71bb-4206-bc39-1493b2957774" />
+![Decode: interpret the instruction fields](../assets/h03-02-decode.svg)
+
+*Original teaching diagram created for the 26 October revision. Read the stated model assumptions alongside it.*
 
 
 ## 4. Example
@@ -43,13 +49,17 @@ No values have changed yet. The CPU is now ready to execute.
 
 ## 5. Check yourself
 
+Try these first, then use the [explained answers](../ANSWER-KEY.md#h03-02).
+
 1. What question does decode answer?
 2. What three things does the control unit work out during decode?
-3. Does decode change any values? Why or why not?
+3. Does decode change the destination register or data memory in our model? What does it prepare?
 4. In `LOAD R1, [0x200]`, what does the control unit work out?
 5. In the kitchen analogy, what does decode match?
 
-## 6. References
+## 6. Sources
 
-- Course materials (insert lecture/slide numbers).
-- Patterson & Hennessy, *Computer Organization and Design* — chapter on the processor.
+- [MIT OpenCourseWare, 6.004 (Spring 2017), 13.1 Building the Beta](https://ocw.mit.edu/courses/6-004-computation-structures-spring-2017/pages/c13/c13s1/)
+- [MIT OpenCourseWare, 6.004 (Spring 2017), 15.1 Pipelining the Beta](https://ocw.mit.edu/courses/6-004-computation-structures-spring-2017/pages/c15/c15s1/)
+
+These sources support the technical concepts; our pseudocode, examples and analogies are teaching simplifications. Course-specific coverage is still to be checked by the team.

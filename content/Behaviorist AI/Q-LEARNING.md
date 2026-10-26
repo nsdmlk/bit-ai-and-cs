@@ -1,79 +1,148 @@
+# Q-Learning: From Experience to an Action-Value Table
 
-# Q-Learning: How Agents Learn from Experience
+Previous: [Agents](AGENT.md) · [Module map](OUTLINE.md) · Next: [On-policy and off-policy](POLICY-RULE.md)
 
-In the previous section, we learned that an agent learns by taking actions, receiving rewards, and observing the environment. But how does it actually *remember* what it learned? How does it know which action is best in a specific situation?
+**Status:** revised with AI-assisted technical checks; awaiting team peer review.
 
-The answer is **Q-Learning**.
+**Stage 1 anchor topic:** this chapter contains the assumptions, algorithm, worked examples, activity and explained answers needed to study one topic from start to finish.
 
-## 1. The Concept of "Q"
+**Prerequisites:** state, action, reward, policy and episode from AGENT.md; ordinary arithmetic.
 
-Imagine you are playing a video game. You are at a specific point on the map (the **State**). You have a choice: jump left or jump right (the **Actions**).
+## Learning objectives
 
-How do you decide? You think about the future. "If I jump right, I usually get a coin. If I jump left, I fall into lava."
+After this chapter, you should be able to:
 
-In Reinforcement Learning, we assign a number to every possible (State, Action) pair. This number is called the **Q-value** (or Quality-value).
+1. Interpret a Q-value as an estimate of future return.
+2. Trace a small Q-learning episode, including action selection and termination.
+3. Calculate an update for a nonterminal or terminal transition.
+4. Explain why exploration and repeated updates are needed.
 
-- **High Q-value:** "This action is probably a good idea here."
-- **Low Q-value:** "This action is a bad idea."
+## 1. The question a Q-value answers
 
-The agent keeps a giant table (a **Q-table**) that stores these numbers.
+In this chapter, states and actions form small, finite sets and the agent observes its full state. For example, it knows which grid square it occupies and chooses from four moves.
 
-## 2. The Bellman Equation (Intuitively)
+A **Q-table** stores one estimate $Q(s,a)$ for each state–action pair. It estimates the return from taking action $a$ in state $s$. In Q-learning, these estimates aim toward the values of an optimal policy.
 
-How does the agent update the Q-table when it learns something new? It uses the **Bellman Equation**.
-
-Don't let the math scare you. Here is the core idea in plain English:
-
-> **The value of doing an action now equals the immediate reward you get, PLUS the maximum value you can get from the next state.**
-
-If you find a treasure chest right now, that's a great reward. But if moving one step forward leads to a room full of treasure chests, the Q-value for moving forward should be even higher.
-
-Mathematically, it looks like this:
+Return includes more than the next reward. With discount factor $\gamma$:
 
 $$
-Q(s, a) \leftarrow Q(s, a) + \alpha \left[ r + \gamma \max_{a'} Q(s', a') - Q(s, a) \right]
+G_t=R_{t+1}+\gamma R_{t+2}+\gamma^2R_{t+3}+\cdots
 $$
 
-- **$s, a$**: current state and action.
-- **$r$**: immediate reward.
-- **$s'$**: the next state.
-- **$\alpha$**: Learning rate (how much we update our old belief).
-- **$\gamma$**: Discount factor (how much we care about *future* rewards vs immediate ones).
+Later rewards receive less weight when $\gamma<1$. For our finite examples we can also define an undiscounted return with $\gamma=1$. We do not assume an infinite sum with $\gamma=1$ is always finite.
 
-## 3. On-Policy vs. Off-Policy
+“Action value” is the formal term; “quality” is only a memory aid. A high estimated value can be wrong when little relevant experience has been collected. [Watkins and Dayan, 1992, pp. 280–282](https://www.gatsby.ucl.ac.uk/~dayan/papers/cjch.pdf).
 
-When the agent updates its Q-table, does it learn by *doing* or by *watching*?
+## 2. The sampled update
 
-- **On-Policy:** The agent updates the Q-value using the exact action it just took. (Example: **SARSA**). It learns the value of the policy it is currently following.
-- **Off-Policy:** The agent updates the Q-value using the *best possible* action for the next state, even if it didn't take that action this time. (Example: **Q-Learning**). It learns the optimal policy, even if it is currently exploring randomly.
+After taking $a$ in state $s$, the agent observes reward $r$ and next state $s'$. For a nonterminal next state:
 
-Q-learning is off-policy, which makes it very powerful.
+$$
+Q(s,a)\leftarrow Q(s,a)+
+\alpha\left[r+\gamma\max_{a'}Q(s',a')-Q(s,a)\right].
+$$
 
-## 4. The Problem: Too Many States (Enter DQN)
+| Symbol | Meaning in this chapter |
+|---|---|
+| $s,a$ | State and action of the experienced transition |
+| $r$ | Observed immediate reward |
+| $s'$ | Observed next state |
+| $a'$ | A valid action available in the next state |
+| $\max_{a'}Q(s',a')$ | Largest current next-action estimate |
+| $\alpha$ | Learning rate; $0<\alpha\leq1$ in our examples |
+| $\gamma$ | Discount factor; $0\leq\gamma\leq1$, with task assumptions as above |
 
-A Q-table works great for simple games like a 4x4 grid. But what if the state is an image from a camera with millions of pixels? A table would be too massive to fit in memory.
+The **target** is $r+\gamma\max_{a'}Q(s',a')$. Subtracting the old estimate gives the error; multiplying by $\alpha$ determines how far to move toward the target.
 
-To solve this, we replace the Q-table with a **Neural Network**. The network takes the State as input and outputs the Q-values for all possible actions.
+This is a sampled Q-learning update based on Bellman optimality. It is not an assertion that an imperfect estimate already equals its true expected value.
 
-This is called **Deep Q-Network (DQN)**.
+**Terminal rule:** if the transition reaches a true terminal state, the target is just $r$; there is no later task reward to bootstrap from. An external time limit is not automatically the same as task termination. [PyTorch DQN tutorial, final-state handling](https://docs.pytorch.org/tutorials/intermediate/reinforcement_q_learning.html).
 
-- We use a neural network (which requires **GPUs** for fast computation, linking back to our Hardware module).
-- The network learns to approximate the Q-values instead of memorizing them in a table.
+## 3. Choosing actions: exploration and exploitation
 
-## 5. Where We Stop
+**Exploitation** chooses an action with a currently high estimate. **Exploration** tries alternatives to obtain information.
 
-We have now reached the limit of what we can cover in this module.
+One simple rule is **ε-greedy**: with probability $1-\varepsilon$, choose a highest-valued valid action; with probability $\varepsilon$, choose a random valid action. If $\varepsilon=0.1$, the random-choice branch is used about 10% of the time; it can still happen to select the greedy action.
 
-To go further, you would need to learn about:
+Q-learning uses the experienced reward and transition. Its target uses the largest next-action estimate even when the behavior policy actually selects another next action. This makes it an off-policy method. [David Silver, Model-Free Control, slides 10 and 34–37](https://davidstarsilver.wordpress.com/wp-content/uploads/2025/04/lecture-5-model-free-control-.pdf).
 
-- **Policy Gradient methods** (like PPO) — used in modern LLMs.
-- **Actor-Critic methods** (like SAC) — used in advanced robotics.
+## 4. A complete small learning procedure
 
-These require a deep understanding of calculus, linear algebra, and neural network architecture, and are active research areas. For now, just understand the loop: **Observe -> Act -> Reward -> Update.**
+1. Initialize the Q-table, often with zeros, and choose $\alpha$, $\gamma$ and an exploration rule.
+2. Start an episode and observe its first state.
+3. Select a valid action using the behavior policy, such as ε-greedy.
+4. Execute it and observe the reward, next state and termination signal.
+5. Form the target: reward only if terminal; otherwise reward plus the discounted largest next-state estimate.
+6. Update the experienced table entry.
+7. If the task terminated, end the episode. Otherwise use the next state and repeat from step 3.
+8. Collect more episodes to improve the estimates.
 
-## 6. Check Your Understanding
+![Original flow diagram of the observed transition, terminal check and Q-learning update](assets/q-learning-update.svg)
 
-**Question:** Imagine a robot using Q-learning. It is at State A. It takes Action X and receives a reward of +10. The next state is State B, which has a maximum Q-value of 50. The discount factor ($\gamma$) is 0.9.
-If the old Q-value for (State A, Action X) was 20, what is the new Q-value? (Assume learning rate $\alpha = 1$ for simplicity).
+*Original teaching diagram. Only the experienced entry is changed by this update.*
 
-*(Answer: New Q = Old Q + 1 * [Reward + 0.9 * max Q(next) - Old Q] = 20 + [10 + 0.9 * 50 - 20] = 20 + [10 + 45 - 20] = 20 + 35 = 55. The agent now values this action much more!)*
+A short run is not guaranteed to find optimal values. The tabular convergence result requires suitable assumptions, including sufficient exploration and appropriate learning rates. We use simple constant rates for arithmetic demonstrations, not as a proof of convergence. [Watkins and Dayan, 1992, convergence theorem](https://www.gatsby.ucl.ac.uk/~dayan/papers/cjch.pdf).
+
+## 5. Worked episode: retaining the result 55
+
+This is an illustrative two-step task, separate from the introductory maze's reward scheme. Initially:
+
+| State | Action | Current estimate |
+|---|---|---:|
+| A | X | 20 |
+| A | Y | 12 |
+| B | left | 50 |
+| B | right | 30 |
+
+Take $\alpha=1$ and $\gamma=0.9$. The behavior policy selects X in A. It receives reward 10 and reaches **nonterminal** B.
+
+$$
+\text{target}=10+0.9(50)=55
+$$
+
+$$
+Q(A,X)=20+1(55-20)=55.
+$$
+
+At B, suppose the policy selects left, receives reward 50 and reaches the terminal exit. Its target is 50, so $Q(B,\mathrm{left})=50+1(50-50)=50$. The episode ends.
+
+| Step | Experienced transition | Target | Updated entry |
+|---|---|---:|---|
+| 1 | A, X → reward 10, B, nonterminal | 55 | $Q(A,X):20\rightarrow55$ |
+| 2 | B, left → reward 50, terminal exit | 50 | $Q(B,\mathrm{left}):50\rightarrow50$ |
+
+The other two entries remain unchanged. The value 55 uses current estimates; a different outcome or later evidence could change them.
+
+## 6. Worked terminal update
+
+In a separate transition, an entry has old value 20, reward 10 and learning rate 0.5. The next state is terminal:
+
+$$
+\text{target}=10,\qquad
+Q_{\mathrm{new}}=20+0.5(10-20)=15.
+$$
+
+Adding a future-state estimate here would invent rewards after the task has ended.
+
+## 7. Your turn
+
+1. **QL-1:** Old Q is 5; reward is 4; the next state is nonterminal with largest Q estimate 15; $\gamma=0.8$ and $\alpha=0.5$. Calculate the target and new Q.
+2. **QL-2:** Repeat QL-1 if the transition instead terminates the task.
+3. **QL-3:** The greedy action currently looks best. Why still explore?
+4. **QL-4:** In the worked episode, which entries changed? Does one episode establish an optimal policy?
+
+Try the questions before opening the [explained answers](ANSWER-KEY.md#ql-1).
+
+## 8. From tables to neural networks
+
+A table becomes impractical when there are enormous numbers of distinct observations. A neural network can instead share parameters across inputs and approximate action values.
+
+Standard DQN uses a finite, discrete action set and predicts a value for each available action. Continuous motor commands require different treatment or an explicit discretization. Neural networks do not make every unseen prediction correct, and large models are not necessary for this table-based example. [Spinning Up, action spaces](https://spinningup.openai.com/en/latest/spinningup/rl_intro.html#action-spaces).
+
+## 9. Scope boundaries
+
+- **Detailed:** Q-table, sampled update, ε-greedy actions, terminal handling and arithmetic.
+- **Brief:** convergence assumptions and the connection with DQN.
+- **Out of scope:** convergence proofs, full Bellman derivations, continuous control, PPO/SAC derivations and production training.
+
+[Next: On-policy and off-policy learning](POLICY-RULE.md)

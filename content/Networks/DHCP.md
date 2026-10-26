@@ -1,6 +1,10 @@
 # DHCP (Dynamic Host Configuration Protocol) — A Micro-Textbook for Beginners
 
-This is the first draft of our DHCP content, intended for `/content/Networks/DHCP.md`. It explains how devices automatically obtain IP addresses and other network settings. This section focuses on **DHCP for IPv4 (DHCPv4)**.
+This chapter explains how devices automatically obtain IP addresses and other network settings. It focuses on **DHCP for IPv4 (DHCPv4)**.
+
+**Status:** Revised with AI-assisted technical checks; awaiting team peer review.
+
+[Module outline and reading order](OUTLINE.md) · [Explained answers](ANSWER-KEY.md)
 
 ---
 
@@ -36,6 +40,10 @@ A typical new DHCPv4 lease begins with four messages, often remembered as **DORA
 
 DHCPv4 uses **UDP port 67 on the server** and **UDP port 68 on the client**.
 
+![A typical new DHCPv4 allocation: Discover, Offer, selecting Request and ACK](assets/dhcp-dora.svg)
+
+*Original teaching diagram. The selecting Request is broadcast; later renewal behavior differs.*
+
 A server can also serve clients on another subnet through a **DHCP relay agent**, which passes DHCP messages between them. Not every DHCP message is broadcast; later exchanges can use direct communication. [DHCP specification: RFC 2131](https://www.rfc-editor.org/rfc/rfc2131)
 
 ---
@@ -64,6 +72,8 @@ Sometimes a device, such as a printer, needs a predictable address. A **DHCP res
 
 A reservation still uses DHCP. A **static IP configuration**, by contrast, is entered directly on the device. [Microsoft DHCP overview](https://learn.microsoft.com/en-us/windows-server/networking/technologies/dhcp/dhcp-top)
 
+**Worked scenario:** A client receives a two-hour lease at 09:00. It attempts renewal before 11:00. A successful renewal extends the assignment; if no renewal succeeds and the original lease expires at 11:00, the client must stop using that address. It must obtain valid configuration again before using a DHCP-assigned address. These times are illustrative and do not prescribe the detailed renewal timers.
+
 ---
 
 ## 5. Common Misconceptions
@@ -79,10 +89,12 @@ A reservation still uses DHCP. A **static IP configuration**, by contrast, is en
 2. **Name three settings besides an IP address** that DHCP can provide, and explain their purpose.
 3. **Explain a lease:** What happens if it expires without renewal, and how does a reservation differ from manually configuring a static address?
 
+[Explained answers: DHCP Q1–Q3](ANSWER-KEY.md#dhcp)
+
 ---
 
 ## 7. Scope Boundaries
 
 - **Detailed:** DHCPv4 client-server roles, address pools, DORA, common network settings, leases and renewal.
-- **Brief:** DHCP reservations, relay agents, DHCPv6 as a separate protocol.
+- **Brief:** DHCP reservations and relay agents.
 - **Out of scope:** DHCP server configuration files, packet-field formats, detailed renewal timers, failover mechanisms, DHCPv6 and SLAAC operation.

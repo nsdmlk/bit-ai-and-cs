@@ -1,5 +1,9 @@
 # Where hardware meets AI and networks
 
+**Status:** Revised on 26 October 2026 with AI-assisted technical checks; awaiting team peer review.
+
+[Reading order](../OUTLINE.md) · [Teaching-machine conventions](../OUTLINE.md#teaching-machine-conventions) · [Explained answers](../ANSWER-KEY.md#h08-03)
+
 **Learning objective:** after this section, a beginner should be able to explain how the hardware topics connect to the AI and networks parts of the project.
 
 ## 1. Why this matters
@@ -12,7 +16,7 @@ Here is where hardware meets the other two parts.
 
 **Hardware ↔ AI:**
 
-- AI models are mostly **matrix math**, so they run best on hardware built for parallel work: **GPUs** and **AI accelerators**.
+- Large neural-network workloads often benefit from parallel **matrix math** on GPUs or accelerators. Small tabular RL and control-heavy work can run efficiently on CPUs; the right device depends on the workload.
 - The **memory hierarchy** matters: AI models are huge, and moving data between RAM, cache, and the chip is often the bottleneck.
 - **Performance** matters: instruction count, CPI, and clock period apply to AI workloads too — but on a GPU, the "instructions" are parallel operations on many values.
 
@@ -20,14 +24,16 @@ Here is where hardware meets the other two parts.
 
 - The **network card (NIC)** is the hardware that connects a computer to a network.
 - **Latency and bandwidth** describe network performance, and they depend on hardware: the NIC, the cables, the switches.
-- **Buses** inside the computer connect the NIC to the CPU and memory — the same buses you learned about in the CPU files.
+- **Interconnects** connect the NIC to the host system, often using PCIe. The address/data/control model introduced earlier gives the idea of communication, but a real NIC connection need not use those exact separate buses.
 - In data centers, networks connect thousands of machines; the hardware of those networks decides how fast AI training can run across many GPUs.
 
-**The common thread:** every AI model runs on hardware, and every network message travels through hardware. Software decides *what* to do; hardware decides *how fast* it can be done.
+**The common thread:** every AI model runs on hardware, and every network message travels through hardware. Algorithms, software implementation, data movement and hardware together determine execution time.
 
 ## 3. Diagram
 
-<img width="1536" height="1024" alt="微信图片_20261024203106_2531_8" src="https://github.com/user-attachments/assets/bdce8eee-be7e-497c-9005-8fad1d35baa0" />
+![Learning across two networked machines](../assets/h08-03-where-hardware-meets-ai-and-networks.svg)
+
+*Original teaching diagram created for the 26 October revision. Read the stated model assumptions alongside it.*
 
 
 ## 4. Example
@@ -35,12 +41,14 @@ Here is where hardware meets the other two parts.
 Training an AI model across multiple machines:
 
 - **Hardware:** each machine has GPUs and a NIC.
-- **AI:** the model is split across GPUs, which do the matrix math in parallel.
+- **AI:** work may be split by data (replicas process different batches) or by model (different GPUs hold different parts). Both can require communication.
 - **Networks:** the GPUs exchange data over the network — latency and bandwidth decide how fast they can cooperate.
 
 If the network is slow (high latency, low bandwidth), the GPUs sit idle waiting for data. The AI is only as fast as the hardware and network allow.
 
 ## 5. Check yourself
+
+Try these first, then use the [explained answers](../ANSWER-KEY.md#h08-03).
 
 1. Why do AI workloads use GPUs and accelerators?
 2. How does the memory hierarchy matter for AI?
@@ -48,7 +56,9 @@ If the network is slow (high latency, low bandwidth), the GPUs sit idle waiting 
 4. How do latency and bandwidth affect AI training across machines?
 5. In your own words: why are hardware, AI, and networks not separate topics?
 
-## 6. References
+## 6. Sources
 
-- Course materials (insert lecture/slide numbers).
-- Patterson & Hennessy, *Computer Organization and Design* — chapters on parallelism and I/O.
+- [NVIDIA CUDA C++ Best Practices Guide, §§2.4 and 3: workload assessment and heterogeneous computing](https://docs.nvidia.com/cuda/cuda-c-best-practices-guide/)
+- [Cornell CS 3410 (Spring 2025), Input/Output: devices, storage and interconnects](https://www.cs.cornell.edu/courses/cs3410/2025sp/notes/io.html)
+
+These sources support the technical concepts; our pseudocode, examples and analogies are teaching simplifications. Course-specific coverage is still to be checked by the team.

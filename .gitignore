@@ -218,3 +218,11 @@ __marimo__/
 
 # Streamlit
 .streamlit/secrets.toml
+
+# Private assessment evidence and generated outputs
+personal_logs/
+private_evidence/
+submission-private/
+rendered/
+*.zip
+.DS_Store

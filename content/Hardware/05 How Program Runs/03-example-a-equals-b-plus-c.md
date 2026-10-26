@@ -1,5 +1,9 @@
 # Worked example: `a = b + c`
 
+**Status:** Revised on 26 October 2026 with AI-assisted technical checks; awaiting team peer review.
+
+[Reading order](../OUTLINE.md) · [Teaching-machine conventions](../OUTLINE.md#teaching-machine-conventions) · [Explained answers](../ANSWER-KEY.md#h05-03)
+
 **Learning objective:** after this section, a beginner should be able to translate a simple line of code into instructions and trace how the values change.
 
 ## 1. Why this matters
@@ -14,17 +18,22 @@ We will trace `a = b + c` with `b = 4`, `c = 6`, and `a` initially 0. Suppose:
 - `c` is at memory address `0x304`
 - `a` is at memory address `0x308`
 
-The compiler produces:
-ad R1, [0x300] # R1 = b
+One possible translation is the following pseudocode:
+
+```text
+load R1, [0x300] # R1 = b
 load R2, [0x304] # R2 = c
 add R3, R1, R2 # R3 = R1 + R2
 store [0x308], R3 # a = R3
+```
 
 We will walk through what happens at each instruction.
 
 ## 3. Diagram
 
-<img width="1774" height="887" alt="微信图片_20261024195641_2493_8" src="https://github.com/user-attachments/assets/b3012ada-c58f-4990-b0bc-979faff360bb" />
+![Teaching translation: a = b + c](../assets/h05-03-example-a-equals-b-plus-c.svg)
+
+*Original teaching diagram created for the 26 October revision. Read the stated model assumptions alongside it.*
 
 ## 4. Example
 
@@ -52,17 +61,21 @@ We will walk through what happens at each instruction.
 - `a` = 10 (at address `0x308`)
 - R1 = 4, R2 = 6, R3 = 10
 
-One line of code → four instructions → one result. That is how every program works, just repeated millions of times.
+One line of code → four instructions → one result. This illustrates the machine-level data flow. A real compiler can change the instruction sequence while preserving the required program behaviour.
 
 ## 5. Check yourself
+
+Try these first, then use the [explained answers](../ANSWER-KEY.md#h05-03).
 
 1. Why are there two `load` instructions before the `add`?
 2. What are the values of R1, R2, R3 after step 3?
 3. What does the `store` instruction do?
-4. If `b` and `c` were already in registers, how many instructions would be needed?
+4. If `b` and `c` were already in registers, how many instructions are needed when `a` must be stored in memory? What if the result may remain in a register?
 5. What is the final value of `a`?
 
-## 6. References
+## 6. Sources
 
-- Course materials (insert lecture/slide numbers).
-- Patterson & Hennessy, *Computer Organization and Design* — chapter on instructions.
+- [MIT OpenCourseWare, 6.004 (Spring 2017), 11.1 Compilers](https://ocw.mit.edu/courses/6-004-computation-structures-spring-2017/pages/c11/c11s1/)
+- [RISC-V International, RV32I specification v20260120, programmer model and load/store instructions](https://docs.riscv.org/reference/isa/v20260120/unpriv/rv32.html)
+
+These sources support the technical concepts; our pseudocode, examples and analogies are teaching simplifications. Course-specific coverage is still to be checked by the team.

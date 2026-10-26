@@ -1,42 +1,77 @@
+# Deep Q-Networks: Replacing a Table with an Approximation
 
-# Deep Q-Network (DQN)
+Previous: [On-policy and off-policy](POLICY-RULE.md) · [Module map](OUTLINE.md) · Next: [Robotics case study](ROBOT.md)
 
-In Q-Learning, we used a **Q-table** to store the value of every state-action pair. But imagine a robot with a camera. The "state" is an image with millions of pixels. A Q-table would need billions of rows—it would not fit in any computer's memory.
+**Status:** revised with AI-assisted technical checks; awaiting team peer review.
 
-How do we solve this? We replace the table with a **Neural Network**.
+**Prerequisites:** a Q-table, a Q-learning target, exploration and task termination.
 
-This is the core idea behind **Deep Q-Network (DQN)**.
+## Learning objectives
 
-## 1. From Table to Network
+After this chapter, you should be able to:
 
-Instead of looking up a value in a table, we pass the state (e.g., the pixels of a game screen) into a neural network. The network outputs the Q-values for all possible actions.
+1. Explain why a separate table entry for every camera input becomes impractical.
+2. Describe a DQN's input and discrete-action outputs.
+3. Explain the different roles of replay memory, the online network and target network.
+4. Distinguish a published DQN result from our own unperformed experiments.
 
-- **Input:** The current state (e.g., a screenshot).
-- **Output:** A vector of Q-values (e.g., [Move Left: 5.2, Move Right: 1.1, Jump: -3.0]).
-- **The "Deep" part:** We use a Deep Neural Network (often a Convolutional Neural Network, CNN) to process the complex input.
+## 1. From table to network
 
-## 2. Why Hardware Matters (The Link to Module 1)
+A camera can produce an enormous number of distinct images. The problem is not simply the number of pixels: it is the number of possible input configurations. Storing a separate value for every image–action pair is impractical.
 
-Training a DQN requires millions of calculations. If we use a CPU (Central Processing Unit), it will take weeks.
+A **deep Q-network (DQN)** instead approximates action values using shared neural-network parameters. For an illustrative action set {left, right, stop}, one forward calculation might output {5.2, 1.1, −3.0}. A greedy policy would choose left; an exploratory policy might choose something else.
 
-This is why we need **GPUs** (Graphics Processing Units) and frameworks like **CUDA**. GPUs can perform thousands of matrix multiplications in parallel, making it possible to train DQN agents in hours instead of months. *(This is exactly why our module connects Hardware, Networks, and AI).*
+This standard architecture assumes a finite, discrete action set. It does not directly enumerate every possible continuous motor command.
 
-## 3. Two Tricks that Make DQN Work
+An individual screenshot may omit motion information. The Atari DQN used a representation based on recent frames. Approximation can support generalization across inputs, but does not guarantee correct values on unseen situations. [David Silver, Value Function Approximation, slides 37–38](https://davidstarsilver.wordpress.com/wp-content/uploads/2025/04/lecture-6-value-function-approximation-.pdf).
 
-If you just replace the Q-table with a neural network, the training often fails. It becomes unstable. To fix this, the researchers who invented DQN (DeepMind, 2015) introduced two crucial tricks:
+## 2. Why two networks and a memory?
 
-**Trick 1: Experience Replay**
-The agent stores its experiences `(State, Action, Reward, Next State)` in a memory buffer. Instead of learning from one action immediately, it randomly samples a "batch" of past memories. This breaks the correlation between consecutive actions and stabilizes the neural network.
+Neural-network Q-learning can be unstable. The 2015 DQN system combined two mechanisms:
 
-**Trick 2: Target Network**
-We use two neural networks. The main network is learning. The "Target" network is a frozen copy that is updated only occasionally. This prevents the network from chasing a moving target while it learns.
+- **Experience replay:** store transitions, then mix past experiences by sampling minibatches. This reduces correlations between consecutive training samples and permits reuse.
+- **Separate target network:** compute targets with a copy whose parameters change less often than the online network's. This reduces the movement of the targets during learning.
 
-## 4. Real-World Application
+These mechanisms help stabilize training; they do not guarantee success in every problem. DQN was presented in 2013 and developed in the 2015 Nature paper. Replay was not invented by that paper. [Mnih et al., 2013](https://arxiv.org/abs/1312.5602); [Mnih et al., 2015, main text and Methods](https://deepmind-media.storage.googleapis.com/dqn/DQNNaturePaper.pdf).
 
-DQN was famously used to play classic Atari games (like Breakout and Pong) directly from the pixels on the screen, achieving superhuman performance without any human instructions on how to play. Today, the concepts from DQN are used in robotics, autonomous driving, and even in training Large Language Models (RLHF).
+## 3. One training cycle in plain language
 
-## 5. Check Your Understanding
+1. Select an action using the behavior policy.
+2. Store the observation, action, reward, next observation and whether the task truly terminated.
+3. Sample a mixed batch from replay memory.
+4. Compute a target for each sample using the target network; a terminal sample uses reward alone.
+5. Adjust the **online network** so its action-value predictions move toward those targets.
+6. Periodically copy its parameters into the **target network**.
 
-**Question:** Why can't we use a standard Q-table for a robot that uses a high-resolution camera as its eyes?
+The online network is adjusted directly by training. The target network supplies a more slowly changing reference. Some implementations use gradual copying instead; our description follows the periodic-copy idea.
 
-*(Answer: The state space (all possible camera images) is too massive. A table would require an impossible amount of memory. A neural network can approximate the Q-values for unseen states.)*
+For example, a nonterminal sample with reward 2, discount 0.9 and largest target-network estimate 5 has target 6.5. If it terminates the task, its target is 2. [PyTorch DQN tutorial, replay and optimization](https://docs.pytorch.org/tutorials/intermediate/reinforcement_q_learning.html).
+
+## 4. Hardware helps, but scale matters
+
+Training time depends on the task, simulation, network, software and hardware. GPUs can accelerate large neural-network computations. Small teaching examples can run on a CPU; the official PyTorch tutorial includes a CPU fallback.
+
+**CUDA** is NVIDIA's platform for GPU computing, with programming tools and libraries. It is not a requirement for every neural network, and a CPU-versus-GPU time claim needs a specified experiment. [PyTorch device selection](https://docs.pytorch.org/tutorials/intermediate/reinforcement_q_learning.html); [NVIDIA CUDA](https://developer.nvidia.com/cuda).
+
+## 5. What the research demonstrated
+
+Atari DQN learned from visual inputs and reward signals, without a separately written playing strategy for each game. Its performance varied across games; it exceeded the human tester on some. These are published research results, not measurements produced by our team. [Mnih et al., 2015, Atari evaluation](https://deepmind-media.storage.googleapis.com/dqn/DQNNaturePaper.pdf).
+
+Other RL methods also learn from rewards. For example, InstructGPT's feedback-training study used **PPO**, which is a different method from DQN. Mentioning RLHF does not establish that it uses DQN. [Ouyang et al., 2022, training overview](https://arxiv.org/html/2203.02155v1#S3.SS1).
+
+## 6. Check yourself
+
+1. **DQN-1:** Why does a high-resolution camera make a Q-table difficult to use?
+2. **DQN-2:** What does mixing replay samples help with?
+3. **DQN-3:** Which network is trained directly, and which computes the target?
+4. **DQN-4:** Does DQN require a GPU? What information would support a meaningful runtime comparison?
+
+[Explained answers](ANSWER-KEY.md#dqn-1)
+
+## 7. Scope boundaries
+
+- **Detailed:** value approximation, discrete outputs, replay and target-network roles.
+- **Brief:** hardware scaling, Atari results and the distinction from PPO/RLHF.
+- **Out of scope:** backpropagation derivations, loss-function details, continuous-action algorithms and implementing a production training system.
+
+[Next: Robotics case study](ROBOT.md)

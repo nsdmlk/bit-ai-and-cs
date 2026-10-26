@@ -1,5 +1,9 @@
 # Worked examples: putting it all together
 
+**Status:** Revised on 26 October 2026 with AI-assisted technical checks; awaiting team peer review.
+
+[Reading order](../OUTLINE.md) · [Teaching-machine conventions](../OUTLINE.md#teaching-machine-conventions) · [Explained answers](../ANSWER-KEY.md#h09-01)
+
 **Learning objective:** after this section, a beginner should be able to solve mixed problems that combine tracing, memory, performance, and pipelining.
 
 ## 1. Why this matters
@@ -20,7 +24,9 @@ The examples below show this checklist in action.
 
 ## 3. Diagram
 
-<img width="1774" height="887" alt="微信图片_20261024203559_2539_8" src="https://github.com/user-attachments/assets/41af22d3-7cfd-44ad-86ec-3547be72d3fb" />
+![A mixed worked example](../assets/h09-01-worked-examples.svg)
+
+*Original teaching diagram created for the 26 October revision. Read the stated model assumptions alongside it.*
 
 
 ## 4. Example
@@ -32,7 +38,7 @@ The examples below show this checklist in action.
 **Fetch:** PC `0x100` → memory → IR; PC becomes `0x104`.
 **Decode:** control unit sees: load, address `0x200`, destination R1.
 **Execute:** address `0x200` → address bus; memory returns 42 → data bus; R1 = 42.
-**Result:** R1 = 42, PC = `0x104`. The ALU was not used.
+**Result:** R1 = 42, PC = `0x104`. This absolute-address pseudocode omits address arithmetic; a real load may use an ALU or AGU to calculate its address.
 
 ### Example 2 — performance calculation
 
@@ -52,22 +58,27 @@ CPU B is faster despite the lower clock, because its CPI is much better.
 
 ### Example 4 — pipeline throughput
 
-1,000 instructions, 3 phases each.
+Assume 1,000 independent instructions, three one-cycle stages, equal cycle duration in both designs, and no stalls or resource conflicts.
 
 - Without pipeline: 1,000 × 3 = 3,000 cycles.
 - With a 3-stage pipeline (ideal): about 1,000 + 2 = 1,002 cycles.
 
-Latency per instruction is unchanged; throughput is about 3× higher.
+In this ideal model latency is unchanged and total-time speedup is approximately 3×. Real register overhead, dependencies and stalls can change the result.
 
 ## 5. Check yourself
+
+Try these first, then use the [explained answers](../ANSWER-KEY.md#h09-01).
 
 1. Trace `ADD R2, R3` with R2 = 4, R3 = 9, instruction at `0x400`. Final values and PC?
 2. Program: 2,000,000 instructions, CPI = 2, clock = 4 GHz. Execution time?
 3. CPU A: 4 GHz, CPI = 2. CPU B: 2 GHz, CPI = 0.5. Same program. Which is faster? Show the calculation.
-4. Why does a pipeline not reduce latency but still make the program faster?
-5. In Example 1, why is the ALU not used?
+4. Why does our ideal pipeline improve throughput while leaving latency unchanged, and why might real latency differ?
+5. What does Example 1 omit about effective-address calculation in a real load?
 
-## 6. References
+## 6. Sources
 
-- Course materials (insert lecture/slide numbers).
-- Patterson & Hennessy, *Computer Organization and Design* — chapters on the processor, performance, and pipelining.
+- [MIT OpenCourseWare, 6.004 (Spring 2017), 13.1 Building the Beta](https://ocw.mit.edu/courses/6-004-computation-structures-spring-2017/pages/c13/c13s1/)
+- [Intel VTune Profiler, CPU Metrics Reference: cycles per instructions retired](https://www.intel.com/content/www/us/en/docs/vtune-profiler/user-guide/2024-2/cpu-metrics-reference.html)
+- [Cornell CS 3410 (Spring 2026), Pipelining & Performance](https://www.cs.cornell.edu/courses/cs3410/2026sp/notes/pipelining.html)
+
+These sources support the technical concepts; our pseudocode, examples and analogies are teaching simplifications. Course-specific coverage is still to be checked by the team.
