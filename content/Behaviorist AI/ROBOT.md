@@ -29,7 +29,7 @@ A team member reports building a computer-vision system during high school for a
 
 These are reported historical details. The current repository contains the description, not the referenced code or an independently checked dataset count. Keep the approximate image count attached to the account until its meaning is confirmed.
 
-![Sample detection from the reported vision system](<content/Behaviorist AI/sample.gif>)
+![Sample detection from the reported vision system](/content/Behaviorist%20AI/sample.gif)
 
 *Figure 1. Sample of the reported vision system. Supplied by the team member; not independently verified.*
 
@@ -48,7 +48,7 @@ The intended data flow is:
 
 **camera observations → detection filtering → calibrated target → path generation → robot movement → mechanism control**
 
-![Robot algorithm overview](<content/Behaviorist AI/robot_algorithm.gif>)
+![Robot algorithm overview](/content/Behaviorist%20AI/robot_algorithm.gif)
 
 *Figure 2. The robot algorithm as a sequence of stages. Illustrates the intended data flow, not a verified code review.*
 
@@ -91,7 +91,7 @@ $$
 
 For this formula, the robot's positive x-axis points forward, its positive y-axis points left, and $\theta$ is its counterclockwise heading from the field's positive x-axis. The displacement already includes the necessary calibrated offsets.
 
-![Second autonomous run](<content/Behaviorist AI/auto2.gif>)
+![Second autonomous run](/content/Behaviorist%20AI/auto2.gif)
 
 *Figure 3. Autonomous run showing the robot moving toward a target. Supplied by the team member; the coordinate frames shown may differ from the teaching model above.*
 
@@ -114,11 +114,11 @@ If the cached target is no longer valid, detect again or follow a defined fallba
 
 Path generation also does not automatically extend slides or close a claw. The intended collection sequence is detect → locate → navigate → extend → orient → grab. Each stage needs its own conditions and coordination. The current account does not provide a measured success rate for this complete sequence.
 
-![Target tracking](<content/Behaviorist AI/tracking.gif>)
+![Target tracking](/content/Behaviorist%20AI/tracking.gif)
 
 *Figure 4. Target tracking during a run.*
 
-![Autonomous collection run](<content/Behaviorist AI/auto.gif>)
+![Autonomous collection run](/content/Behaviorist%20AI/auto.gif)
 
 *Figure 5. Autonomous run through the collection sequence. This shows one run, not a measured success rate.*
 
