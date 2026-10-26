@@ -1,4 +1,4 @@
-# Narrative Plan — Stage 1 Teaching Deck
+# Narrative Plan — Stage 1 Classroom Progress Report
 
 ## Audience
 
@@ -8,18 +8,18 @@ reinforcement learning.
 ## Objective
 
 Show one coherent route from physical computation to networked information and learned
-behaviour, while keeping the important labels, examples, and formulas editable in the
-presentation.
+behaviour while reporting actual project progress. The prerecorded report must be no
+longer than four minutes and must include readable evidence from the repository and
+Markdown Content V1.0.
 
-## Narrative arc
+## Four-minute narrative arc
 
-1. Establish the three-part learning route.
-2. Make CPU execution visible with a fetch–decode–execute trace.
-3. Explain why performance depends on work and time, not only GHz.
-4. Follow a web request through layers, IP, transport, DNS, and HTTP/TLS.
-5. Introduce the agent–environment loop and Q-learning.
-6. Integrate the parts in a robot observation-to-action example.
-7. Close with retrieval questions and the source Markdown path.
+1. Open with the sensor-to-action question.
+2. Identify the three modules, intended learners, and current repository structure.
+3. Show actual Markdown, local assets, and one meaningful development change.
+4. Demonstrate the Hardware ADD/LOAD trace, briefly linking it to HTTPS and Q-learning.
+5. Explain the earlier architectural weakness and the revision made after the B1 review.
+6. End with Stage 2 priorities for 7 November and the integrated system visual.
 
 ## Source plan
 
@@ -37,10 +37,12 @@ replacement of abstract deck motifs.
 
 ## Video connection
 
-Each major slide group has a matching storyboard in `../videos/`. The videos reuse the
-same ADD trace, HTTPS trace, and Q-learning update rather than unrelated examples.
+The classroom report reuses selected visuals from the storyboards in `../videos/`.
+The longer module storyboards are production sources; they are not separate classroom
+lectures and must not make the four-minute report exceed its limit.
 
 ## Status
 
-This is a Stage 1 production structure and editable deck. It does not claim that an
-MP4 has been recorded, edited, compressed, or independently reviewed.
+This is a Stage 1 production structure and editable deck. The final classroom version
+must be exported as an MP4, watched from beginning to end, checked for clear audio and
+readable visuals, and placed in `TeamName_Stage1_StatusReport` with any required media.

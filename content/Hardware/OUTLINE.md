@@ -2,7 +2,7 @@
 
 **Status:** Revised on 26 October 2026 with AI-assisted technical checks; awaiting team peer review. This is a revision, not the original 24 October submission.
 
-Start with the [introduction](INTRODUCTION.md). The nine section folders contain 33 lessons. The [answer key](ANSWER-KEY.md) covers all lesson questions and the final self-test. The authoring template is not part of the learner reading order.
+Start with the [introduction](INTRODUCTION.md). The nine section folders contain 33 lessons. The [answer key](ANSWER-KEY.md) covers all lesson questions and the final self-test.
 
 ## Learners and learning goals
 

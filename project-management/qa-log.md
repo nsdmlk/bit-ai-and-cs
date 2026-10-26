@@ -28,13 +28,17 @@ and continuation structure against the teacher's Stage 1 requirements.
 had not built and presented the required project framework and continuation structure.
 
 **Correction:** the team redesigned the repository architecture, whole-project outline,
-module maps, answer keys, QA records, asset provenance, resource map, and resubmission
+module maps, answer keys, QA records, asset provenance, resource map, and current project
 plan. Other members revised the structures for their own modules in parallel.
 
 **Status:** this is a genuine historical architecture review. It is not a substitute
 for checking the revised Hardware, Networks, and Behaviourist AI learning anchors. A
 separate final content review remains pending below.
 
-## Team peer review — pending
+## Current content review status
 
-No reviewer name, date, approval or outcome has been entered because no completed review of this revision has been supplied. Use the [peer-review form](peer-review-template.md) and append the real outcome below after review. A review may confirm correctness; it need not invent a defect.
+The completed historical review is recorded in [team review record](peer-review-record.md).
+It covers the project architecture and presentation of the work. It does not claim that
+every current chapter, calculation, citation, or exported page has received a separate
+independent content check. The three anchor checks remain explicit tasks in `TASKS.md`;
+their result must be recorded only after the reviewer actually completes them.
