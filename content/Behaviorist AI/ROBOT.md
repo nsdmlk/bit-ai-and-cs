@@ -29,13 +29,9 @@ A team member reports building a computer-vision system during high school for a
 
 These are reported historical details. The current repository contains the description, not the referenced code or an independently checked dataset count. Keep the approximate image count attached to the account until its meaning is confirmed.
 
-### Robot Sample
+![Sample detection from the reported vision system](<content/Behaviorist AI/sample.gif>)
 
-<p align="center">
-  <img src="content/Behaviorist%20AI/sample.gif" width="700" alt="FTC robot sample demonstration">
-</p>
-
-*Illustrative robot demonstration.*
+*Figure 1. Sample of the reported vision system. Supplied by the team member; not independently verified.*
 
 ## 2. How the components connect
 
@@ -52,17 +48,13 @@ The intended data flow is:
 
 **camera observations → detection filtering → calibrated target → path generation → robot movement → mechanism control**
 
+![Robot algorithm overview](<content/Behaviorist AI/robot_algorithm.gif>)
+
+*Figure 2. The robot algorithm as a sequence of stages. Illustrates the intended data flow, not a verified code review.*
+
 The described Vision class receives detections, filters unwanted colors, calculates a target using the estimated pose and offsets, generates a path and caches the last suitable target. This is a description of the reported design, not a verified code review.
 
 The official Limelight guide documents color and neural-network pipelines, Java results and result age. Those capabilities make such integration plausible; they do not prove which pipeline or model the earlier project used. Current FTC examples use the Limelight3A name, so the owner should confirm the exact historical camera and software version. [Limelight FTC programming guide](https://docs.limelightvision.io/docs/docs-limelight/apis/ftc-programming).
-
-### Robot Algorithm
-
-<p align="center">
-  <img src="content/Behaviorist%20AI/robot_algorithm.gif" width="700" alt="Robot algorithm demonstration">
-</p>
-
-*Illustrates the algorithmic workflow of the robot.*
 
 ## 3. A detection is not yet a field position
 
@@ -76,18 +68,18 @@ First define:
 - The coordinate frame of that displacement.
 - Any offset between camera, robot centre, claw and collection target.
 
-Let \(\mathbf p_{\mathrm{robot}}\) be a two-dimensional field position and \(\Delta\mathbf p_{\mathrm{field}}\) be a calibrated displacement expressed in the **same field frame and units**:
+Let $\mathbf p_{\mathrm{robot}}$ be a two-dimensional field position and $\Delta\mathbf p_{\mathrm{field}}$ be a calibrated displacement expressed in the **same field frame and units**:
 
-\[
+$$
 \mathbf p_{\mathrm{target}}=
 \mathbf p_{\mathrm{robot}}+\Delta\mathbf p_{\mathrm{field}}.
-\]
+$$
 
 This addition assumes the sensor conversion has already happened. It does not perform that conversion. A **pose** contains position and heading; the position vector in this equation contains only two spatial coordinates.
 
 If the displacement is instead expressed relative to the robot, rotate it into the field frame first:
 
-\[
+$$
 \mathbf p_{\mathrm{target}}=
 \mathbf p_{\mathrm{robot}}+
 \begin{bmatrix}
@@ -95,26 +87,22 @@ If the displacement is instead expressed relative to the robot, rotate it into t
 \sin\theta&\cos\theta
 \end{bmatrix}
 \mathbf d_{\mathrm{robot}}.
-\]
+$$
 
-For this formula, the robot's positive x-axis points forward, its positive y-axis points left, and \(\theta\) is its counterclockwise heading from the field's positive x-axis. The displacement already includes the necessary calibrated offsets.
+For this formula, the robot's positive x-axis points forward, its positive y-axis points left, and $\theta$ is its counterclockwise heading from the field's positive x-axis. The displacement already includes the necessary calibrated offsets.
+
+![Second autonomous run](<content/Behaviorist AI/auto2.gif>)
+
+*Figure 3. Autonomous run showing the robot moving toward a target. Supplied by the team member; the coordinate frames shown may differ from the teaching model above.*
 
 This is a teaching model, not a claim about the missing Vision code. Actual FTC and Pedro frames may differ; use the coordinate conventions and units of the version being integrated. [Pedro coordinate reference](https://pedropathing.com/docs/pathing/reference/coordinates).
 
-### Target Localization Demonstration
-
-<p align="center">
-  <img src="content/Behaviorist%20AI/auto%202.gif" width="700" alt="Robot target calculation and localization demonstration">
-</p>
-
-*Illustrates autonomous target positioning.*
-
 ## 4. Worked geometry example
 
-Use an illustrative field frame with centimetres. The robot position is \((20,30)\) and a calibrated target lies 10 cm forward in the robot frame.
+Use an illustrative field frame with centimetres. The robot position is $(20,30)$ and a calibrated target lies 10 cm forward in the robot frame.
 
-- Heading 0°: forward points along field +x, giving target \((30,30)\).
-- Heading 90°: forward points along field +y, giving target \((20,40)\).
+- Heading 0°: forward points along field +x, giving target $(30,30)$.
+- Heading 90°: forward points along field +y, giving target $(20,40)$.
 
 The target changes when the robot turns even though the robot-relative displacement stays the same. These numbers are original teaching examples, not measurements from the FTC project. Convert units when integrating a library with other distance conventions.
 
@@ -126,21 +114,13 @@ If the cached target is no longer valid, detect again or follow a defined fallba
 
 Path generation also does not automatically extend slides or close a claw. The intended collection sequence is detect → locate → navigate → extend → orient → grab. Each stage needs its own conditions and coordination. The current account does not provide a measured success rate for this complete sequence.
 
-### Target Tracking
+![Target tracking](<content/Behaviorist AI/tracking.gif>)
 
-<p align="center">
-  <img src="content/Behaviorist%20AI/tracking.gif" width="700" alt="Robot target tracking demonstration">
-</p>
+*Figure 4. Target tracking during a run.*
 
-*Illustrates target tracking and the use of successive observations.*
+![Autonomous collection run](<content/Behaviorist AI/auto.gif>)
 
-### Autonomous Robot Control
-
-<p align="center">
-  <img src="content/Behaviorist%20AI/auto.gif" width="700" alt="FTC robot autonomous control demonstration">
-</p>
-
-*Illustrates an autonomous robot sequence.*
+*Figure 5. Autonomous run through the collection sequence. This shows one run, not a measured success rate.*
 
 ## 6. Where reinforcement learning could fit
 
@@ -171,4 +151,8 @@ Do not invent these items or infer a result from the intended sequence. A small 
 
 ## 9. Scope boundaries
 
-- **Detailed:** component roles, implementation/evidence boundaries, compatible frames and
+- **Detailed:** component roles, implementation/evidence boundaries, compatible frames and a worked coordinate example.
+- **Brief:** result freshness, mechanism coordination and a possible RL extension.
+- **Out of scope:** reproducing the historical robot, full camera calibration, a complete control implementation or claims of measured training performance.
+
+[Return to the module map](OUTLINE.md)
