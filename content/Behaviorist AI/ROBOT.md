@@ -31,7 +31,6 @@ These are reported historical details. The current repository contains the descr
 
 ![Sample detection from the reported vision system](/content/Behaviorist%20AI/sample.gif)
 
-*Figure 1. Sample of the reported vision system. Supplied by the team member; not independently verified.*
 
 ## 2. How the components connect
 
@@ -50,7 +49,7 @@ The intended data flow is:
 
 ![Robot algorithm overview](/content/Behaviorist%20AI/robot_algorithm.gif)
 
-*Figure 2. The robot algorithm as a sequence of stages. Illustrates the intended data flow, not a verified code review.*
+
 
 The described Vision class receives detections, filters unwanted colors, calculates a target using the estimated pose and offsets, generates a path and caches the last suitable target. This is a description of the reported design, not a verified code review.
 
@@ -93,7 +92,6 @@ For this formula, the robot's positive x-axis points forward, its positive y-axi
 
 ![Second autonomous run](/content/Behaviorist%20AI/auto2.gif)
 
-*Figure 3. Autonomous run showing the robot moving toward a target. Supplied by the team member; the coordinate frames shown may differ from the teaching model above.*
 
 This is a teaching model, not a claim about the missing Vision code. Actual FTC and Pedro frames may differ; use the coordinate conventions and units of the version being integrated. [Pedro coordinate reference](https://pedropathing.com/docs/pathing/reference/coordinates).
 
@@ -116,11 +114,10 @@ Path generation also does not automatically extend slides or close a claw. The i
 
 ![Target tracking](/content/Behaviorist%20AI/tracking.gif)
 
-*Figure 4. Target tracking during a run.*
+
 
 ![Autonomous collection run](/content/Behaviorist%20AI/auto.gif)
 
-*Figure 5. Autonomous run through the collection sequence. This shows one run, not a measured success rate.*
 
 ## 6. Where reinforcement learning could fit
 
