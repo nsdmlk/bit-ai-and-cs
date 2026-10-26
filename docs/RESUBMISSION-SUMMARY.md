@@ -18,6 +18,13 @@
 8. Added a current plan/task list, factual QA record, a real peer-review form and specific Study Guide/PPT/video adaptation plans.
 9. Prepared portable validation and private submission evidence/reporting. The private report identifies the exact source commit and actual package-check results.
 
+The architecture decision was informed by the team's real review meeting on 25 October
+2026 in the evening on B1. The full team attended; Emir Babayev and Alimzhan Nurpeissov
+identified that the first submission overemphasised content and underdeveloped the
+project framework and continuation structure. This later revision records that history
+without claiming that the new 26 October source has already passed its final human
+content review.
+
 ## What is still pending
 
 - Another team member's review of the revised material with a real recorded outcome.

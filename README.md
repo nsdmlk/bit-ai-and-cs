@@ -36,6 +36,8 @@ Roles identify coordination responsibilities. Evidence of actual contributions b
 | `content/Behaviorist AI/` | 6 learner chapters, reading map, explained answers and local figures |
 | [project-management](project-management/PROJECT-PLAN.md) | Current plan, task list, project log and review record |
 | [docs](docs/RESOURCE-MAP.md) | Reuse plans, asset provenance, structural reference and resubmission summary |
+| `slides/` | Editable Stage 1 deck, outline and narrative plan |
+| `videos/` | Video plan and aligned storyboards; no recorded MP4 claimed yet |
 | [QUALITYCHECKLIST.md](QUALITYCHECKLIST.md) | Evidence-based acceptance checks and outstanding requirements |
 | [tools](tools/README.md) | Portable source and link validator |
 
@@ -45,8 +47,14 @@ Images use relative paths. Open the Markdown from this folder or read the render
 
 The existing Stage 1 drafts have been revised with AI assistance. The revised text includes worked examples, activities, explained answers, identifiable references and original local teaching diagrams. The main connected topics are instruction execution, a fresh HTTPS-over-TCP request, and tabular Q-learning.
 
-**Awaiting a real team peer review:** another member must check the revised material and record an actual outcome in the [review record](project-management/qa-log.md). This repository does not claim that AI checks satisfy that requirement.
+**Review status:** on 25 October 2026 in the evening on B1, the full team reviewed the
+first submission after the evaluation. Emir Babayev and Alimzhan Nurpeissov identified
+that the team had concentrated on content while failing to build and present the
+required project framework and continuation structure. The other members then revised
+their own module structures. A separate content-level check of this 26 October source
+revision is still required and is recorded as pending in the QA log. This repository
+does not claim that AI checks satisfy that requirement.
 
-The [task list](project-management/TASKS.md) separates completed source changes from remaining human review, course-scope confirmation and later resource production. Study Guide, slides and video production are planned in the [resource map](docs/RESOURCE-MAP.md); finished PPT and video files are not required for Stage 1 and are not claimed here.
+The [task list](project-management/TASKS.md) separates completed source changes from remaining human review, course-scope confirmation and later resource production. The editable Stage 1 deck and video storyboards are now present; recorded MP4 production remains a later step unless the teacher requires it for this deadline.
 
 The resubmission is a later revision of the original deadline snapshot, not a backdated replacement. See [what changed](docs/RESUBMISSION-SUMMARY.md).

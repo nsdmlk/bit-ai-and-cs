@@ -12,7 +12,8 @@ Revision prepared 26 October 2026. Each state is tied to an artifact or a pendin
 | Working local supporting assets | Revised | Original SVGs; provenance record; validate exported package |
 | Current plan/tasks and reuse across formats | Revised | project-management and docs/RESOURCE-MAP.md |
 | Personal logs/private identifiers absent from public snapshot | Revised | Originals retained privately; old Git history still contains earlier public versions |
-| Another member's review and concrete outcome | **Pending** | Record actual reviewer and result in QA log |
+| Historical team review and concrete outcome | Recorded for 25 October architecture review | QA log records the B1 discussion; do not treat it as final review of the 26 October revision |
+| Independent review of the revised learning material | **Pending** | A different member must attempt the anchors and record the result in QA log |
 | Every member's substantive contribution supported | **Partially evidenced** | Private logs/history/diffs; confirm missing evidence and author/uploader distinctions |
 | Submission report, precise source snapshot and readable content PDF | Packaging step | Private assessment ZIP; final report records what was actually validated |
 | Actual AI interactions and verification included | Current revision documented; historical gaps remain | Private AI-use record and retained evidence; never invent old prompts |

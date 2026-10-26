@@ -19,8 +19,8 @@ After this resource, a beginner should be able to:
 
 | Part | Topics and dependencies | Main activity | Status and open work |
 |---|---|---|---|
-| [Hardware](content/Hardware/OUTLINE.md) | Physical groups → CPU → fetch/decode/execute → memory → program execution → performance → ideal pipelining → AI/network hardware → review | Instruction traces; independent performance calculation; 179 explained check/reflection answers | Revised with AI assistance; team peer review and course-scope confirmation pending |
-| [Networks](content/Networks/OUTLINE.md) | Overview → layers → network scale → IP/routes → transport → DNS → DHCP → HTTP/TLS → SSH | HTTPS trace; subnet comparison; lease-expiry scenario; 30 explained answers | Revised with AI assistance; team peer review pending |
+| [Hardware](content/Hardware/OUTLINE.md) | Physical groups → CPU → fetch/decode/execute → memory → program execution → performance → ideal pipelining → AI/network hardware → review | Instruction traces; independent performance calculation; 179 explained check/reflection answers | Revised with AI assistance; final content peer review and course-scope confirmation pending |
+| [Networks](content/Networks/OUTLINE.md) | Overview → layers → network scale → IP/routes → transport → DNS → DHCP → HTTP/TLS → SSH | HTTPS trace; subnet comparison; lease-expiry scenario; 30 explained answers | Revised with AI assistance; final content peer review pending |
 | [Behaviorist AI](content/Behaviorist%20AI/OUTLINE.md) | RL introduction → agent loop → tabular Q-learning → policy distinction → DQN → qualified robotics account | Nonterminal/terminal updates; policy-target comparison; coordinate exercise | Revised with AI assistance; team peer review and historical robotics evidence pending |
 
 The detailed maps list every chapter, prerequisites, boundaries and examples. Each part has a separate answer key. Attempt the questions before opening the key.
