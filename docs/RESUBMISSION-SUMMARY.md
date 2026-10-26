@@ -25,4 +25,4 @@
 - Any missing authentic contribution/AI records and confirmation of historical robotics details.
 - Team approval and submission of the later revision through the course system.
 
-The repository changes were prepared with significant AI assistance. Human authorship, reviews, meetings, experiments and historical prompts have not been invented. The source revision and its automated checks do not themselves establish every member's understanding or guarantee a revised mark.
+The repository changes were prepared with AI assistance. Human authorship, reviews, meetings, experiments and historical prompts have not been invented. The source revision and its automated checks do not themselves establish every member's understanding or guarantee a revised mark.

@@ -15,7 +15,7 @@ Revision prepared 26 October 2026. Each state is tied to an artifact or a pendin
 | Another member's review and concrete outcome | **Pending** | Record actual reviewer and result in QA log |
 | Every member's substantive contribution supported | **Partially evidenced** | Private logs/history/diffs; confirm missing evidence and author/uploader distinctions |
 | Submission report, precise source snapshot and readable content PDF | Packaging step | Private assessment ZIP; final report records what was actually validated |
-| Actual significant AI interactions and verification included | Current revision documented; historical gaps remain | Private AI-use record and retained evidence; never invent old prompts |
+| Actual AI interactions and verification included | Current revision documented; historical gaps remain | Private AI-use record and retained evidence; never invent old prompts |
 | Exact course module scope and full Shared Rules Section 6 | **Pending** | Documents were not supplied; team must confirm |
 
 Finished slides and videos are later-stage work, not a Stage 1 acceptance condition. No score, teacher approval or full compliance is guaranteed by this checklist.
