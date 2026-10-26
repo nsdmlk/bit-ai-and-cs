@@ -29,7 +29,6 @@ Dates after 26 October below are proposed working dates, not a record of complet
 | 27–28 October | Another member reviews each anchor and attempts its activity | Emir/Hardware; Adil/Networks; Alimzhan/AI, subject to team confirmation | Actual reviewer/date, checked files, finding and correction/confirmation |
 | By 29 October | Confirm syllabus, Shared Rules and historical robotics details; approve final package | Ilya and team | Confirmed scope, any authentic additional evidence, extracted-package check |
 | By 7 November (Stage 2) | Produce and rehearse Study Guide and slides from checked Markdown | Content/design leads with all members | Readable resources and source-to-output map |
-| By 28 November (Stage 3) | Produce focused videos and rehearse the RL mini-lecture | Video lead with all members | Reviewed final resources and real contribution evidence |
 
 ## Workflow and responsibilities
 
