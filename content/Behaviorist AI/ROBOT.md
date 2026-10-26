@@ -90,7 +90,7 @@ $$
 
 For this formula, the robot's positive x-axis points forward, its positive y-axis points left, and $\theta$ is its counterclockwise heading from the field's positive x-axis. The displacement already includes the necessary calibrated offsets.
 
-![Second autonomous run](/content/Behaviorist%20AI/auto2.gif)
+![Second autonomous run](/content/Behaviorist%20AI/auto.gif)
 
 
 This is a teaching model, not a claim about the missing Vision code. Actual FTC and Pedro frames may differ; use the coordinate conventions and units of the version being integrated. [Pedro coordinate reference](https://pedropathing.com/docs/pathing/reference/coordinates).
@@ -116,7 +116,7 @@ Path generation also does not automatically extend slides or close a claw. The i
 
 
 
-![Autonomous collection run](/content/Behaviorist%20AI/auto.gif)
+![Autonomous collection run](/content/Behaviorist%20AI/auto2.gif)
 
 
 ## 6. Where reinforcement learning could fit
