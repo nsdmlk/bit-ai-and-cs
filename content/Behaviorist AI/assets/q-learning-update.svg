@@ -1,0 +1,22 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1000" height="550" viewBox="0 0 1000 550" role="img" aria-labelledby="title desc">
+<title id="title">One sampled Q-learning update</title><desc id="desc">Experience: Observe state s, action a, reward r, next state and true termination.. Choose the target: Terminal: r. Otherwise: r + gamma × max next-action Q.. Calculate the error: Target minus the old Q(s,a).. Change one entry: New Q(s,a) = old Q(s,a) + alpha × error.</desc>
+<rect width="100%" height="100%" fill="white"/>
+<defs><marker id="arrow" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto"><path d="M0 0 L8 4 L0 8Z" fill="#50718d"/></marker></defs>
+<text x="36" y="44" font-family="Arial, sans-serif" font-size="28" font-weight="bold" fill="#17324d">One sampled Q-learning update</text>
+<rect x="36" y="70" width="928" height="84" rx="10" fill="#edf4fa" stroke="#acc0ce"/>
+<text x="58" y="101" font-family="Arial, sans-serif" font-size="23" font-weight="bold" fill="#17324d">Experience</text>
+<text x="58" y="131" font-family="Arial, sans-serif" font-size="20" fill="#28465e">Observe state s, action a, reward r, next state and true termination.</text>
+<path d="M500 155 V173" stroke="#50718d" stroke-width="2" marker-end="url(#arrow)"/>
+<rect x="36" y="175" width="928" height="84" rx="10" fill="#eff7f2" stroke="#acc0ce"/>
+<text x="58" y="206" font-family="Arial, sans-serif" font-size="23" font-weight="bold" fill="#17324d">Choose the target</text>
+<text x="58" y="236" font-family="Arial, sans-serif" font-size="20" fill="#28465e">Terminal: r. Otherwise: r + gamma × max next-action Q.</text>
+<path d="M500 260 V278" stroke="#50718d" stroke-width="2" marker-end="url(#arrow)"/>
+<rect x="36" y="280" width="928" height="84" rx="10" fill="#edf4fa" stroke="#acc0ce"/>
+<text x="58" y="311" font-family="Arial, sans-serif" font-size="23" font-weight="bold" fill="#17324d">Calculate the error</text>
+<text x="58" y="341" font-family="Arial, sans-serif" font-size="20" fill="#28465e">Target minus the old Q(s,a).</text>
+<path d="M500 365 V383" stroke="#50718d" stroke-width="2" marker-end="url(#arrow)"/>
+<rect x="36" y="385" width="928" height="84" rx="10" fill="#eff7f2" stroke="#acc0ce"/>
+<text x="58" y="416" font-family="Arial, sans-serif" font-size="23" font-weight="bold" fill="#17324d">Change one entry</text>
+<text x="58" y="446" font-family="Arial, sans-serif" font-size="20" fill="#28465e">New Q(s,a) = old Q(s,a) + alpha × error.</text>
+<text x="36" y="530" font-family="Arial, sans-serif" font-size="16" fill="#526577">Original teaching illustration; assumptions are explained in the chapter.</text>
+</svg>

@@ -1,153 +1,138 @@
-## Practical Applications: AI Agents and Robotics
+# Robotics Case Study: Perception, Navigation and a Possible RL Extension
 
-Our project explores how Artificial Intelligence can be integrated into robotics through reinforcement learning and computer vision. These approaches demonstrate two different ways AI can improve a robot's ability to make decisions and interact with its environment.
+Previous: [DQN](DQN.md) · [Module map](OUTLINE.md) · [Explained answers](ANSWER-KEY.md#robot-1)
 
-### 1. AI Agents and Reinforcement Learning
+**Status:** revised with AI-assisted technical checks; awaiting team peer review.
 
-AI agents can be used as part of a reinforcement learning strategy to help robots learn effective behaviors through interaction with an environment.
+**Prerequisites:** the agent/environment loop; the distinction between fixed calculations and learning from reward.
 
-Instead of programming every movement manually, an agent observes the current state, selects an action, and evaluates the result using a reward signal. Over repeated interactions, the agent can improve its decision-making strategy to maximize cumulative rewards.
+**Evidence status:** the FTC example below is a team member's account of an earlier project. This teaching repository does not currently include the original Java implementation, model or training evidence. The account is not independently verified by this revision.
 
-The learning process can be represented as follows:
+## Learning objectives
 
-1. **Observe:** The agent receives information about the robot's current state.
-2. **Decide:** The agent selects an action according to its current policy.
-3. **Act:** The robot executes the selected action through its control system.
-4. **Evaluate:** The environment provides feedback in the form of a reward.
-5. **Learn:** The agent updates its strategy to improve future decisions.
+After this chapter, you should be able to:
 
-This approach can be applied to robotic navigation, movement optimization, object manipulation, and other tasks where a robot must learn how to achieve a goal.
+1. Separate perception, localization, path planning and mechanism control.
+2. Distinguish the reported implementation from intended behavior and a proposed RL extension.
+3. Explain why target positions require compatible coordinate frames and units.
+4. Identify evidence needed to check a robotics claim.
 
-Training can take place in a simulation before the resulting policy is deployed on a physical robot. This reduces the risks and costs associated with learning directly on real hardware.
+## 1. What the team account describes
 
-## 2. Practical Applications: AI Agents, Computer Vision, and Autonomous Robotics
+A team member reports building a computer-vision system during high school for an FTC (FIRST Tech Challenge) robot. The account describes:
 
-Our project explores how Artificial Intelligence can be integrated into robotics through reinforcement learning, computer vision, autonomous navigation, and object manipulation. These technologies demonstrate how robots can perceive their environment, make decisions, and execute complex tasks with minimal human intervention.
+- A recognizer trained using approximately **10,000 photographs of game elements**.
+- A **Limelight 3** camera supplying visual information.
+- Java integration through a **Vision** class.
+- **Pedro Pathing** for generating paths toward collection targets.
+- Coordination with slides, wrist and claw mechanisms.
 
-During high school, one of our team members implemented an AI-based computer vision system for an FTC (FIRST Tech Challenge) robot. The system was designed to recognize game elements on the competition field, estimate their positions, and support the robot's autonomous collection process.
+These are reported historical details. The current repository contains the description, not the referenced code or an independently checked dataset count. Keep the approximate image count attached to the account until its meaning is confirmed.
 
-This practical implementation demonstrates how AI can be combined with hardware, software, and navigation algorithms to create a more capable robotic system.
+## 2. How the components connect
 
-### 2.1. AI Agents and Reinforcement Learning
+| Component | Its job | Status in this case |
+|---|---|---|
+| Perception | Detect relevant game elements | Reported in the team account |
+| Localization | Estimate robot position and heading | Reported integration |
+| Target calculation | Convert observations into a collection target | Reported Vision-class responsibility; source not included |
+| Path generation | Construct a route toward the target | Reported Pedro Pathing integration |
+| Mechanism control | Extend slides, orient wrist and close claw | Described autonomous sequence; measured completion not documented here |
+| Reinforcement learning | Improve a policy using reward-bearing experience | Proposed extension, not demonstrated by the description |
 
-AI agents can be used as part of a reinforcement learning strategy to help robots learn effective behaviors through interaction with an environment.
+The intended data flow is:
 
-Instead of manually programming every possible movement, an agent observes the current state, selects an action, and evaluates the result using a reward signal. Through repeated interactions, the agent can improve its decision-making strategy to maximize cumulative rewards.
+**camera observations → detection filtering → calibrated target → path generation → robot movement → mechanism control**
 
-The learning process can be represented as follows:
+The described Vision class receives detections, filters unwanted colors, calculates a target using the estimated pose and offsets, generates a path and caches the last suitable target. This is a description of the reported design, not a verified code review.
 
-1. **Observe:** The agent receives information about the robot's current state and environment.
-2. **Decide:** The agent selects an action according to its current policy.
-3. **Act:** The robot executes the selected action through its control system.
-4. **Evaluate:** The environment provides feedback in the form of a reward.
-5. **Learn:** The agent updates its strategy to improve future decisions.
+The official Limelight guide documents color and neural-network pipelines, Java results and result age. Those capabilities make such integration plausible; they do not prove which pipeline or model the earlier project used. Current FTC examples use the Limelight3A name, so the owner should confirm the exact historical camera and software version. [Limelight FTC programming guide](https://docs.limelightvision.io/docs/docs-limelight/apis/ftc-programming).
 
-This approach can be applied to robotic navigation, movement optimization, object manipulation, and other tasks where a robot must learn how to achieve a goal.
+## 3. A detection is not yet a field position
 
-Training can take place in simulation before a learned policy is deployed on physical hardware. This can reduce the risks and costs associated with learning directly on a real robot.
+Camera pixels, angular offsets and field distances are different quantities. You cannot add image coordinates directly to a robot's field position.
 
-### 2.2. AI-Based Game-Element Recognition
+First define:
 
-For our FTC robotics project, one of our team members developed an AI-based vision system trained using approximately **10,000 photographs of game elements**. The objective was to enable the robot to recognize relevant objects on the competition field and use the resulting visual information during autonomous operation.
+- The sensor's outputs and units.
+- The camera mounting relative to the robot.
+- How detection data becomes a displacement in distance units.
+- The coordinate frame of that displacement.
+- Any offset between camera, robot centre, claw and collection target.
 
-The general workflow included:
-
-- Collecting a dataset of game-element images.
-- Training an AI model to recognize relevant objects.
-- Integrating the trained vision system into the robot's perception pipeline.
-- Using a **Limelight 3 camera** to capture visual information from the field.
-- Processing detection results to support navigation and autonomous object collection.
-
-The Limelight 3 served as the robot's vision hardware, while the vision pipeline processed camera input and provided detection data to the robot's Java control software.
-
-This allowed the robot to use information about detected game elements instead of relying exclusively on manually specified object locations.
-
-### 2.3. Converting Visual Detections into Navigation Targets
-
-Recognizing an object is only the first step. For a robot to collect it autonomously, the detected object must be translated into a target that the navigation and control systems can use.
-
-We implemented a Java `Vision` class that connected the Limelight 3 with the PedroPathing navigation system.
-
-The implementation used the robot's estimated pose, detection information, and configurable offsets to calculate a target position for object collection.
-
-The process involved the following steps:
-
-1. **Receive detection data:** Retrieve information from the Limelight vision pipeline, including the detected object's color, coordinates, and angle.
-2. **Filter detections:** Compare the detected color against a configurable list of unwanted colors.
-3. **Estimate the collection target:** Combine the robot's current pose with configured offsets representing the distance between the camera and the claw.
-4. **Generate a path:** Use PedroPathing to construct a path from the robot's current position to the calculated target.
-5. **Cache valid targets:** Retain the latest valid target when a subsequent detection does not match the selection criteria.
-
-The target calculation follows the general principle:
+Let $\mathbf p_{\mathrm{robot}}$ be a two-dimensional field position and $\Delta\mathbf p_{\mathrm{field}}$ be a calibrated displacement expressed in the **same field frame and units**:
 
 $$
-P_{\text{target}} = P_{\text{robot}} + \Delta P
+\mathbf p_{\mathrm{target}}=
+\mathbf p_{\mathrm{robot}}+\Delta\mathbf p_{\mathrm{field}}.
 $$
 
-Where:
+This addition assumes the sensor conversion has already happened. It does not perform that conversion. A **pose** contains position and heading; the position vector in this equation contains only two spatial coordinates.
 
-- \($P_{\text{target}}$) is the estimated target position.
-- \($P_{\text{robot}}$\) is the robot's current estimated pose.
-- \($\Delta P$\) is the calculated offset toward the collection target.
+If the displacement is instead expressed relative to the robot, rotate it into the field frame first:
 
-The code uses configurable forward and lateral offsets to account for the physical distance between the camera and the claw.
+$$
+\mathbf p_{\mathrm{target}}=
+\mathbf p_{\mathrm{robot}}+
+\begin{bmatrix}
+\cos\theta&-\sin\theta\\
+\sin\theta&\cos\theta
+\end{bmatrix}
+\mathbf d_{\mathrm{robot}}.
+$$
 
-This connects the vision system with the robot's navigation system: a detected game element can be converted into a target used for autonomous movement.
+For this formula, the robot's positive x-axis points forward, its positive y-axis points left, and $\theta$ is its counterclockwise heading from the field's positive x-axis. The displacement already includes the necessary calibrated offsets.
 
-*Implementation detail:* The provided code calculates the target using the detected sample coordinates and configured offsets. A complete conversion from camera or image coordinates into field coordinates requires the appropriate coordinate transformations and localization assumptions.
+This is a teaching model, not a claim about the missing Vision code. Actual FTC and Pedro frames may differ; use the coordinate conventions and units of the version being integrated. [Pedro coordinate reference](https://pedropathing.com/docs/pathing/reference/coordinates).
 
-### 2.4. Autonomous Navigation and Object Collection
+## 4. Worked geometry example
 
-After identifying a suitable game element and calculating its target position, the robot could use its navigation system and manipulator mechanisms to perform the collection task.
+Use an illustrative field frame with centimetres. The robot position is $(20,30)$ and a calibrated target lies 10 cm forward in the robot frame.
 
-The intended autonomous sequence was:
+- Heading 0°: forward points along field +x, giving target $(30,30)$.
+- Heading 90°: forward points along field +y, giving target $(20,40)$.
 
-1. **Detect:** Identify a game element using the AI-based vision system.
-2. **Locate:** Calculate the target position relative to the robot's estimated pose.
-3. **Navigate:** Generate a path toward the target using PedroPathing.
-4. **Extend:** Move the slides to the appropriate length to reach the object.
-5. **Orient:** Rotate the wrist to the required angle for collection.
-6. **Grab:** Close the claw to secure the game element.
+The target changes when the robot turns even though the robot-relative displacement stays the same. These numbers are original teaching examples, not measurements from the FTC project. Convert units when integrating a library with other distance conventions.
 
-This sequence illustrates the coordination required between perception, localization, path planning, and mechanism control.
+## 5. Fresh observations and control stages
 
-The vision system provides information about the object, the navigation system calculates how to approach it, and the robot's control routines coordinate the physical movements required to collect it.
+Keeping a previous target can be useful if a detection temporarily disappears. It also needs an explicit validity rule. Check its age, whether it still matches the selection criteria, and whether robot motion or object motion has invalidated it.
 
-The `Vision` class specifically handles detection processing, target calculations, and path generation. Slide extension, wrist rotation, and claw operation are handled by the corresponding mechanism-control routines.
+If the cached target is no longer valid, detect again or follow a defined fallback rather than treating old data as a new observation. The Limelight API exposes result staleness, but no threshold for the historical project is documented here. [Limelight results and freshness](https://docs.limelightvision.io/docs/docs-limelight/apis/ftc-programming#8-is-the-data-fresh).
 
-### 2.5. Technologies and Computer Science Concepts
+Path generation also does not automatically extend slides or close a claw. The intended collection sequence is detect → locate → navigate → extend → orient → grab. Each stage needs its own conditions and coordination. The current account does not provide a measured success rate for this complete sequence.
 
-The project combines several important areas of Computer Science and robotics:
+## 6. Where reinforcement learning could fit
 
-- **Artificial Intelligence and Machine Learning:** Training a model to recognize game elements from image data.
-- **Computer Vision:** Extracting useful information from camera images.
-- **Java Programming:** Integrating vision results with robot-control logic.
-- **Limelight 3:** Providing camera hardware and access to the vision pipeline.
-- **PedroPathing:** Supporting robot localization and path generation.
-- **Coordinate Geometry:** Calculating target positions using the robot's pose and configured offsets.
-- **Autonomous Control:** Translating target positions into robot movement and collection actions.
-- **Hardware Integration:** Coordinating the camera, drivetrain, slides, wrist, and claw.
+The described approach combines computer vision with predefined geometric calculations and path generation. It does **not** demonstrate an RL agent updating a policy from rewards.
 
-### 2.6. Combining Computer Vision with Reinforcement Learning
+A future RL experiment could define observations from localization and detections, a small action set, a reward for successful collection and an episode termination rule. It would then need evidence of experience collection, learning updates and evaluation.
 
-Computer vision and reinforcement learning solve different but complementary problems in intelligent robotics.
+Simulation can reduce the cost of trying actions, but successful simulation behavior does not guarantee transfer to hardware. Published sim-to-real work treats that gap as an engineering problem. [Tan et al., 2018](https://arxiv.org/abs/1804.10332).
 
-**Computer vision** helps the robot understand what is present in its environment and where relevant objects may be located.
+## 7. What would verify the account?
 
-**Reinforcement learning** enables an agent to learn which actions to take based on the current state, the consequences of its actions, and the rewards it receives.
+The project owner could supply:
 
-For example, a vision system could provide the location of a game element, while an AI agent could use that information to select a movement strategy or collection action. The robot could then evaluate the outcome and, if trained using reinforcement learning, improve its policy over repeated interactions.
+1. An attributed original code excerpt or stable repository link for Vision and the mechanism integration.
+2. The exact robot/year, camera model, software versions and pipeline type.
+3. A dataset summary explaining the image count, labels, model and separate evaluation data, if a trained recognizer was used.
+4. A genuine screenshot, execution trace or recording showing which steps ran, with any measured results clearly described.
 
-Our FTC implementation demonstrates the integration of computer vision, localization, path generation, and physical object manipulation. Reinforcement learning represents a complementary approach that could be incorporated to learn and optimize decision-making strategies.
+Do not invent these items or infer a result from the intended sequence. A small authentic exhibit can support a beginner case study; a full reproducible robotics release is a larger deliverable.
 
-It is important to distinguish these methods: the Java implementation described here uses predefined calculations and path generation; it does not itself demonstrate a reinforcement learning agent updating its policy.
+## 8. Check yourself
 
-### 2.7. Why This Matters
+1. **ROBOT-1:** Does using a camera, neural recognizer and planned path establish that a robot learns through RL? Explain.
+2. **ROBOT-2:** In the geometry example, what is the target for heading 90°? Why cannot raw image pixels be substituted for the calibrated displacement?
+3. **ROBOT-3:** Name one condition for reusing a cached target and one piece of evidence that would support the earlier implementation account.
 
-This project demonstrates how Artificial Intelligence can be integrated into a complete robotic system rather than operating as an isolated model.
+[Explained answers](ANSWER-KEY.md#robot-1)
 
-The trained vision system recognizes game elements, the robot's localization system estimates its position, geometric calculations establish collection targets, and path planning supports autonomous movement. Mechanism-control routines then coordinate the slides, wrist, and claw to collect the object.
+## 9. Scope boundaries
 
-By combining these components, we connected machine learning with practical robotics and applied concepts from computer vision, software engineering, geometry, navigation, and control systems.
+- **Detailed:** component roles, implementation/evidence boundaries, compatible frames and a worked coordinate example.
+- **Brief:** result freshness, mechanism coordination and a possible RL extension.
+- **Out of scope:** reproducing the historical robot, full camera calibration, a complete control implementation or claims of measured training performance.
 
-This integration provides a foundation for more advanced robotic systems in which AI agents can learn movement strategies, optimize object collection, and adapt to changing environments.
+[Return to the module map](OUTLINE.md)

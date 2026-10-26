@@ -1,62 +1,88 @@
 # Introduction to Behaviorist AI
 
----
+[Module map](OUTLINE.md) · Next: [What is an agent?](AGENT.md)
 
-## The Big Picture: Why Hardware, Networks, and AI Matter
+**Status:** revised with AI-assisted technical checks; awaiting team peer review.
 
-So far, we have looked at **Hardware** (how computers calculate) and **Networks** (how computers talk to each other). But computers are just tools. What happens when we put hardware and networks together and give them a body? We get **robots**.
+**Prerequisites:** none beyond basic familiarity with a computer program. Hardware and Networks provide useful context, but no robotics or machine-learning background is assumed.
 
-But how does a robot know what to do? How does it learn to walk, drive a car, or play a game without a human explicitly programming every single movement?
+## Learning objectives
 
-Welcome to **Behaviorist AI**.
+After this chapter, you should be able to:
 
-## What is Behaviorist AI?
+1. Identify an agent, its actions and its reward signal.
+2. Explain why a learner considers several steps rather than only the next reward.
+3. Distinguish supervised learning from reinforcement learning.
+4. Suggest and critique a simple reward scheme.
 
-Behaviorist AI is based on the idea of *behaviorism* in psychology: we learn by interacting with the world. We take an action, see the result, and adjust our behavior based on rewards or punishments.
+## 1. Learning through interaction
 
-In Computer Science, this is called **Reinforcement Learning (RL)**.
+In this project, the **Behaviorist AI** module focuses on **reinforcement learning (RL)**. The name connects our topic with learning from consequences; it is a course framing, rather than a claim that RL explains all animal behavior.
 
-Think of a puppy. You don't give the puppy a textbook on how to sit. You say "Sit." If it sits, you give it a treat (reward). If it doesn't, it gets nothing. Eventually, the puppy connects the action ("sitting") with the reward ("treat").
+An RL agent chooses actions, observes what happens, and uses experience to improve its decisions. Its objective is to maximize an accumulated reward called **return**. An action with a small immediate reward may lead to a much better outcome later.
 
-RL works the exact same way, but with numbers.
+For example, a maze agent may need to take a step away from the exit to get around a wall. Judging only the next step would miss that opportunity. RL formalizes this problem of learning from consequences over time. [Dayan and Watkins, *Reinforcement Learning*, introduction](https://www.gatsby.ucl.ac.uk/~dayan/papers/dw01.pdf).
 
-## The Core Loop: How an Agent Learns
+## 2. The interaction loop
 
-Every RL system has two main characters:
+There are two main parts:
 
-1. **The Agent:** The learner or decision-maker (e.g., a robot, a software program, or a video game character).
-2. **The Environment:** Everything the agent interacts with (e.g., a physical room, a chess board, or a video game level).
+- **Agent:** the decision-maker.
+- **Environment:** the system with which it interacts.
 
-The interaction happens in a continuous loop:
+At time step $t$:
 
-1. The agent observes the **State** of the environment (e.g., "I am at a dead end").
-2. The agent takes an **Action** (e.g., "Turn left").
-3. The environment gives a **Reward** (e.g., +10 points for finding an exit, or -1 point for hitting a wall).
-4. The environment moves to a **New State**.
+1. The agent receives an observation of the environment.
+2. It selects an action $A_t$.
+3. The environment responds with a new observation and reward $R_{t+1}$.
+4. The learner uses that experience to update its estimates or policy.
 
-## How is this different from other AI?
+An **episode** is one run of a task, such as an attempt to reach a maze exit. A **policy** is the rule used to select an action. Learning changes that rule or the estimates used by it.
 
-* **Supervised Learning:** You give the computer a picture of a cat and say "This is a cat." It learns by memorization.
-* **Unsupervised Learning:** You give the computer a lot of data and say "Find patterns."
-* **Reinforcement Learning (Behaviorist AI):** You don't tell the computer the answer. You just give it a goal (maximize the score) and let it figure it out through trial and error.
+For our small maze examples, we assume the agent can see its full **state**, such as its grid position. A camera image can instead be a partial observation: one photograph may not reveal an object's velocity. [Spinning Up, key concepts and states/observations](https://spinningup.openai.com/en/latest/spinningup/rl_intro.html).
 
-## Real-World Example: Robots
+## 3. Different kinds of learning
 
-Why are we talking about this in a module about hardware and networks?
+| Approach | Typical feedback | Example |
+|---|---|---|
+| Supervised learning | Input examples with target labels | Learn from labeled animal photographs to classify a new photograph |
+| Unsupervised learning | Data without target labels for that task | Group similar examples or discover structure |
+| Reinforcement learning | Rewards associated with interaction | Learn a maze policy from attempted moves and their consequences |
 
-- **Hardware** (GPU) is needed to process the camera feed and calculate the millions of possible actions a robot arm can take.
-- **Networks** (Wi-Fi, Bluetooth) are needed so the robot can send sensor data to a server or receive commands.
-- **RL (Behaviorist AI)** is the brain that uses that hardware and network to learn how to pick up an object.
+Supervised learning aims to make useful predictions on new examples. Memorizing training examples without generalizing is a possible failure, not its definition. [Goodfellow, Bengio and Courville, *Deep Learning*, §§5.1.3 and 5.2](https://www.deeplearningbook.org/contents/ml.html).
 
-Companies like Boston Dynamics and Tesla use Reinforcement Learning in simulation (like MuJoCo) to train robots millions of times a day before deploying them in the real world.
+## 4. Worked example: reward and a maze
 
-## Check Your Understanding
+Consider one illustrative episodic maze. Use these rules:
 
-**Question:** Imagine you are teaching a robot to navigate a maze. You want it to find the exit as fast as possible.
-If the robot takes a step, what should happen to its reward if it moves *closer* to the exit? What should happen if it hits a wall?
+- Ordinary move: −1.
+- Wall collision: −5; the agent stays in place.
+- Reaching the exit: +10; the episode ends.
 
-*(Answer: Moving closer should give a positive reward to encourage the behavior. Hitting a wall should give a negative reward or zero to discourage it.)*
+For this short example, add rewards without discounting. A route with three ordinary moves and then the exit returns $-3+10=7$. A route with six ordinary moves and then the exit returns $-6+10=4$.
 
-## References
+The shorter collision-free route receives more reward. These values are a design choice; they are not results from a trained robot.
 
-- Sutton, R. S., & Barto, A. G. (2018). *Reinforcement Learning: An Introduction*. MIT press.
+Positive reward merely for moving closer is not automatically sufficient. An agent might collect rewards without completing the intended task. Reward shaping can even change which policy is optimal, so the behavior must be checked against the real goal. [Ng, Harada and Russell, 1999, introduction and reward-shaping examples](https://people.eecs.berkeley.edu/~russell/papers/icml99-shaping.pdf).
+
+## 5. Connecting hardware, networks and AI
+
+Sensors and processors provide observations and run control software. A GPU can accelerate a large neural network; it is not required for every RL example. A network connection can support monitoring or remote computation, while some decisions run locally.
+
+A published quadruped study trained locomotion policies in simulation and transferred them to real robots, while addressing differences between simulation and reality. This is a specific research example, rather than evidence about our own implementation. [Tan et al., 2018](https://arxiv.org/abs/1804.10332).
+
+## 6. Check yourself
+
+1. **INTRO-1:** Using the maze rules above, calculate the return for two ordinary moves, one collision and then the exit.
+2. **INTRO-2:** Is an image classifier trained on labeled cat photographs necessarily using RL? Explain.
+3. **INTRO-3:** Propose a reward scheme for reaching an exit quickly. Explain one behavior you would check before calling it successful.
+
+[Explained answers](ANSWER-KEY.md#intro-1)
+
+## 7. Scope boundaries
+
+- **Detailed:** interaction, rewards and return, learning paradigms, a worked reward example.
+- **Brief:** partial observations, simulation and connections with hardware/networks.
+- **Out of scope:** psychological theories of learning, optimization proofs, production robot training.
+
+[Next: What is an agent?](AGENT.md)
