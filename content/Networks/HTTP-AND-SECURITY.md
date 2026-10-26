@@ -1,83 +1,93 @@
-# Application Layer: HTTP, HTTPS, and Security — A Micro-Textbook for Beginners
+# HTTP, HTTPS, and Security — A Micro-Textbook for Beginners
 
-This is the first draft of our Application Layer & Security content. It lives in the repo as `/content/Networks/HTTP-AND-SECURITY.md` and explains how browsers talk to web servers and keep your data safe.
+This chapter explains web requests and responses, then the protection supplied by TLS.
+
+**Status:** Revised with AI-assisted technical checks; awaiting team peer review.
+
+[Module outline and reading order](OUTLINE.md) · [Explained answers](ANSWER-KEY.md)
 
 ---
 
 ## Learning Objectives
 
 After this section, a beginner should be able to:
-1. Explain the role of HTTP as the primary protocol powering the World Wide Web.
-2. Describe the structure of an HTTP request-response cycle (methods, headers, and status codes).
-3. Explain why plain HTTP is insecure and how HTTPS uses TLS to provide encryption and integrity.
 
----
+1. Explain HTTP's client-server model.
+2. Identify methods, targets, headers, bodies, and status codes.
+3. Explain how HTTPS adds confidentiality, server authentication, and tamper detection.
 
-## 1. HTTP: The Language of the Web
+## 1. HTTP: Communication on the Web
 
-At Layer 7 (the Application layer), programs need a standardized language to exchange information. For the web, that language is **HTTP (Hypertext Transfer Protocol)**.
+**HTTP (Hypertext Transfer Protocol)** is an application protocol. A **client**, often a browser, requests a resource or submits information. A **server** processes the request and returns a response. The resource could be HTML, an image, or data for an application. [RFC 9110 §§1–3](https://www.rfc-editor.org/rfc/rfc9110.html#section-1)
 
-HTTP operates on a **Client-Server model**:
-* The **Client** (usually your web browser) sends a request for a resource (like a webpage, image, or script).
-* The **Server** (a computer hosting the website) processes the request and returns a response.
+A page can require many requests. Conversely, cached content or an existing connection can avoid some network work, so every click does not necessarily begin a fresh connection.
 
----
+## 2. Requests and Responses
 
-## 2. The Request-Response Cycle
+A request identifies a **method**, a **target** such as `/about`, and **headers**. It can also contain a **body**, for example form data.
 
-Every time you click a link or load a page, your browser fires off an HTTP request. 
+- **GET:** Request a representation of a resource.
+- **POST:** Submit data for the target resource to process, such as a form.
+- **PUT:** Request creation or replacement of the target resource's state with the submitted representation.
+- **DELETE:** Request removal of the target resource's association with its current functionality.
 
-### Anatomy of an HTTP Request:
-1. **Method (Verb):** Tells the server what action to perform.
-   * `GET`: Fetch a resource (e.g., load a page).
-   * `POST`: Submit new data to the server (e.g., submit a form or log in).
-   * `PUT` / `DELETE`: Update or remove a resource.
-2. **Path:** The specific resource requested (e.g., `/index.html` or `/about`).
-3. **Headers:** Metadata like user-agent, accepted languages, and cookies.
+A response includes a **status code**, headers, and sometimes a body. Common examples are:
 
-### Anatomy of an HTTP Response:
-When the server replies, it includes a **Status Code** indicating what happened:
-* **200 OK:** Success! Here is your data.
-* **301/302 Redirect:** The page has moved elsewhere.
-* **404 Not Found:** The resource doesn't exist.
-* **500 Internal Server Error:** The server crashed while processing your request.
+| Status | Meaning |
+|---|---|
+| **200 OK** | The request succeeded |
+| **301 Moved Permanently** | A permanent redirect |
+| **302 Found** | A temporary redirect |
+| **404 Not Found** | The server did not find a current representation, or will not disclose one |
+| **500 Internal Server Error** | An unexpected server-side problem prevented completion |
 
----
+A 500 does not necessarily mean the server crashed. Status classes provide a broader guide: **1xx** informational, **2xx** successful, **3xx** redirection, **4xx** client error, **5xx** server error. [RFC 9110 §§9 and 15](https://www.rfc-editor.org/rfc/rfc9110.html#section-15)
 
-## 3. The Problem with Plain HTTP
+**Illustrative HTTP/1.1 request:**
 
-Standard HTTP is sent in **cleartext**. If you type a password or credit card number into a website using plain `http://`, anyone tapping into public Wi-Fi or monitoring intermediate routers can read your data letter-for-letter.
+```http
+GET /about HTTP/1.1
+Host: example.com
+Accept: text/html
 
----
+```
 
-## 4. HTTPS and TLS: Securing the Connection
+The server might respond with `200 OK`, a `Content-Type: text/html` header, and an HTML body. With HTTPS, these HTTP details travel inside protected communication rather than appearing as cleartext on the network.
 
-**HTTPS (HTTP Secure)** solves this problem by layering **TLS (Transport Layer Security)** underneath HTTP. 
+**Cookies in brief:** A response can use `Set-Cookie` to ask the browser to store a cookie. Subject to its scope and browser rules, the browser later includes it in a `Cookie` request header. This can help associate requests with a session. [RFC 6265 §3](https://www.rfc-editor.org/rfc/rfc6265.html#section-3)
 
-When you connect via `https://`:
-1. **The TLS Handshake:** Client and server agree on encryption keys and verify the website's digital certificate (proving the server is actually who it claims to be).
-2. **Encryption:** All subsequent HTTP requests and responses are scrambled into unreadable ciphertext. Even if intercepted, attackers see only random noise.
-3. **Integrity:** TLS ensures that data cannot be modified in transit by malicious actors.
+## 3. Plain HTTP
 
----
+Plain `http://` provides no transport encryption of HTTP data. Someone able to observe the traffic on its path may read it, and an active intermediary may alter it. Local Wi-Fi encryption does not supply protection across the entire route to the web server.
+
+## 4. HTTPS and TLS
+
+**HTTPS** protects HTTP communication using **TLS (Transport Layer Security)**. In a new certificate-based HTTPS connection over TCP:
+
+1. The client and server establish TCP, normally to server port **443**.
+2. A TLS handshake establishes security parameters and keys. The client validates the server's certificate and its association with the requested hostname.
+3. HTTP requests and responses travel in protected TLS records. **Encryption** protects their contents from network observers. **Integrity protection** detects tampering, so altered records are rejected.
+
+TLS does not prevent an attacker from dropping traffic or interrupting a connection, and connection metadata can remain visible. It protects communication between its endpoints; it does not prove that the website's content or business is honest. [RFC 8446 §§1–2](https://www.rfc-editor.org/rfc/rfc8446.html#section-1), [HTTPS: RFC 9110 §4.2.2](https://www.rfc-editor.org/rfc/rfc9110.html#section-4.2.2)
+
+The [complete worked trace](INTRODUCTION.md#6-worked-example-a-new-https-connection) connects DNS, routing, TCP, TLS, and HTTP. HTTP/3 uses QUIC over UDP instead of this TCP setup; its details are outside the chapter. [RFC 9114](https://www.rfc-editor.org/rfc/rfc9114.html)
 
 ## 5. Common Misconceptions
 
-- **"HTTP and HTML are the same thing."** HTTP is the *protocol* used to transfer data across the network; HTML is the *markup language* used to structure the text and visuals of a webpage.
-- **"HTTPS means a website is completely trustworthy and safe from scams."** HTTPS only guarantees that your connection is **encrypted and private** between you and the server; a malicious phishing site can still use valid HTTPS encryption.
-
----
+- **“HTTP and HTML are the same thing.”** HTTP is a communication protocol; HTML describes the structure of a webpage.
+- **“HTTPS means a site cannot be a scam.”** An encrypted, authenticated connection can still lead to a malicious site.
+- **“TLS makes data impossible to modify.”** It detects tampering with protected data; it cannot prevent every network disruption.
 
 ## 6. Check Yourself
 
-1. **Describe** the difference between a `GET` request and a `POST` request.
-2. **What does a 404 status code mean**, and which component generates it?
-3. **Explain how HTTPS protects you** compared to plain HTTP on an insecure public Wi-Fi network.
+1. **Describe** the difference between GET and POST using a webpage or form example.
+2. **Explain 404:** what does it mean, and which kind of component returns that HTTP response?
+3. **Explain HTTPS protection** compared with plain HTTP on an untrusted network. What does it not establish about the website?
 
----
+[Explained answers: HTTP and Security Q1–Q3](ANSWER-KEY.md#http-and-security)
 
 ## 7. Scope Boundaries
 
-- **Detailed:** Client-server model, HTTP methods, status code categories, plain text vs HTTPS/TLS encryption.
-- **Brief:** HTTP headers, cookie mechanics.
-- **Out of scope:** TLS cryptographic math (RSA/Elliptic Curve internals), HTTP/2 multiplexing, HTTP/3 QUIC protocol details.
+- **Detailed:** Client-server exchange, methods, message components, selected status codes and classes, TLS protection.
+- **Brief:** Cookie exchange, certificate/name validation, the HTTP/3 boundary.
+- **Out of scope:** Cryptographic mathematics, complete HTTP syntax, cookie security policy, HTTP/2 multiplexing, QUIC mechanics.

@@ -1,92 +1,92 @@
-# Transport Layer: TCP vs. UDP — A Micro-Textbook for Beginners
+# Transport Layer: TCP and UDP — A Micro-Textbook for Beginners
 
-This is the first draft of our Transport Layer content. It lives in the repo as `/content/Networks/TCP-AND-UDP.md` and builds directly upon the core networking stack concepts.
+This chapter compares two transport services and explains ports without assuming one protocol is always faster.
+
+**Status:** Revised with AI-assisted technical checks; awaiting team peer review.
+
+[Module outline and reading order](OUTLINE.md) · [Explained answers](ANSWER-KEY.md)
 
 ---
 
 ## Learning Objectives
 
 After this section, a beginner should be able to:
-1. Explain the fundamental difference between connection-oriented and connectionless protocols.
-2. Describe how TCP guarantees reliable, ordered delivery using sequence numbers and acknowledgments.
-3. Understand why UDP opts for speed over reliability and where that trade-off makes sense.
-4. Explain the concept of ports and how transport protocols multiplex traffic to different programs.
-5. Choose the right transport protocol for a given application scenario (e.g., web vs. live streaming).
 
----
+1. Distinguish connection-oriented and connectionless transport.
+2. Explain TCP's ordering and loss recovery, including their limits.
+3. Describe UDP's minimal service and why an application may choose it.
+4. Explain ports and application endpoints.
+5. Relate transport choices to an application's delivery requirements.
 
-## 1. The Role of the Transport Layer
+## 1. The Transport Layer's Role
 
-While the network layer (IP) moves packets between machines across the world, it doesn't know anything about **programs**. If 10 different apps are open on your laptop, IP just delivers data to the machine as a whole. 
+IP forwards packets to destination addresses. **Transport protocols** provide communication between application endpoints. TCP and UDP use **ports** as part of that addressing: for example, a service may listen on port 443 while clients use temporary source ports.
 
-The **Transport Layer** sits right above IP to solve two major problems:
-1. **Addressing the right application** using **ports** (e.g., port 80 for HTTP, port 443 for HTTPS).
-2. **Managing how data flows** between those applications—deciding whether to care if data gets lost or arrives out of order.
+TCP and UDP also provide different delivery behavior. This choice affects what an application must do when data is missing, duplicated, or out of order.
 
----
+## 2. TCP: An Ordered Byte Stream
 
-## 2. TCP: Reliable, Ordered, and Careful
+**TCP (Transmission Control Protocol)** provides a reliable, ordered byte stream. It does not preserve the boundaries of an application's individual messages; the application protocol must identify those boundaries when needed. [RFC 9293 §2.2](https://www.rfc-editor.org/rfc/rfc9293.html#section-2.2)
 
-**TCP (Transmission Control Protocol)** is built for applications where **every single byte matters** (like loading a webpage, sending an email, or transferring a file). If data is missing or corrupted, the file breaks.
+Its main mechanisms include:
 
-### How TCP Works:
-* **Connection-Oriented:** Before sending data, TCP performs a **three-way handshake** (`SYN`, `SYN-ACK`, `ACK`) to sync state between client and server.
-* **Sequence Numbers:** Every byte sent is numbered so the receiver can reassemble them in the correct order, even if packets take different network routes.
-* **Acknowledgments & Retransmission:** The receiver sends back ACKs confirming what it got. If an ACK doesn't arrive within a timeout window, TCP assumes the packet was lost and **retransmits** it.
-* **Flow Control:** TCP prevents a fast sender from overwhelming a slow receiver by advertising a "window size."
+- **Connection setup:** The usual three-way handshake is SYN → SYN-ACK → ACK.
+- **Sequence numbers:** TCP tracks positions in the byte stream so received data can be ordered.
+- **Acknowledgments and retransmission:** Acknowledgments report received data. TCP retransmits when it detects loss, for example after a retransmission timeout.
+- **Flow control:** A receiver advertises how much data it can accept, helping prevent a sender from overwhelming it.
+- **Congestion control:** The sender adapts to network conditions; detailed algorithms are outside this chapter.
 
----
+Reliability is not a promise that every transfer finishes. If a peer or path remains unavailable, the connection can fail and the application must handle an error or timeout. [RFC 5482 §1](https://www.rfc-editor.org/rfc/rfc5482.html#section-1)
 
-## 3. UDP: Fast, Lightweight, and Unapologetic
+## 3. UDP: Individual Datagrams
 
-**UDP (User Datagram Protocol)** is the minimalist counterpart. It throws data at the target machine and hopes for the best. There is no handshake, no tracking, no retransmission, and no reordering.
+**UDP (User Datagram Protocol)** carries separate messages called **datagrams**. Its header is **8 bytes**, containing source and destination ports, length, and checksum. It has no built-in connection handshake, retransmission, or ordering mechanism. [RFC 768, header format](https://www.rfc-editor.org/rfc/rfc768.html)
 
-### Why use UDP?
-* **Zero Overhead:** Without headers for handshakes, sequence numbers, or tracking state, UDP packets are tiny and fast.
-* **Real-Time Priority:** In live video streaming, online multiplayer games, or VoIP calls, **recalling old, lost data is useless**. If a frame of video is dropped 50 milliseconds ago, you don't want the network to pause and resend it; you want the latest frame right now. 
+The small set of mechanisms lets an application choose its own behavior. A time-sensitive position update in a game may become useless after newer updates arrive. Other messages, such as a purchase confirmation, still need reliable handling.
 
----
+Retransmission is not always useless in real-time media: it can help when the application's delay budget allows it. The important question is whether recovered data can still arrive in time. [RFC 4588 §3](https://www.rfc-editor.org/rfc/rfc4588.html#section-3)
 
-## 4. Ports: The Apartment Numbers of a Machine
+UDP itself lacks congestion control and recovery, but applications or protocols built above it may supply them. “UDP” therefore does not mean an entire application has no reliability. [RFC 8085](https://datatracker.ietf.org/doc/html/rfc8085)
 
-An IP address gets a packet to the correct building (computer), but **ports** act like apartment numbers to direct the packet to the exact application inside.
+## 4. Ports: Addressing Application Endpoints
 
-* **Well-Known Ports (0–1023):** Reserved for standard services (Port 80 = HTTP, Port 443 = HTTPS, Port 53 = DNS).
-* **Ephemeral Ports:** Dynamically chosen temporary ports assigned to client applications when they initiate an outgoing connection.
+Ports resemble apartment numbers within a building, while an IP address helps identify the building. The analogy is approximate: connection identification also uses addresses, transport protocol, and the ports at both ends.
 
----
+- **Standard service ports:** Common defaults include HTTP on 80, HTTPS on 443, and DNS on 53. Ports 0–1023 form the system/well-known range; services can be configured differently.
+- **Temporary client ports:** The operating system commonly chooses an available source port when an application opens communication.
 
-## 5. Summary Comparison
+For the [HTTPS example](INTRODUCTION.md#6-worked-example-a-new-https-connection), a client might connect from temporary port `49152` to server port `443`. Replies use the corresponding endpoint information to reach the correct connection.
+
+## 5. Comparison
 
 | Feature | TCP | UDP |
 |---|---|---|
-| **Reliability** | Guaranteed (retransmits lost data) | Best-effort (drops are ignored) |
-| **Ordering** | Enforced (reassembled in order) | None (packets handled as they arrive) |
-| **Connection** | Connection-oriented (Handshake required) | Connectionless (fire and forget) |
-| **Speed** | Slower (due to overhead and checks) | Faster (minimal overhead) |
-| **Use Cases** | Web (HTTP), Email (SMTP), File transfer | Video streaming, DNS lookups, Gaming |
+| **Service** | Byte stream | Individual datagrams |
+| **Ordering/recovery** | Built in; connection failure remains possible | Not built in |
+| **Connection setup** | Normally a three-way handshake | No UDP handshake |
+| **Overhead and timing** | Includes mechanisms for setup, ordering, recovery, and flow/congestion control | Small header; higher layers add mechanisms as needed |
+| **Examples** | HTTP/1.1 and HTTP/2, SMTP, many file transfers | Many game/media protocols and traditional DNS queries |
 
----
+These are examples, not exclusive pairings. **DNS also uses TCP**, and **HTTP/3 uses QUIC over UDP**. QUIC provides reliable streams above UDP. [RFC 7766 §5](https://www.rfc-editor.org/rfc/rfc7766.html#section-5), [RFC 9114](https://www.rfc-editor.org/rfc/rfc9114.html), [RFC 9000](https://www.rfc-editor.org/rfc/rfc9000.html)
 
 ## 6. Common Misconceptions
 
-- **"TCP is just faster because it's standard."** False. TCP is slower due to error correction, acknowledgments, and congestion control overhead.
-- **"UDP means data is always corrupted."** UDP packets have basic checksums to catch corruption; they just don't attempt to recover packets that are completely lost in transit.
-- **"An IP address alone is enough to route web traffic."** Without ports, your operating system wouldn't know whether incoming packet data belongs to Chrome, Slack, or Spotify.
-
----
+- **“TCP is always slower; UDP is always faster.”** Neither is a universal performance rule. Results depend on requirements, network conditions, and the mechanisms used above the transport.
+- **“UDP provides zero overhead.”** It has an 8-byte header; applications may add more.
+- **“UDP data is always corrupted.”** Its checksum can detect accidental corruption. IPv4 permits an omitted UDP checksum; a checksum is normally required with IPv6. A checksum does not repair loss. [RFC 768](https://www.rfc-editor.org/rfc/rfc768.html), [RFC 8200 §8.1](https://www.rfc-editor.org/rfc/rfc8200.html#section-8.1)
+- **“An IP address alone tells the operating system which application endpoint should receive TCP/UDP data.”** Transport ports also matter. Ordinary router forwarding, however, does not require identifying the application.
 
 ## 7. Check Yourself
 
-1. **Describe** what happens during a TCP three-way handshake in simple terms.
-2. **Explain** why a real-time multiplayer video game would choose UDP over TCP.
-3. **What is a port**, and why do we need them if we already have IP addresses?
-4. **Spot the error:** "If a packet is lost using TCP, the application crashes because it can't recover." What actually happens?
+1. **Describe** the usual TCP three-way handshake.
+2. **Explain** why a real-time game might use UDP for frequent position updates. Why might other game messages need reliable handling?
+3. **What is a port**, and why is an IP address alone insufficient to identify a TCP/UDP application endpoint?
+4. **Spot the error:** “If one packet is lost using TCP, the application crashes because TCP cannot recover.” What can TCP do, and what if recovery ultimately fails?
 
----
+[Explained answers: TCP and UDP Q1–Q4](ANSWER-KEY.md#tcp-and-udp)
 
 ## 8. Scope Boundaries
 
-- **Detailed:** TCP reliability mechanism, ports, use-case trade-offs, packet structure concepts.
-- **Brief:** UDP checksums, ephemeral port allocation.
-- **Out of scope:** TCP congestion control algorithms (reno, cubic), sliding window math, socket programming syntax.
+- **Detailed:** Stream versus datagram service, TCP setup/ordering/recovery, ports, application trade-offs.
+- **Brief:** UDP header/checksum, temporary ports, flow/congestion control purpose, DNS/HTTP transport variants.
+- **Out of scope:** Congestion-control algorithms, detailed packet-field diagrams, sliding-window mathematics, socket programming.

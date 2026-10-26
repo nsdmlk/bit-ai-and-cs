@@ -1,76 +1,76 @@
 # DNS (Domain Name System) — A Micro-Textbook for Beginners
 
-This is the first draft of our DNS content. It lives in the repo as `/content/Networks/DNS.md` and explains how the internet translates human-readable names into machine-routable IP addresses.
+This chapter explains how names lead to network addresses and why caching reduces lookup work.
+
+**Status:** Revised with AI-assisted technical checks; awaiting team peer review.
+
+[Module outline and reading order](OUTLINE.md) · [Explained answers](ANSWER-KEY.md)
 
 ---
 
 ## Learning Objectives
 
 After this section, a beginner should be able to:
-1. Explain what DNS is and why it functions as the "phonebook of the internet."
-2. Name the hierarchy of DNS servers involved in resolving a domain name.
-3. Describe the concept of DNS caching and why it makes web browsing fast.
-4. Identify common types of DNS records (A, AAAA, CNAME, MX).
 
----
+1. Explain DNS's role in retrieving information associated with names.
+2. Describe recursive resolvers, root servers, TLD servers, and authoritative servers.
+3. Explain caching and TTL.
+4. Distinguish A, AAAA, CNAME, and MX records.
 
-## 1. What Is DNS and Why Do We Need It?
+## 1. What Is DNS?
 
-Humans remember names easily (`google.com`, `github.com`), but computers talk using numeric IP addresses (`142.250.190.46`). 
+People can remember names such as `example.com` more easily than numeric addresses. The **Domain Name System (DNS)** is a distributed, hierarchical system for retrieving records associated with names. Address lookup is one important use; DNS also stores other information, such as mail-routing records.
 
-The **Domain Name System (DNS)** is a globally distributed database that maps human names to IP addresses. Without DNS, you would have to type a string of numbers into your browser for every website you want to visit.
+The “phonebook of the Internet” analogy captures name lookup, although real DNS is distributed across many independently operated servers. Without DNS, applications would need another way to obtain destination addresses. [RFC 1034 §§2–3](https://www.rfc-editor.org/rfc/rfc1034.html#section-2)
 
----
+## 2. A Lookup Without Useful Cached Information
 
-## 2. The Hierarchy of DNS Resolution
+If neither the device nor its resolver has a usable answer, a simple lookup for `example.com` can involve:
 
-When your device doesn't know an IP address, it launches a multi-step query through a chain of specialized servers:
+1. **Recursive resolver:** Receives the device's question and obtains an answer on its behalf. It may be provided by an ISP, an organization, or a public DNS service.
+2. **Root name server:** Directs the resolver toward servers for the relevant top-level domain, such as `.com`.
+3. **TLD name server:** Supplies delegation information pointing toward the authoritative servers for `example.com`.
+4. **Authoritative name server:** Answers from the records for the relevant zone. An answer may contain an address, an alias, or other information depending on the question.
 
-1. **Recursive Resolver (ISP or Public DNS like 8.8.8.8):** Your computer's first stop. The resolver accepts your request and does the heavy lifting of querying the rest of the internet on your behalf.
-2. **Root Name Servers:** The top of the hierarchy (13 logical root server authorities worldwide). When the resolver asks for `example.com`, the root server looks at `.com` and points the resolver to a **Top-Level Domain (TLD) server**.
-3. **TLD Name Servers:** Servers responsible for specific extensions like `.com`, `.org`, or `.jp`. The TLD server looks at `example` and points the resolver to the **Authoritative Name Server**.
-4. **Authoritative Name Server:** The final authority maintained by the domain owner (e.g., AWS Route 53 or Cloudflare). It holds the actual IP address record for `example.com` and hands it back.
+The resolver returns the result to the client. Cached answers or delegations can let it skip parts of this path. [RFC 1034 §5.3.3](https://www.rfc-editor.org/rfc/rfc1034.html#section-5.3.3)
 
----
+The root system has **13 named authorities**, served by many physical instances worldwide. This does not mean that only 13 physical root servers exist. [IANA root servers](https://www.iana.org/domains/root/servers)
 
-## 3. DNS Records: Types of Entries
+## 3. Common Record Types
 
-DNS databases contain different record types depending on what information is needed:
+| Type | What it supplies | Illustrative use |
+|---|---|---|
+| **A** | IPv4 address | `example.com` → `192.0.2.10` |
+| **AAAA** | IPv6 address | `example.com` → `2001:db8::10` |
+| **CNAME** | Another DNS name, making the owner name an alias | `www.example.com` → `example.com` |
+| **MX** | Mail server names and their preferences | Identifies where mail for a domain should be delivered |
 
-* **A Record:** Maps a domain name to an **IPv4 address** (e.g., `192.0.2.1`).
-* **AAAA Record:** Maps a domain name to an **IPv6 address** (longer format).
-* **CNAME (Canonical Name):** Creates an alias, pointing one domain name to another (e.g., `www.example.com` points to `example.com`).
-* **MX Record (Mail Exchange):** Specifies the mail servers responsible for receiving email for a domain.
+These are documentation examples, not results of live DNS queries. A and CNAME differ because one supplies an address while the other points to another name. [RFC 1034 §3.6](https://www.rfc-editor.org/rfc/rfc1034.html#section-3.6), [AAAA: RFC 3596 §2](https://www.rfc-editor.org/rfc/rfc3596.html#section-2)
 
----
+## 4. Caching: Making Lookups Faster
 
-## 4. Caching: Making Lookups Instant
+The operating system, browser, and recursive resolver may retain lookup results. A **TTL (Time To Live)** on DNS data specifies how long it can ordinarily be reused from a cache before a fresh lookup is needed.
 
-If every single click on the internet required querying Root, TLD, and Authoritative servers across the globe, the web would feel sluggish. 
+**Worked example:** A resolver caches an address with a TTL of 300 seconds. One minute later, a second client asks for the same record. The resolver can normally reuse the cached answer, with less time remaining on its TTL. If the authoritative address changes meanwhile, clients using the old cached record may temporarily receive the old value. [RFC 1034 §3.6](https://www.rfc-editor.org/rfc/rfc1034.html#section-3.6)
 
-To prevent this, **DNS caching** happens at multiple levels:
-* Your local operating system and browser cache recent lookups.
-* Your local router or ISP resolver caches results based on a **TTL (Time To Live)** expiration timer set by the domain owner.
-
----
+The TTL is not a promise that all caches update together at one global instant.
 
 ## 5. Common Misconceptions
 
-- **"DNS is stored on one giant master computer."** False. DNS is completely decentralized and distributed across thousands of servers worldwide.
-- **"Changing a website's IP address updates globally instantly."** Propagation delays happen because intermediate resolvers cache old DNS records until their TTL expires.
-
----
+- **“DNS is stored on one master computer.”** It is distributed and hierarchically delegated.
+- **“Every lookup contacts root, TLD, and authoritative servers.”** Caches can answer directly or shorten the path.
+- **“Changing a record updates every user's answer immediately.”** Existing cached records can remain in use until their cache lifetime ends.
 
 ## 6. Check Yourself
 
-1. **Trace a DNS lookup:** What are the roles of the recursive resolver, root servers, TLD servers, and authoritative servers?
-2. **What is an A record** compared to a CNAME record?
-3. **Explain the purpose of TTL (Time To Live)** in a DNS record.
+1. **Trace a lookup without useful caches:** what do the recursive resolver, root, TLD, and authoritative servers do?
+2. **Compare an A record with a CNAME record.** Which returns an address and which returns another name?
+3. **Explain TTL:** why can two clients briefly receive different addresses after a record changes?
 
----
+[Explained answers: DNS Q1–Q3](ANSWER-KEY.md#dns)
 
 ## 7. Scope Boundaries
 
-- **Detailed:** Resolver hierarchy, root/TLD/authoritative split, basic record types (A, CNAME, MX), caching.
-- **Brief:** Anycast routing for DNS servers, DNSSEC security extensions.
-- **Out of scope:** BIND configuration files, advanced zone file scripting, reverse DNS pointer records (PTR internals).
+- **Detailed:** Resolver hierarchy, A/AAAA/CNAME/MX records, caching and TTL.
+- **Brief:** Local caches and the distinction between named root authorities and physical instances.
+- **Out of scope:** Anycast routing, DNSSEC, zone-file configuration, advanced delegation cases, reverse DNS, and encrypted DNS transports.
