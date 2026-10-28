@@ -58,3 +58,8 @@ does not claim that AI checks satisfy that requirement.
 The [task list](project-management/TASKS.md) separates completed source changes from remaining human review, course-scope confirmation and media production. The editable Stage 1 deck, four-minute report plan, and supporting video storyboards are present; the final classroom MP4 must be recorded, checked, and placed in the `TeamName_Stage1_StatusReport` package before the 30 October deadline.
 
 The current project structure records the changes made after the team's architecture review. See [project changes](docs/PROJECT-CHANGES.md).
+
+## Useful link
+
+- [Reinforcement learning practice repository](https://github.com/nsdmlk/RL-from-scratch)
+> GitHub repository with examples of different algorithms for RL.
