@@ -11,4 +11,6 @@ This is a shared project-level record. Individual logs and identifiers are kept 
 
 The current revision uses AI assistance for diagnosis, drafting, technical corrections, original diagram code, answer explanations and packaging. The private project record includes retained interaction excerpts and verification evidence.
 
+Correct pdf version is also available now in this root folder.
+
 See [QA log](qa-log.md), [task list](TASKS.md) and [project changes](../docs/PROJECT-CHANGES.md).
