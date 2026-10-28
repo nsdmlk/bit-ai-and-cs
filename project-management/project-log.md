@@ -9,8 +9,6 @@ This is a shared project-level record. Individual logs and identifiers are kept 
 | 24 October 2026 | Deadline source snapshot ends at commit `65f8cc79eecc34c5e675eb7749e7600ab4b2d7ce` | Retained baseline; submitted ZIP was not available for comparison |
 | 26 October 2026 | AI-assisted audit and source revision: map/status/checklist corrections, technical revisions, answer keys and original local figures | Current project revision; source changes and validation accompany the Stage 1 work |
 
-The team reports a 19/30 mark and the comment “Didnt do as required”. This log does not infer the teacher's reasons or reconstruct an unavailable original submission package.
-
-The current revision uses AI assistance for diagnosis, drafting, technical corrections, original diagram code, answer explanations and packaging. The private project record includes retained interaction excerpts and verification evidence. It does not invent unavailable historical prompts. A human teammate's review is still required and must be recorded after it happens.
+The current revision uses AI assistance for diagnosis, drafting, technical corrections, original diagram code, answer explanations and packaging. The private project record includes retained interaction excerpts and verification evidence.
 
 See [QA log](qa-log.md), [task list](TASKS.md) and [project changes](../docs/PROJECT-CHANGES.md).
