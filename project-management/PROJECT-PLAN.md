@@ -35,7 +35,7 @@ The project keeps the three module areas separate for drafting and review. They 
 
 | Area | Main files | Planned content | Current status |
 |---|---|---|---|
-| Hardware | `content/Hardware/OUTLINE.md`, `content/Hardware/ANSWER-KEY.md`, and the Hardware chapter files | Computer components, CPU and memory, storage, buses, input/output, performance trade-offs, and a worked ADD/LOAD trace | Drafted and revised; final independent content review pending |
+| Hardware | `content/Hardware/GENERAL.md` | Computer components, CPU and memory, storage, buses, input/output, performance trade-offs, worked traces, and explained answers | Drafted and revised; final independent content review pending |
 | Networks | `content/Networks/GENERAL.md` | Devices, addressing, packets, protocols, a step-by-step HTTPS request, reliability, security, troubleshooting, and explained answers | Drafted and revised; final independent content review pending |
 | Behaviourist AI | `content/Behaviorist AI/OUTLINE.md`, `content/Behaviorist AI/ANSWER-KEY.md`, and the Behaviourist AI chapter files | Agents, states, actions, rewards, policies, Q-learning, exploration, and responsible use | Drafted and revised; final independent content review pending |
 | Integration | Shared examples and Study Guide mapping | A robot or interactive system combines hardware sensors, network communication, and a reward-driven decision loop | Planned and partially represented through cross-module links |

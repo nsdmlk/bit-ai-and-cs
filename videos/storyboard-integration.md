@@ -18,7 +18,7 @@ without confusing computation, communication, and learning.
 
 ## Required source links
 
-`CONTENT-OUTLINE.md`, `content/Hardware/08 Hardware and AI Networks/`,
+`CONTENT-OUTLINE.md`, `content/Hardware/GENERAL.md#section-08-hardware-and-ai-networks`,
 `content/Networks/GENERAL.md`, and `content/Behaviorist AI/INTRODUCTION.md`.
 
 ## Review checks

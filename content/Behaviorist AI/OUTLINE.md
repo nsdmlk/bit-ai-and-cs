@@ -60,4 +60,4 @@ These are pending tasks. No past approvals or experimental results are implied.
 
 ## Connection with the rest of the project
 
-[Hardware](../Hardware/INTRODUCTION.md) explains how computations run. [Networks](../Networks/GENERAL.md) explains how devices communicate. This module explains a learning objective and decision process that can run on that infrastructure; a network connection or GPU is not compulsory for every example.
+[Hardware](../Hardware/GENERAL.md#introduction) explains how computations run. [Networks](../Networks/GENERAL.md) explains how devices communicate. This module explains a learning objective and decision process that can run on that infrastructure; a network connection or GPU is not compulsory for every example.

@@ -39,9 +39,9 @@ to the evidence and must not attempt to lecture through all 13 slides.
 |---:|---|---|---|---|
 | 1 | From bits to behaviour | Hardware, networks, and learning are connected parts of one system | Three-part route; ask what happens between a sensor reading and an action | `CONTENT-OUTLINE.md` |
 | 2 | Start with the machine, then follow the data | The learning sequence moves from computation to communication to behaviour | Three cards: Hardware, Networks, Behaviourist AI; explain prerequisites | `CONTENT-OUTLINE.md` |
-| 3 | Every instruction follows a repeatable cycle | The CPU fetches, decodes, and executes instructions | Three-stage flow; ask where the PC changes | `content/Hardware/03 Fetch Decode Execute/` |
-| 4 | A trace makes the state visible | `ADD R1, R2` changes register values in a predictable sequence | Step-by-step trace with PC, IR, registers; pause before answer | `content/Hardware/03 Fetch Decode Execute/05-worked-examples.md` |
-| 5 | Performance is total work, not just GHz | CPU time depends on cycles, CPI, and clock period | Formula cards and a 4 ms worked example; ask which processor wins | `content/Hardware/06 Performance/` |
+| 3 | Every instruction follows a repeatable cycle | The CPU fetches, decodes, and executes instructions | Three-stage flow; ask where the PC changes | `content/Hardware/GENERAL.md#section-03-fetch-decode-execute` |
+| 4 | A trace makes the state visible | `ADD R1, R2` changes register values in a predictable sequence | Step-by-step trace with PC, IR, registers; pause before answer | `content/Hardware/GENERAL.md#lesson-03-fetch-decode-execute05-worked-examples` |
+| 5 | Performance is total work, not just GHz | CPU time depends on cycles, CPI, and clock period | Formula cards and a 4 ms worked example; ask which processor wins | `content/Hardware/GENERAL.md#section-06-performance` |
 | 6 | Layers keep network responsibilities separate | Encapsulation separates application, transport, network, link, and physical work | Layer stack; learners label data, segment, packet, frame, and bits | `content/Networks/GENERAL.md#osi-model` |
 | 7 | IP and TCP answer different questions | IP routes; TCP provides a delivery contract; UDP trades guarantees for overhead | Three comparison cards; ask which layer owns ports | `content/Networks/GENERAL.md#tcp-and-udp` |
 | 8 | A web request is a stack of decisions | DNS, TCP, TLS, and HTTP have different jobs in one request | Request-flow diagram; trace a fresh HTTPS connection | `content/Networks/GENERAL.md#introduction` |

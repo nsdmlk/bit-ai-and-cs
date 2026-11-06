@@ -7,7 +7,7 @@ complete merely because a plan or placeholder exists.
 |---|---|---|---|---|
 | A1 | Maintain repository structure, README, and contribution rules | Ilya / Emir | Complete in source | `README.md`, `CONTRIBUTING.md`, folder map |
 | A2 | Define connected Hardware, Networks, and Behaviourist AI scope | Emir with module leads | Complete in source | `CONTENT-OUTLINE.md`, module outlines |
-| A3 | Develop and revise Hardware explanations, traces, activities, and answers | Emir with Ivan | Complete in source; review pending | `content/Hardware/` and Hardware answer key |
+| A3 | Develop and revise Hardware explanations, traces, activities, and answers | Emir with Ivan | Complete in source; review pending | `content/Hardware/GENERAL.md` |
 | A4 | Develop and revise Networks explanations, HTTPS trace, activities, and answers | Dmitrii with Adil | Complete in source; review pending | `content/Networks/GENERAL.md` |
 | A5 | Develop and revise Behaviourist AI explanations, Q-learning activity, and answers | Ilya with team | Complete in source; review pending | `content/Behaviorist AI/` and AI answer key |
 | A6 | Replace remote teaching figures with local diagrams and record provenance | Emir / Ivan / module contributors | Complete in source | Local SVG assets and `docs/ASSET-PROVENANCE.md` |

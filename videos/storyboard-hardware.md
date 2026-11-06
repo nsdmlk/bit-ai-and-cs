@@ -19,8 +19,8 @@ and the PC.
 
 ## Required source links
 
-`content/Hardware/03 Fetch Decode Execute/01-fetch.md`, `02-decode.md`,
-`03-execute.md`, and `05-worked-examples.md`.
+`content/Hardware/GENERAL.md` (Fetch, Decode, Execute, and Worked Examples
+lessons in the Fetch Decode Execute section).
 
 ## Review checks
 
