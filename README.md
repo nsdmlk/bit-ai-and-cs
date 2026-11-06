@@ -9,7 +9,7 @@ Beginner learning material connecting the computer that executes instructions, t
 Start with the [whole-project outline](CONTENT-OUTLINE.md). It links every module's outcomes, prerequisites, activities, scope and development status.
 
 1. [Hardware: module map](content/Hardware/OUTLINE.md) — CPU, memory, instruction execution, performance and pipelining.
-2. [Networks: module map](content/Networks/OUTLINE.md) — layers, IP/routing, transport, DNS, DHCP, HTTP/TLS and SSH.
+2. [Networks: complete guide](content/Networks/GENERAL.md) — reading order, layers, IP/routing, transport, DNS, DHCP, HTTP/TLS, SSH and explained answers.
 3. [Behaviorist AI: module map](content/Behaviorist%20AI/OUTLINE.md) — agents, reinforcement learning, Q-learning, policies, DQN and a qualified robotics case.
 
 **Learners:** first-year students. No previous hardware, networking or reinforcement-learning course is assumed. Arithmetic and basic familiarity with computers are enough to start; each module states any additional prerequisites.
@@ -32,7 +32,7 @@ Roles identify coordination responsibilities. Evidence of actual contributions b
 | Location | Contents |
 |---|---|
 | `content/Hardware/` | 34 learner texts, reading map, explained answers and local figures |
-| `content/Networks/` | 9 learner chapters, reading map, explained answers and local figures |
+| `content/Networks/` | One consolidated learner guide with reading map, explained answers and local figures |
 | `content/Behaviorist AI/` | 6 learner chapters, reading map, explained answers and local figures |
 | [project-management](project-management/PROJECT-PLAN.md) | Current plan, task list, project log and review record |
 | [docs](docs/RESOURCE-MAP.md) | Reuse plans, asset provenance, structural reference and project changes |

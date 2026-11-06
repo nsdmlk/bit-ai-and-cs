@@ -6,7 +6,7 @@ The 35 remote Hardware image insertions and 20 unused raster files from the base
 
 | Local asset | Context |
 |---|---|
-| `content/Networks/assets/dhcp-dora.svg` | DHCPv4 chapter; original DORA sequence diagram |
+| `content/Networks/assets/dhcp-dora.svg` | Networks guide, DHCP section; original DORA sequence diagram |
 | `content/Hardware/assets/h01-01-why-hardware-matters.svg` | content/Hardware/01 What is Hardware/01-why-hardware-matters.md |
 | `content/Hardware/assets/h01-02-five-parts-of-a-computer.svg` | content/Hardware/01 What is Hardware/02-five-parts-of-a-computer.md |
 | `content/Hardware/assets/h01-03-kitchen-analogy.svg` | content/Hardware/01 What is Hardware/03-kitchen-analogy.md |
@@ -44,4 +44,4 @@ The 35 remote Hardware image insertions and 20 unused raster files from the base
 | `content/Hardware/assets/h00-INTRODUCTION-reading-path.svg` | content/Hardware/INTRODUCTION.md |
 | `content/Behaviorist AI/assets/q-learning-update.svg` | Behaviorist AI original diagram |
 | `content/Behaviorist AI/assets/agent-environment-loop.svg` | Behaviorist AI original diagram |
-| `content/Networks/assets/https-request-flow.svg` | Networks original diagram |
+| `content/Networks/assets/https-request-flow.svg` | Networks guide, Introduction section; original HTTPS request-flow diagram |

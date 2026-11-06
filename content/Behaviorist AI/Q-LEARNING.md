@@ -42,15 +42,15 @@ Q(s,a)\leftarrow Q(s,a)+
 \alpha\left[r+\gamma\max_{a'}Q(s',a')-Q(s,a)\right].
 $$
 
-| Symbol | Meaning in this chapter |
-|---|---|
-| $s,a$ | State and action of the experienced transition |
-| $r$ | Observed immediate reward |
-| $s'$ | Observed next state |
-| $a'$ | A valid action available in the next state |
-| $\max_{a'}Q(s',a')$ | Largest current next-action estimate |
-| $\alpha$ | Learning rate; $0<\alpha\leq1$ in our examples |
-| $\gamma$ | Discount factor; $0\leq\gamma\leq1$, with task assumptions as above |
+| Symbol                | Meaning in this chapter                                               |
+| --------------------- | --------------------------------------------------------------------- |
+| $s,a$               | State and action of the experienced transition                        |
+| $r$                 | Observed immediate reward                                             |
+| $s'$                | Observed next state                                                   |
+| $a'$                | A valid action available in the next state                            |
+| $\max_{a'}Q(s',a')$ | Largest current next-action estimate                                  |
+| $\alpha$            | Learning rate; $0<\alpha\leq1$ in our examples                      |
+| $\gamma$            | Discount factor; $0\leq\gamma\leq1$, with task assumptions as above |
 
 The **target** is $r+\gamma\max_{a'}Q(s',a')$. Subtracting the old estimate gives the error; multiplying by $\alpha$ determines how far to move toward the target.
 
@@ -88,11 +88,11 @@ A short run is not guaranteed to find optimal values. The tabular convergence re
 This is an illustrative two-step task, separate from the introductory maze's reward scheme. Initially:
 
 | State | Action | Current estimate |
-|---|---|---:|
-| A | X | 20 |
-| A | Y | 12 |
-| B | left | 50 |
-| B | right | 30 |
+| ----- | ------ | ---------------: |
+| A     | X      |               20 |
+| A     | Y      |               12 |
+| B     | left   |               50 |
+| B     | right  |               30 |
 
 Take $\alpha=1$ and $\gamma=0.9$. The behavior policy selects X in A. It receives reward 10 and reaches **nonterminal** B.
 
@@ -106,10 +106,10 @@ $$
 
 At B, suppose the policy selects left, receives reward 50 and reaches the terminal exit. Its target is 50, so $Q(B,\mathrm{left})=50+1(50-50)=50$. The episode ends.
 
-| Step | Experienced transition | Target | Updated entry |
-|---|---|---:|---|
-| 1 | A, X → reward 10, B, nonterminal | 55 | $Q(A,X):20\rightarrow55$ |
-| 2 | B, left → reward 50, terminal exit | 50 | $Q(B,\mathrm{left}):50\rightarrow50$ |
+| Step | Experienced transition              | Target | Updated entry                          |
+| ---- | ----------------------------------- | -----: | -------------------------------------- |
+| 1    | A, X → reward 10, B, nonterminal   |     55 | $Q(A,X):20\rightarrow55$             |
+| 2    | B, left → reward 50, terminal exit |     50 | $Q(B,\mathrm{left}):50\rightarrow50$ |
 
 The other two entries remain unchanged. The value 55 uses current estimates; a different outcome or later evidence could change them.
 

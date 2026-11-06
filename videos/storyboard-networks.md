@@ -19,8 +19,8 @@ connection.
 
 ## Required source links
 
-`content/Networks/INTRODUCTION.md`, `DNS.md`, `ROUTING-AND-IP.md`,
-`TCP-AND-UDP.md`, and `HTTP-AND-SECURITY.md`.
+`content/Networks/GENERAL.md` (Introduction, DNS, IP and Routing, TCP and UDP,
+and HTTP and Security sections).
 
 ## Review checks
 
